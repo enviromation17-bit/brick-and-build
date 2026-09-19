@@ -1,0 +1,5 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="markTitle">
+  <title id="markTitle">Brick & Build</title>
+  <rect x="1" y="1" width="38" height="38" rx="4" fill="none" stroke="currentColor" stroke-width="1.6"/>
+  <text x="20" y="26" font-family="Cormorant Garamond, Georgia, serif" font-size="20" font-weight="600" text-anchor="middle" fill="currentColor">&amp;</text>
+</svg>

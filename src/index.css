@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html { scroll-behavior: smooth; background: #FAF8F3; }
+body { margin: 0; background: #FAF8F3; color: #152A54; font-family: 'Manrope', sans-serif; -webkit-font-smoothing: antialiased; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.font-display { font-family: 'Cormorant Garamond', serif; font-weight: 500; letter-spacing: -0.01em; }
+
+.marquee-track { display: flex; width: max-content; gap: 2.5rem; animation: marquee 30s linear infinite; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+.chip { height: 2.4rem; padding: 0 1rem; border-radius: 999px; border: 1px solid #E5E1D6; background: #FFFFFF; color: #152A54; font-size: 0.85rem; cursor: pointer; }
+.chip.selected { background: #152A54; color: #fff; border-color: #152A54; }
+
+.field-input { height: 2.9rem; width: 100%; border-radius: 0.6rem; border: 1px solid #E5E1D6; background: #FFFFFF; padding: 0 1rem; color: #152A54; font-family: 'Manrope', sans-serif; font-size: 0.92rem; }
+.field-input::placeholder { color: #9AA3AF; }
+textarea.field-input { height: auto; min-height: 7rem; padding: 0.8rem 1rem; resize: vertical; }

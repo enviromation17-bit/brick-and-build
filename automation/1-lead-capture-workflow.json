@@ -1,0 +1,79 @@
+{
+  "name": "Brick & Build — Lead Capture (Website + Assistant)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "brick-and-build-leads",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "webhook-node",
+      "name": "Website / Assistant Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [260, 300],
+      "webhookId": "brick-and-build-leads"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "PASTE_YOUR_GOOGLE_SHEET_ID_HERE"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "Leads"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.body.name }}",
+            "Phone": "={{ $json.body.phone }}",
+            "Email": "={{ $json.body.email }}",
+            "Role": "={{ $json.body.role }}",
+            "Interest": "={{ $json.body.interest }}",
+            "Message": "={{ $json.body.message }}",
+            "Source": "={{ $json.body.source || 'contact_form' }}",
+            "Page": "={{ $json.body.page }}",
+            "Submitted At": "={{ $json.body.submittedAt }}"
+          }
+        },
+        "options": {}
+      },
+      "id": "sheets-append-node",
+      "name": "Append Lead to Google Sheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [520, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Website / Assistant Webhook": {
+      "main": [
+        [
+          {
+            "node": "Append Lead to Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "notes": "SETUP: 1) Create a Google Sheet with header row: Name, Phone, Email, Role, Interest, Message, Source, Page, Submitted At — name the tab 'Leads'. 2) Open the Google Sheets node, connect your Google account, and pick that sheet. 3) Activate this workflow. 4) Copy the Webhook node's Production URL and paste it into LEAD_WEBHOOK_URL at the top of js/main.js on the website. Every contact-form submission AND every assistant lead-capture will now land as a new row in this one sheet."
+}

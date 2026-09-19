@@ -1,0 +1,96 @@
+{
+  "name": "Brick & Build — 30-Day Lead Digest to Owner",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "days",
+              "daysInterval": 30
+            }
+          ]
+        }
+      },
+      "id": "schedule-node",
+      "name": "Every 30 Days",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [260, 300]
+    },
+    {
+      "parameters": {
+        "operation": "read",
+        "documentId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "PASTE_YOUR_GOOGLE_SHEET_ID_HERE"
+        },
+        "sheetName": {
+          "__rl": true,
+          "mode": "list",
+          "value": "Leads"
+        },
+        "options": {}
+      },
+      "id": "sheets-read-node",
+      "name": "Read All Leads",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.4,
+      "position": [500, 300],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const cutoff = new Date();\ncutoff.setDate(cutoff.getDate() - 30);\n\nconst recent = items.filter(item => {\n  const raw = item.json['Submitted At'];\n  if (!raw) return false;\n  const d = new Date(raw);\n  return d >= cutoff;\n});\n\nconst rows = recent.map(item => {\n  const j = item.json;\n  return `${j['Submitted At'] || ''} — ${j.Name || ''} — ${j.Phone || ''} — ${j.Interest || ''} — ${j.Source || ''}`;\n}).join('\\n');\n\nconst summary = recent.length\n  ? `${recent.length} new lead(s) in the last 30 days:\\n\\n${rows}`\n  : 'No new leads in the last 30 days.';\n\nreturn [{ json: { count: recent.length, summary } }];"
+      },
+      "id": "filter-code-node",
+      "name": "Filter Last 30 Days",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [740, 300]
+    },
+    {
+      "parameters": {
+        "sendTo": "OWNER_EMAIL_HERE@example.com",
+        "subject": "Brick & Build — 30-day lead summary ({{ $json.count }} leads)",
+        "emailType": "text",
+        "message": "={{ $json.summary }}",
+        "options": {}
+      },
+      "id": "gmail-node",
+      "name": "Email Digest to Owner",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [980, 300],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Every 30 Days": {
+      "main": [[{ "node": "Read All Leads", "type": "main", "index": 0 }]]
+    },
+    "Read All Leads": {
+      "main": [[{ "node": "Filter Last 30 Days", "type": "main", "index": 0 }]]
+    },
+    "Filter Last 30 Days": {
+      "main": [[{ "node": "Email Digest to Owner", "type": "main", "index": 0 }]]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "notes": "SETUP: 1) Points at the same Google Sheet as workflow 1 — paste the same Sheet ID. 2) Open the Gmail node, connect the owner's Gmail account (or swap for a WhatsApp/SMS node if you'd rather get the digest that way), and replace OWNER_EMAIL_HERE@example.com with the real address. 3) Activate this workflow — it will run automatically every 30 days and email a plain-text summary of that period's leads. Swap the Schedule Trigger's interval if you want a different cadence (e.g. weekly)."
+}
