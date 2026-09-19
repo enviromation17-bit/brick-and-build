@@ -11,7 +11,7 @@ export default function Home() {
       <Hero
         eyebrow="Pakpattan · Punjab · Pakistan"
         title="Toba Tek Singh is next."
-        media="/assets/media/hero-frontpage.mp4"
+        media="/assets/media/hero-frontpage-web.mp4"
         poster="/assets/media/hero-3d.jpg"
         lede="An established property development company delivering residential, commercial and land projects — including Pak City Housing Society in Pakpattan — with our next project underway in Toba Tek Singh."
       >

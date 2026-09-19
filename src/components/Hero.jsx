@@ -15,6 +15,7 @@ export default function Hero({ eyebrow, title, lede, media, poster, compact = fa
             muted
             loop
             playsInline
+            preload="metadata"
             aria-hidden="true"
           />
         ) : media ? (

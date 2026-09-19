@@ -24,7 +24,7 @@ export default function Services() {
               <Reveal key={b.title} delay={0.06 * i}>
                 <Link to={b.to} className="grid md:grid-cols-2 overflow-hidden rounded-2xl border border-line">
                   {b.img ? (
-                    <img src={b.img} alt="" className="w-full h-full object-cover aspect-[4/3]" />
+                    <img src={b.img} alt="" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" />
                   ) : (
                     <Photo label={b.title} aspect="aspect-[4/3]" className="!rounded-none !border-0" />
                   )}

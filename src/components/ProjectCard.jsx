@@ -11,6 +11,7 @@ export default function ProjectCard({ to, kicker, name, location, summary, featu
             <motion.img
               src={img}
               alt=""
+              loading="lazy"
               className="w-full h-full object-cover"
               variants={{ rest: { scale: 1 }, hover: { scale: 1.05 } }}
               transition={{ duration: 0.5, ease: "easeOut" }}

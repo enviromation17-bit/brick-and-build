@@ -72,7 +72,7 @@ export default function PakCity() {
           <div className="mt-12 grid sm:grid-cols-2 gap-5">
             {PAK_CITY.gallery.map((g, i) => (
               <Reveal key={g.src} delay={0.06 * i} className="rounded-2xl overflow-hidden border border-line">
-                <img src={g.src} alt={g.caption} className="w-full aspect-[4/3] object-cover" />
+                <img src={g.src} alt={g.caption} loading="lazy" className="w-full aspect-[4/3] object-cover" />
                 <p className="p-4 text-[0.82rem] text-slate bg-paper2">{g.caption}</p>
               </Reveal>
             ))}
