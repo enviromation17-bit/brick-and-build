@@ -1,9 +1,9 @@
 export const COMPANY = {
-  name: "Brick & Build",
-  fullName: "Brick & Build Developers",
+  name: "Brick & Built",
+  fullName: "Brick & Built Developers",
   location: "Pakpattan, Punjab, Pakistan",
-  whatsapp: "923207289443",
-  whatsappDisplay: "0320 7289443",
+  whatsapp: "923011783333",
+  whatsappDisplay: "03011783333",
   hours: "9:00 AM – 10:00 PM, daily",
 };
 
@@ -48,7 +48,7 @@ export const VALUES = [
 export const CEO = {
   name: "Waseem Bari",
   title: "Chief Executive Officer, Brick & Build",
-  note: "Waseem Bari has led Brick & Build for over a decade, bringing more than ten years of hands-on experience in land development, residential and commercial projects across Punjab. His focus remains on transparent delivery and long-term stewardship of every site.",
+  note: "Waseem Bari have been working  in this field  more than ten years of hands-on experience in land development, residential and commercial projects across Punjab. His focus remains on transparent delivery .",
 };
 
 export const TOBA_FACTS = [
