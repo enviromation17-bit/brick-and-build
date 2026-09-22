@@ -27,9 +27,9 @@ export default function Header() {
       }`}
     >
       <div className="max-w-container mx-auto flex items-center justify-between gap-4 h-[4.5rem] px-5 md:px-8">
-        <Link to="/" className={`flex items-center gap-3 ${tone}`}>
-          <span className="flex h-12 w-[7.5rem] items-center justify-center rounded-md border border-gold/70 bg-white px-1 shadow-sm">
-            <Mark size={50} />
+        <Link to="/" className={`flex items-center gap-3 shrink-0 ${tone}`} aria-label="Brick & Build home">
+          <span className="flex h-11 w-[8.25rem] items-center justify-center rounded-md border border-gold/70 bg-white px-2.5 py-1.5 shadow-sm overflow-hidden">
+            <Mark size={36} className="w-full h-auto" />
           </span>
         </Link>
 

@@ -48,7 +48,7 @@ export const VALUES = [
 export const CEO = {
   name: "Waseem Bari",
   title: "Chief Executive Officer, Brick & Build",
-  note: "Photo and bio to be added.",
+  note: "Waseem Bari has led Brick & Build for over a decade, bringing more than ten years of hands-on experience in land development, residential and commercial projects across Punjab. His focus remains on transparent delivery and long-term stewardship of every site.",
 };
 
 export const TOBA_FACTS = [

@@ -1,10 +1,16 @@
-// Branded placeholder used everywhere a real photo will eventually go.
-// No external/binary dependency — pure CSS, so nothing to break or swap
-// out accidentally. Replace usages of this component with a normal
-// <img src="/assets/media/..."> once real photography is added.
+// Real photo when src is provided; branded placeholder otherwise.
 export default function Photo({ label, src, aspect = "aspect-[4/3]", className = "" }) {
   if (src) {
-    return <img src={src} alt={label || ""} className={`${aspect} ${className} w-full object-cover`} />;
+    return (
+      <img
+        src={src}
+        alt={label || ""}
+        className={`${aspect} ${className} w-full h-full object-cover object-center`}
+        loading="lazy"
+        decoding="async"
+        style={{ imageRendering: "auto" }}
+      />
+    );
   }
 
   return (
