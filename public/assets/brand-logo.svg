@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400" role="img" aria-label="Bricks & Built Developers">
+  <text x="300" y="78" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="72" font-weight="700" fill="#1A2B5C" letter-spacing="6">BRICKS</text>
+  <rect x="48" y="108" width="88" height="88" fill="#1A2B5C"/>
+  <text x="92" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="64" font-weight="400" fill="#FFFFFF">&amp;</text>
+  <g fill="none" stroke="#1A2B5C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" transform="translate(150, 100)">
+    <path d="M20 95 L380 95"/>
+    <path d="M40 95 L40 110 M80 95 L80 110 M140 95 L140 110 M220 95 L220 110 M300 95 L300 110 M360 95 L360 110"/>
+    <path d="M30 95 L30 55 L50 55 L50 40 L75 40 L75 55 L95 55 L95 95"/>
+    <circle cx="110" cy="78" r="10"/><path d="M110 88 L110 95"/>
+    <circle cx="250" cy="80" r="9"/><path d="M250 89 L250 95"/>
+    <circle cx="340" cy="78" r="8"/><path d="M340 86 L340 95"/>
+    <path d="M130 95 L130 55 L138 55"/><circle cx="138" cy="55" r="3"/>
+    <path d="M200 95 L200 50 L208 50"/><circle cx="208" cy="50" r="3"/>
+    <path d="M160 95 L160 50 L180 50 L180 35 L210 35 L210 50 L235 50 L235 95"/>
+    <path d="M245 95 L245 48 L270 48 L270 30 L300 30 L300 48 L320 48 L320 95"/>
+    <path d="M330 95 L330 55 L350 55 L350 40 Q360 25 370 40 L370 55 L390 55 L390 95"/>
+    <path d="M360 40 L360 18"/><circle cx="360" cy="15" r="4"/>
+  </g>
+  <text x="300" y="280" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="78" font-weight="700" fill="#1A2B5C" letter-spacing="8">BUILT</text>
+  <line x1="140" y1="320" x2="220" y2="320" stroke="#1A2B5C" stroke-width="1.5"/>
+  <text x="300" y="328" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="600" fill="#1A2B5C" letter-spacing="8">DEVELOPERS</text>
+  <line x1="380" y1="320" x2="460" y2="320" stroke="#1A2B5C" stroke-width="1.5"/>
+</svg>
