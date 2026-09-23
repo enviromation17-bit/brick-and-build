@@ -1,14 +1,26 @@
 export default function Mark({ className = "", size = 40 }) {
   return (
-    <img
-      src="/assets/brand-logo.svg"
-      alt="Bricks & Built Developers"
-      width={Math.round(size * 1.5)}
+    <svg
+      viewBox="0 0 420 120"
+      width={Math.round(size * 3.5)}
       height={size}
-      className={`block object-contain object-left ${className}`}
-      style={{ imageRendering: "auto" }}
-      loading="eager"
-      decoding="async"
-    />
+      className={`block ${className}`}
+      role="img"
+      aria-label="Bricks & Built Developers"
+      fill="none"
+    >
+      <g fill="currentColor">
+        <path d="M8 8h36c14 0 24 6 24 20 0 9-5 15-12 18 9 3 16 10 16 22 0 16-12 24-28 24H8V8zm20 32h14c6 0 10-3 10-8s-4-8-10-8H28v16zm0 44h16c8 0 14-4 14-12s-6-12-14-12H28v24z" />
+        <rect x="14" y="20" width="18" height="3" fill="#FFFFFF" opacity="0.35" />
+        <rect x="14" y="36" width="14" height="3" fill="#FFFFFF" opacity="0.35" />
+        <rect x="14" y="56" width="16" height="3" fill="#FFFFFF" opacity="0.35" />
+        <rect x="14" y="72" width="20" height="3" fill="#FFFFFF" opacity="0.35" />
+        <rect x="14" y="88" width="12" height="3" fill="#FFFFFF" opacity="0.35" />
+      </g>
+      <text x="96" y="52" fontFamily="Georgia, Times New Roman, serif" fontSize="28" fontWeight="700" fill="currentColor" letterSpacing="1.5">BRICKS &amp; BUILT</text>
+      <line x1="96" y1="68" x2="160" y2="68" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+      <line x1="280" y1="68" x2="344" y2="68" stroke="currentColor" strokeWidth="1" opacity="0.5" />
+      <text x="220" y="74" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontSize="11" fontWeight="600" fill="currentColor" letterSpacing="4">DEVELOPERS</text>
+    </svg>
   );
 }
