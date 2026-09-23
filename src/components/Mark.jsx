@@ -1,21 +1,58 @@
 export default function Mark({ className = "", size = 40 }) {
   return (
     <svg
-      viewBox="0 0 420 120"
-      width={Math.round(size * 3.5)}
+      viewBox="0 0 280 160"
+      width={Math.round(size * 2.2)}
       height={size}
       className={`block ${className}`}
       role="img"
-      aria-label="Bricks & Built Developers"
-      fill="none"
+      aria-label="Brick & Built Developers"
     >
-      <g fill="currentColor">
-        <path d="M8 8h36c14 0 24 6 24 20 0 9-5 15-12 18 9 3 16 10 16 22 0 16-12 24-28 24H8V8zm20 32h14c6 0 10-3 10-8s-4-8-10-8H28v16zm0 44h16c8 0 14-4 14-12s-6-12-14-12H28v24z" />
+      {/* Branches + leaves — gold accent when class allows, else currentColor */}
+      <g stroke="none">
+        {/* Left branch */}
+        <path d="M140 52 C120 40 105 28 95 18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <path d="M140 52 C125 42 118 30 112 20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        {/* Right branch */}
+        <path d="M140 52 C160 40 175 28 185 18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
+        <path d="M140 52 C155 42 162 30 168 20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
+        {/* Gold leaves — use #C9A227 to match site gold */}
+        <ellipse cx="90" cy="22" rx="11" ry="6" fill="#C9A227" transform="rotate(-35 90 22)" />
+        <ellipse cx="102" cy="16" rx="10" ry="5.5" fill="#C9A227" transform="rotate(-20 102 16)" />
+        <ellipse cx="108" cy="28" rx="9" ry="5" fill="#C9A227" transform="rotate(-50 108 28)" />
+        <ellipse cx="118" cy="24" rx="8" ry="4.5" fill="#C9A227" transform="rotate(-15 118 24)" />
+        <ellipse cx="122" cy="38" rx="8" ry="4.5" fill="#C9A227" transform="rotate(-40 122 38)" />
+        <ellipse cx="190" cy="22" rx="11" ry="6" fill="#C9A227" transform="rotate(35 190 22)" />
+        <ellipse cx="178" cy="16" rx="10" ry="5.5" fill="#C9A227" transform="rotate(20 178 16)" />
+        <ellipse cx="172" cy="28" rx="9" ry="5" fill="#C9A227" transform="rotate(50 172 28)" />
+        <ellipse cx="162" cy="24" rx="8" ry="4.5" fill="#C9A227" transform="rotate(15 162 24)" />
+        <ellipse cx="158" cy="38" rx="8" ry="4.5" fill="#C9A227" transform="rotate(40 158 38)" />
       </g>
-      <text x="96" y="52" fontFamily="Georgia, Times New Roman, serif" fontSize="28" fontWeight="700" fill="currentColor" letterSpacing="1.5">BRICKS &amp; BUILT</text>
-      <line x1="96" y1="68" x2="160" y2="68" stroke="currentColor" strokeWidth="1" opacity="0.45" />
-      <line x1="280" y1="68" x2="344" y2="68" stroke="currentColor" strokeWidth="1" opacity="0.45" />
-      <text x="220" y="74" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontSize="11" fontWeight="600" fill="currentColor" letterSpacing="4">DEVELOPERS</text>
+      {/* House silhouette */}
+      <path
+        fill="currentColor"
+        d="M140 48 L95 88 L95 128 Q95 138 110 138 L170 138 Q185 138 185 128 L185 88 Z"
+      />
+      {/* Window — 4 panes (inverse via background; use paper color holes approximated as rects matching header) */}
+      <g fill="#FAF8F3">
+        <rect x="128" y="98" width="9" height="9" rx="1" />
+        <rect x="143" y="98" width="9" height="9" rx="1" />
+        <rect x="128" y="112" width="9" height="9" rx="1" />
+        <rect x="143" y="112" width="9" height="9" rx="1" />
+      </g>
+      {/* Wordmark */}
+      <text
+        x="140"
+        y="152"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="14"
+        fontWeight="700"
+        fill="currentColor"
+        letterSpacing="1.5"
+      >
+        BRICK &amp; BUILT
+      </text>
     </svg>
   );
 }
