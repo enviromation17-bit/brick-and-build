@@ -16,7 +16,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const dark = scrolled || mobileOpen; // true = light header bg, so content goes navy
+  const dark = scrolled || mobileOpen;
   const tone = dark ? "text-navy" : "text-white";
   const toneMuted = dark ? "text-slate" : "text-white/70";
 
@@ -27,9 +27,9 @@ export default function Header() {
       }`}
     >
       <div className="max-w-container mx-auto flex items-center justify-between gap-4 h-[4.5rem] px-5 md:px-8">
-        <Link to="/" className={`flex items-center gap-3 shrink-0 ${tone}`} aria-label="Brick & Build home">
-          <span className="flex h-11 w-[8.25rem] items-center justify-center rounded-md border border-gold/70 bg-white px-2.5 py-1.5 shadow-sm overflow-hidden">
-            <Mark size={36} className="w-full h-auto" />
+        <Link to="/" className={`flex items-center gap-3 shrink-0 ${tone}`} aria-label="Bricks & Built home">
+          <span className="flex h-12 w-[9rem] items-center justify-center rounded-md border border-gold/70 bg-white px-2 py-1 shadow-sm overflow-hidden">
+            <Mark size={40} className="w-full h-auto" />
           </span>
         </Link>
 

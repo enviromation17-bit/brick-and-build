@@ -6,7 +6,12 @@ import { PAK_CITY } from "../data/content";
 export default function PakCity() {
   return (
     <>
-      <Hero eyebrow="Pakpattan, Punjab" title="Pak City Housing Society" media="/assets/media/pak-city-street.jpg" lede={PAK_CITY.overview}>
+      <Hero
+        eyebrow="Pakpattan, Punjab"
+        title="Pak City Housing Society"
+        media="/assets/media/service-residential.jpg"
+        lede={PAK_CITY.overview}
+      >
         <span className="inline-flex w-fit border border-gold/50 bg-gold/15 px-4 py-1.5 text-[0.68rem] font-bold tracking-[0.18em] uppercase rounded-pill text-white">
           {PAK_CITY.siteCount} · {PAK_CITY.totalArea} total
         </span>

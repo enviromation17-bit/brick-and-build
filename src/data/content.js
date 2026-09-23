@@ -62,8 +62,6 @@ export const TOBA_FACTS = [
   { label: "Legal approvals / NOC", value: "Pending", pending: true },
 ];
 
-// All figures below are exactly as given in the Pak City Housing Society
-// project detail sheet — nothing added, estimated, or rounded differently.
 export const PAK_CITY = {
   name: "Pak City Housing Society",
   totalArea: "29 Acres",
@@ -101,8 +99,8 @@ export const PAK_CITY = {
     "Post-Development Maintenance for long-term sustainability.",
   ],
   gallery: [
-    { src: "/assets/media/pak-city-street.jpg", caption: "A developed street within a Pak City site — carpeted road, landscaping and completed homes." },
-    { src: "/assets/media/pak-city-park.jpg", caption: "Community park area with landscaping and a children's play zone inside a Pak City site." },
+    { src: "/assets/media/service-residential.jpg", caption: "Residential development — planned homes and community streets." },
+    { src: "/assets/media/service-commercial.jpg", caption: "Commercial area — plots and built units for business." },
   ],
   mapQuery: "Sheikh Jamal, Pakpattan, Punjab, Pakistan",
 };

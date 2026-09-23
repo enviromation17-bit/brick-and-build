@@ -7,7 +7,7 @@ import { TOBA_FACTS, COMPANY } from "../data/content";
 const CHAPTERS = [
   { n: "01", title: "Sector layout", body: "A detailed sector and street layout hasn't been finalized yet. We'll publish it here once the master plan is confirmed.", reverse: false, img: "/assets/media/toba-masterplan.jpg" },
   { n: "02", title: "Residential plots", body: "Exact plot sizes and sector assignments are still being confirmed.", reverse: true, img: "/assets/media/toba-residential.jpg" },
-  { n: "03", title: "Construction progress", body: "Project development and site details will be published as they are confirmed.", reverse: false, img: "/assets/media/service-residential.jpg" },
+  { n: "03", title: "Construction progress", body: "Project development and site details will be published as they are confirmed.", reverse: false, img: "/assets/media/service-land.jpg" },
 ];
 
 export default function TobaTekSingh() {
@@ -28,15 +28,14 @@ export default function TobaTekSingh() {
         </div>
       </section>
 
-      {/* Construction progress — video file to be added under public/assets/media/toba-timelapse-web.mp4 */}
       <section className="py-24 bg-navy">
         <div className="max-w-container mx-auto px-5 md:px-8">
           <Reveal>
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-gold">Progress</p>
             <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-white">From land to built community.</h2>
-            <p className="mt-4 max-w-[48ch] text-slateLight">A view of how a housing community takes shape — land preparation through to completed residences.</p>
+            <p className="mt-4 max-w-[48ch] text-slateLight">How a housing community takes shape — from open land through construction to completed residences.</p>
           </Reveal>
-          <Reveal delay={0.1} className="mt-10 max-w-[56rem] mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-lift bg-navyDeep">
+          <Reveal delay={0.1} className="mt-10 max-w-[56rem] mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-lift bg-black/40">
             <video
               src="/assets/media/toba-timelapse-web.mp4"
               poster="/assets/media/service-land.jpg"
@@ -44,7 +43,7 @@ export default function TobaTekSingh() {
               controls
               playsInline
               preload="metadata"
-              aria-label="Construction progress time-lapse"
+              aria-label="Construction progress time-lapse from land to completed homes"
             >
               Your browser does not support the video tag.
             </video>

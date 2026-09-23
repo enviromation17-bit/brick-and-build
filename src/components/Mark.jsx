@@ -1,7 +1,7 @@
 export default function Mark({ className = "", size = 40 }) {
   return (
     <img
-      src="/assets/brand-logo.svg"
+      src="/assets/brand-logo-final.jpg"
       alt="Bricks & Built Developers"
       width={Math.round(size * 1.5)}
       height={size}
