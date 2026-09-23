@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 py-16">
           <div>
             <Link to="/" className="flex items-center text-white" aria-label="Brick & Built home">
-              <Mark size={42} className="h-10 w-auto max-w-[11rem]" />
+              <Mark size={48} className="h-12 w-auto max-w-[9rem]" />
             </Link>
             <p className="mt-5 max-w-[24rem] text-sm text-slateLight">
               An established property development company based in Pakpattan, Punjab — delivering and representing land, residential and commercial projects with transparency.

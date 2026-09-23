@@ -1,55 +1,53 @@
 export default function Mark({ className = "", size = 40 }) {
   return (
     <svg
-      viewBox="0 0 280 160"
-      width={Math.round(size * 2.2)}
+      viewBox="0 0 200 150"
+      width={Math.round(size * 1.8)}
       height={size}
       className={`block ${className}`}
       role="img"
       aria-label="Brick & Built Developers"
     >
-      {/* Branches + leaves — gold accent when class allows, else currentColor */}
-      <g stroke="none">
-        {/* Left branch */}
-        <path d="M140 52 C120 40 105 28 95 18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
-        <path d="M140 52 C125 42 118 30 112 20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        {/* Right branch */}
-        <path d="M140 52 C160 40 175 28 185 18" stroke="currentColor" strokeWidth="3" fill="none" strokeLinecap="round" />
-        <path d="M140 52 C155 42 162 30 168 20" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" />
-        {/* Gold leaves — use #C9A227 to match site gold */}
-        <ellipse cx="90" cy="22" rx="11" ry="6" fill="#C9A227" transform="rotate(-35 90 22)" />
-        <ellipse cx="102" cy="16" rx="10" ry="5.5" fill="#C9A227" transform="rotate(-20 102 16)" />
-        <ellipse cx="108" cy="28" rx="9" ry="5" fill="#C9A227" transform="rotate(-50 108 28)" />
-        <ellipse cx="118" cy="24" rx="8" ry="4.5" fill="#C9A227" transform="rotate(-15 118 24)" />
-        <ellipse cx="122" cy="38" rx="8" ry="4.5" fill="#C9A227" transform="rotate(-40 122 38)" />
-        <ellipse cx="190" cy="22" rx="11" ry="6" fill="#C9A227" transform="rotate(35 190 22)" />
-        <ellipse cx="178" cy="16" rx="10" ry="5.5" fill="#C9A227" transform="rotate(20 178 16)" />
-        <ellipse cx="172" cy="28" rx="9" ry="5" fill="#C9A227" transform="rotate(50 172 28)" />
-        <ellipse cx="162" cy="24" rx="8" ry="4.5" fill="#C9A227" transform="rotate(15 162 24)" />
-        <ellipse cx="158" cy="38" rx="8" ry="4.5" fill="#C9A227" transform="rotate(40 158 38)" />
+      {/* Gold leaves */}
+      <g fill="#C9A227">
+        <ellipse cx="52" cy="28" rx="14" ry="7" transform="rotate(-40 52 28)" />
+        <ellipse cx="68" cy="18" rx="13" ry="6.5" transform="rotate(-25 68 18)" />
+        <ellipse cx="78" cy="32" rx="11" ry="6" transform="rotate(-55 78 32)" />
+        <ellipse cx="88" cy="22" rx="10" ry="5.5" transform="rotate(-15 88 22)" />
+        <ellipse cx="92" cy="42" rx="10" ry="5.5" transform="rotate(-45 92 42)" />
+        <ellipse cx="148" cy="28" rx="14" ry="7" transform="rotate(40 148 28)" />
+        <ellipse cx="132" cy="18" rx="13" ry="6.5" transform="rotate(25 132 18)" />
+        <ellipse cx="122" cy="32" rx="11" ry="6" transform="rotate(55 122 32)" />
+        <ellipse cx="112" cy="22" rx="10" ry="5.5" transform="rotate(15 112 22)" />
+        <ellipse cx="108" cy="42" rx="10" ry="5.5" transform="rotate(45 108 42)" />
       </g>
-      {/* House silhouette */}
+      {/* Branches */}
+      <g stroke="currentColor" strokeWidth="2.8" fill="none" strokeLinecap="round">
+        <path d="M100 58 C85 48 70 35 58 22" />
+        <path d="M100 58 C88 46 80 34 74 24" />
+        <path d="M100 58 C115 48 130 35 142 22" />
+        <path d="M100 58 C112 46 120 34 126 24" />
+      </g>
+      {/* House — solid, transparent windows via evenodd */}
       <path
         fill="currentColor"
-        d="M140 48 L95 88 L95 128 Q95 138 110 138 L170 138 Q185 138 185 128 L185 88 Z"
+        fillRule="evenodd"
+        d="M100 55 L58 90 L58 128 Q58 138 72 138 L128 138 Q142 138 142 128 L142 90 Z
+           M88 100 h10 v10 H88 Z
+           M102 100 h10 v10 h-10 Z
+           M88 114 h10 v10 H88 Z
+           M102 114 h10 v10 h-10 Z"
       />
-      {/* Window — 4 panes (inverse via background; use paper color holes approximated as rects matching header) */}
-      <g fill="#FAF8F3">
-        <rect x="128" y="98" width="9" height="9" rx="1" />
-        <rect x="143" y="98" width="9" height="9" rx="1" />
-        <rect x="128" y="112" width="9" height="9" rx="1" />
-        <rect x="143" y="112" width="9" height="9" rx="1" />
-      </g>
       {/* Wordmark */}
       <text
-        x="140"
-        y="152"
+        x="100"
+        y="148"
         textAnchor="middle"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="14"
+        fontSize="11"
         fontWeight="700"
         fill="currentColor"
-        letterSpacing="1.5"
+        letterSpacing="1.2"
       >
         BRICK &amp; BUILT
       </text>

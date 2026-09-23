@@ -30,9 +30,9 @@ export default function Header() {
         <Link
           to="/"
           className={`flex items-center shrink-0 ${dark ? "text-navy" : "text-white"}`}
-          aria-label="Bricks & Built home"
+          aria-label="Brick & Built home"
         >
-          <Mark size={42} className="h-10 w-auto max-w-[11rem]" />
+          <Mark size={48} className="h-12 w-auto max-w-[9rem]" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
