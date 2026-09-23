@@ -30,29 +30,24 @@ export default function Mark({ className = "", size = 40 }) {
         <path d="M120 60 C135 46 145 32 152 22" />
       </g>
 
-      {/* House outer shell */}
+      {/* House + window cutouts (transparent panes, no white) */}
       <path
         fill="currentColor"
-        d="M120 56 L68 96 L68 138 Q68 148 84 148 L156 148 Q172 148 172 138 L172 96 Z"
+        fillRule="evenodd"
+        d="M120 56 L68 96 L68 138 Q68 148 84 148 L156 148 Q172 148 172 138 L172 96 Z
+           M108 108 h10 v10 h-10 Z
+           M122 108 h10 v10 h-10 Z
+           M108 122 h10 v10 h-10 Z
+           M122 122 h10 v10 h-10 Z"
       />
 
-      {/* Brick pattern fill (lighter navy so bricks read on dark + light headers) */}
-      <g opacity="0.35">
-        {/* horizontal mortar lines */}
-        <path stroke="#FFFFFF" strokeWidth="1.1" d="M78 104 H162 M78 112 H162 M78 120 H162 M78 128 H162 M78 136 H162" />
-        {/* vertical brick offsets */}
-        <path stroke="#FFFFFF" strokeWidth="1.1" d="M90 104 V112 M110 104 V112 M130 104 V112 M150 104 V112" />
-        <path stroke="#FFFFFF" strokeWidth="1.1" d="M80 112 V120 M100 112 V120 M120 112 V120 M140 112 V120 M160 112 V120" />
-        <path stroke="#FFFFFF" strokeWidth="1.1" d="M90 120 V128 M110 120 V128 M130 120 V128 M150 120 V128" />
-        <path stroke="#FFFFFF" strokeWidth="1.1" d="M80 128 V136 M100 128 V136 M120 128 V136 M140 128 V136 M160 128 V136" />
-      </g>
-
-      {/* 4-pane window — cutouts (transparent) */}
-      <g fill="#FAF8F3" className="logo-window">
-        <rect x="108" y="108" width="10" height="10" rx="1" />
-        <rect x="122" y="108" width="10" height="10" rx="1" />
-        <rect x="108" y="122" width="10" height="10" rx="1" />
-        <rect x="122" y="122" width="10" height="10" rx="1" />
+      {/* Brick pattern */}
+      <g opacity="0.3" stroke="#FFFFFF" strokeWidth="1" fill="none">
+        <path d="M78 104 H162 M78 112 H162 M78 120 H162 M78 128 H162 M78 136 H162" />
+        <path d="M90 104 V112 M110 104 V112 M130 104 V112 M150 104 V112" />
+        <path d="M80 112 V120 M100 112 V120 M120 112 V120 M140 112 V120 M160 112 V120" />
+        <path d="M90 120 V128 M110 120 V128 M130 120 V128 M150 120 V128" />
+        <path d="M80 128 V136 M100 128 V136 M120 128 V136 M140 128 V136 M160 128 V136" />
       </g>
 
       {/* Wordmark */}
