@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV } from "../data/content";
-import Mark from "./Mark";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +27,35 @@ export default function Header() {
     >
       <div className="max-w-container mx-auto flex items-center justify-between gap-4 h-[4.5rem] px-5 md:px-8">
         <Link to="/" className="flex items-center shrink-0" aria-label="Bricks & Built home">
-          <Mark size={48} className="h-11 w-auto max-w-[10rem]" />
+          {/* Logo only — no white box. Color follows header: white on dark hero, navy when scrolled */}
+          <svg
+            viewBox="0 0 600 400"
+            className={`h-11 w-auto max-w-[9.5rem] ${dark ? "text-navy" : "text-white"}`}
+            role="img"
+            aria-label="Bricks & Built Developers"
+          >
+            <text x="300" y="78" textAnchor="middle" fontFamily="Georgia, Times New Roman, serif" fontSize="72" fontWeight="700" fill="currentColor" letterSpacing="6">BRICKS</text>
+            <rect x="48" y="108" width="88" height="88" fill="currentColor" />
+            <text x="92" y="172" textAnchor="middle" fontFamily="Georgia, Times New Roman, serif" fontSize="64" fontWeight="400" fill={dark ? "#FFFFFF" : "#0B1F3A"}>&amp;</text>
+            <g fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" transform="translate(150, 100)">
+              <path d="M20 95 L380 95" />
+              <path d="M40 95 L40 110 M80 95 L80 110 M140 95 L140 110 M220 95 L220 110 M300 95 L300 110 M360 95 L360 110" />
+              <path d="M30 95 L30 55 L50 55 L50 40 L75 40 L75 55 L95 55 L95 95" />
+              <circle cx="110" cy="78" r="10" /><path d="M110 88 L110 95" />
+              <circle cx="250" cy="80" r="9" /><path d="M250 89 L250 95" />
+              <circle cx="340" cy="78" r="8" /><path d="M340 86 L340 95" />
+              <path d="M130 95 L130 55 L138 55" /><circle cx="138" cy="55" r="3" />
+              <path d="M200 95 L200 50 L208 50" /><circle cx="208" cy="50" r="3" />
+              <path d="M160 95 L160 50 L180 50 L180 35 L210 35 L210 50 L235 50 L235 95" />
+              <path d="M245 95 L245 48 L270 48 L270 30 L300 30 L300 48 L320 48 L320 95" />
+              <path d="M330 95 L330 55 L350 55 L350 40 Q360 25 370 40 L370 55 L390 55 L390 95" />
+              <path d="M360 40 L360 18" /><circle cx="360" cy="15" r="4" />
+            </g>
+            <text x="300" y="280" textAnchor="middle" fontFamily="Georgia, Times New Roman, serif" fontSize="78" fontWeight="700" fill="currentColor" letterSpacing="8">BUILT</text>
+            <line x1="140" y1="320" x2="220" y2="320" stroke="currentColor" strokeWidth="1.5" />
+            <text x="300" y="328" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontSize="18" fontWeight="600" fill="currentColor" letterSpacing="8">DEVELOPERS</text>
+            <line x1="380" y1="320" x2="460" y2="320" stroke="currentColor" strokeWidth="1.5" />
+          </svg>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
