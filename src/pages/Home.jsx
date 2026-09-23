@@ -12,7 +12,7 @@ export default function Home() {
         eyebrow="Pakpattan · Punjab · Pakistan"
         title="Toba Tek Singh is next."
         media="/assets/media/hero-frontpage-web.mp4"
-        poster="/assets/media/hero-3d.jpg"
+        poster="/assets/media/service-land.jpg"
         lede="An established property development company delivering residential, commercial and land projects — including Pak City Housing Society in Pakpattan — with our next project underway in Toba Tek Singh."
       >
         <Link to="/projects/toba-tek-singh" className="h-12 inline-flex items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2">Explore Toba Tek Singh</Link>
@@ -53,7 +53,7 @@ export default function Home() {
             <Reveal className="sm:col-span-2">
               <ProjectCard
                 to="/projects/pak-city"
-                img="/assets/media/pak-city-street.jpg"
+                img="/assets/media/service-residential.jpg"
                 kicker="Pakpattan · 29 Acres · 3 sites"
                 name="Pak City Housing Society"
                 location="Tibba Sher Kot, Behram Pur & Sheikh Jamal, Pakpattan"
@@ -64,11 +64,11 @@ export default function Home() {
             <Reveal delay={0.06}>
               <ProjectCard
                 to="/projects/toba-tek-singh"
-                img="/assets/media/hero-3d.jpg"
+                img="/assets/media/service-land.jpg"
                 kicker="Land · Coming soon"
                 name="Toba Tek Singh"
                 location="Toba Tek Singh, Punjab"
-                summary="Represented by Brick & Build. Categories, pricing and availability are being confirmed and will be published as they're verified."
+                summary="Represented by Brick & Built. Categories, pricing and availability are being confirmed and will be published as they're verified."
               />
             </Reveal>
           </div>
