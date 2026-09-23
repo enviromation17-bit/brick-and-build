@@ -1,27 +1,57 @@
-// Single destination for every lead on the site — the contact form, the
-// Toba Tek Singh register-interest form, and the assistant's inline capture
-// all call this same function, so everything lands in the same place
-// (a Google Sheet, via an n8n webhook — see /automation in the project docs).
-//
-// TO CONNECT: paste your n8n Webhook "Production URL" below.
-const LEAD_WEBHOOK_URL = ""; // <- paste your n8n Webhook URL here once it's set up
+// Brick & Built — all leads (form, assistant, WhatsApp link) → Google Sheet CRM
+const LEAD_WEBHOOK_URL =
+  "https://script.google.com/macros/s/AKfycbycn3s1AHPA1RVWPkakOxkO-fbA5zoBSZZWjkjb4xQiggwMyK8oa6joSHeozNO4fOXSjQ/exec";
 
+function detectSource(explicit) {
+  if (explicit) return String(explicit).toLowerCase();
+  try {
+    const q = new URLSearchParams(window.location.search).get("source");
+    if (q) return String(q).toLowerCase();
+  } catch {
+    /* ignore */
+  }
+  return "form";
+}
+
+/**
+ * @param {object} data
+ * @param {string} data.name
+ * @param {string} data.phone
+ * @param {string} [data.interest]
+ * @param {string} [data.role]
+ * @param {string} [data.message]
+ * @param {string} [data.source]  form | assistant | whatsapp | manual
+ * @param {string} [data.page]
+ */
 export async function submitLead(data) {
   const payload = {
-    ...data,
-    page: window.location.pathname,
+    name: String(data.name || "").trim(),
+    phone: String(data.phone || "").trim(),
+    interest: String(data.interest || "").trim(),
+    role: String(data.role || "").trim(),
+    message: String(data.message || data.note || "").trim(),
+    source: detectSource(data.source),
+    page: data.page || (typeof window !== "undefined" ? window.location.pathname : ""),
     submittedAt: new Date().toISOString(),
   };
 
+  if (!payload.name || !payload.phone) {
+    throw new Error("name and phone are required");
+  }
+
   if (!LEAD_WEBHOOK_URL) {
-    console.info("[submitLead] placeholder — LEAD_WEBHOOK_URL not set yet.", payload);
+    console.info("[submitLead] LEAD_WEBHOOK_URL not set", payload);
     return new Promise((resolve) => setTimeout(resolve, 400));
   }
 
-  const res = await fetch(LEAD_WEBHOOK_URL, {
+  // Google Apps Script: text/plain + no-cors avoids CORS preflight issues
+  await fetch(LEAD_WEBHOOK_URL, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
     body: JSON.stringify(payload),
   });
-  if (!res.ok) throw new Error("Lead submission failed");
+
+  // no-cors cannot read response; treat as success if request was sent
+  return { ok: true };
 }

@@ -7,6 +7,7 @@ export default function EnquiryForm({
   interestOptions = ["Residential plot", "Commercial plot"],
   submitLabel = "Send message",
   extraFields = false,
+  source,
 }) {
   const [role, setRole] = useState(roleOptions[0]);
   const [interest, setInterest] = useState(interestOptions[0]);
@@ -23,7 +24,7 @@ export default function EnquiryForm({
     }
     setStatus({ state: "sending", message: "Sending..." });
     try {
-      await submitLead({ ...data, role, interest });
+      await submitLead({ ...data, role, interest, source });
       setDone(true);
     } catch {
       setStatus({ state: "error", message: "Something went wrong. Please try WhatsApp instead." });
