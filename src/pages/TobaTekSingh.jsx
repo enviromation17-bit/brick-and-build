@@ -7,13 +7,13 @@ import { TOBA_FACTS, COMPANY } from "../data/content";
 const CHAPTERS = [
   { n: "01", title: "Sector layout", body: "A detailed sector and street layout hasn't been finalized yet. We'll publish it here once the master plan is confirmed.", reverse: false, img: "/assets/media/toba-masterplan.jpg" },
   { n: "02", title: "Residential plots", body: "Exact plot sizes and sector assignments are still being confirmed.", reverse: true, img: "/assets/media/toba-residential.jpg" },
-  { n: "03", title: "Construction progress", body: "Project development and site details will be published as they are confirmed.", reverse: false, img: "/assets/media/toba-construction.jpg" },
+  { n: "03", title: "Construction progress", body: "Project development and site details will be published as they are confirmed.", reverse: false, img: "/assets/media/toba-frame-end.jpg" },
 ];
 
 export default function TobaTekSingh() {
   return (
     <>
-      <Hero eyebrow="" title="Toba Tek Singh" lede="A project represented by Brick & Build in Toba Tek Singh, Punjab. Sales have not begun — full details are being confirmed and will be published here as they're verified.">
+      <Hero eyebrow="" title="Toba Tek Singh" lede="A project represented by Brick & Built in Toba Tek Singh, Punjab. Sales have not begun — full details are being confirmed and will be published here as they're verified.">
         <span className="inline-flex w-fit border border-gold/50 bg-gold/15 px-4 py-1.5 text-[0.68rem] font-bold tracking-[0.18em] uppercase rounded-pill text-gold">Coming soon · Land development</span>
       </Hero>
 
@@ -25,6 +25,28 @@ export default function TobaTekSingh() {
               <p className="mt-1.5 text-[0.82rem] text-slate">{f.label}</p>
             </Reveal>
           ))}
+        </div>
+      </section>
+
+      {/* Construction progress video */}
+      <section className="py-24 bg-navy">
+        <div className="max-w-container mx-auto px-5 md:px-8">
+          <Reveal>
+            <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-gold">Progress</p>
+            <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-white">From land to built community.</h2>
+            <p className="mt-4 max-w-[48ch] text-slateLight">A view of how a housing community takes shape — land preparation through to completed residences.</p>
+          </Reveal>
+          <Reveal delay={0.1} className="mt-10 max-w-[56rem] mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-lift">
+            <video
+              src="/assets/media/toba-timelapse-web.mp4"
+              poster="/assets/media/toba-frame-start.jpg"
+              className="w-full aspect-video object-cover bg-navyDeep"
+              controls
+              playsInline
+              preload="metadata"
+              aria-label="Construction progress time-lapse"
+            />
+          </Reveal>
         </div>
       </section>
 

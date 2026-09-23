@@ -47,8 +47,8 @@ export const VALUES = [
 
 export const CEO = {
   name: "Waseem Bari",
-  title: "Chief Executive Officer, Brick & Build",
-  note: "Waseem Bari have been working  in this field  more than ten years of hands-on experience in land development, residential and commercial projects across Punjab. His focus remains on transparent delivery .",
+  title: "Chief Executive Officer, Brick & Built",
+  note: "He has been doing this work for ten years.",
 };
 
 export const TOBA_FACTS = [
@@ -58,7 +58,7 @@ export const TOBA_FACTS = [
   { label: "Commercial plots", value: "Pending", pending: true },
   { label: "Location", value: "Toba Tek Singh, Punjab" },
   { label: "Status", value: "Coming soon" },
-  { label: "Represented by", value: "Brick & Build" },
+  { label: "Represented by", value: "Brick & Built" },
   { label: "Legal approvals / NOC", value: "Pending", pending: true },
 ];
 
