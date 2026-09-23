@@ -1,55 +1,86 @@
 export default function Mark({ className = "", size = 40 }) {
   return (
     <svg
-      viewBox="0 0 200 150"
-      width={Math.round(size * 1.8)}
+      viewBox="0 0 240 175"
+      width={Math.round(size * 1.9)}
       height={size}
       className={`block ${className}`}
       role="img"
       aria-label="Brick & Built Developers"
     >
-      {/* Gold leaves */}
-      <g fill="#C9A227">
-        <ellipse cx="52" cy="28" rx="14" ry="7" transform="rotate(-40 52 28)" />
-        <ellipse cx="68" cy="18" rx="13" ry="6.5" transform="rotate(-25 68 18)" />
-        <ellipse cx="78" cy="32" rx="11" ry="6" transform="rotate(-55 78 32)" />
-        <ellipse cx="88" cy="22" rx="10" ry="5.5" transform="rotate(-15 88 22)" />
-        <ellipse cx="92" cy="42" rx="10" ry="5.5" transform="rotate(-45 92 42)" />
-        <ellipse cx="148" cy="28" rx="14" ry="7" transform="rotate(40 148 28)" />
-        <ellipse cx="132" cy="18" rx="13" ry="6.5" transform="rotate(25 132 18)" />
-        <ellipse cx="122" cy="32" rx="11" ry="6" transform="rotate(55 122 32)" />
-        <ellipse cx="112" cy="22" rx="10" ry="5.5" transform="rotate(15 112 22)" />
-        <ellipse cx="108" cy="42" rx="10" ry="5.5" transform="rotate(45 108 42)" />
+      {/* Green leaves */}
+      <g fill="#2E7D32">
+        <ellipse cx="58" cy="30" rx="13" ry="6.5" transform="rotate(-42 58 30)" />
+        <ellipse cx="72" cy="18" rx="12" ry="6" transform="rotate(-28 72 18)" />
+        <ellipse cx="82" cy="34" rx="10" ry="5.5" transform="rotate(-55 82 34)" />
+        <ellipse cx="92" cy="24" rx="9" ry="5" transform="rotate(-18 92 24)" />
+        <ellipse cx="96" cy="44" rx="9" ry="5" transform="rotate(-48 96 44)" />
+        <ellipse cx="182" cy="30" rx="13" ry="6.5" transform="rotate(42 182 30)" />
+        <ellipse cx="168" cy="18" rx="12" ry="6" transform="rotate(28 168 18)" />
+        <ellipse cx="158" cy="34" rx="10" ry="5.5" transform="rotate(55 158 34)" />
+        <ellipse cx="148" cy="24" rx="9" ry="5" transform="rotate(18 148 24)" />
+        <ellipse cx="144" cy="44" rx="9" ry="5" transform="rotate(48 144 44)" />
       </g>
+
       {/* Branches */}
-      <g stroke="currentColor" strokeWidth="2.8" fill="none" strokeLinecap="round">
-        <path d="M100 58 C85 48 70 35 58 22" />
-        <path d="M100 58 C88 46 80 34 74 24" />
-        <path d="M100 58 C115 48 130 35 142 22" />
-        <path d="M100 58 C112 46 120 34 126 24" />
+      <g stroke="currentColor" strokeWidth="2.6" fill="none" strokeLinecap="round">
+        <path d="M120 60 C100 48 82 34 66 22" />
+        <path d="M120 60 C105 46 95 32 88 22" />
+        <path d="M120 60 C140 48 158 34 174 22" />
+        <path d="M120 60 C135 46 145 32 152 22" />
       </g>
-      {/* House — solid, transparent windows via evenodd */}
+
+      {/* House outer shell */}
       <path
         fill="currentColor"
-        fillRule="evenodd"
-        d="M100 55 L58 90 L58 128 Q58 138 72 138 L128 138 Q142 138 142 128 L142 90 Z
-           M88 100 h10 v10 H88 Z
-           M102 100 h10 v10 h-10 Z
-           M88 114 h10 v10 H88 Z
-           M102 114 h10 v10 h-10 Z"
+        d="M120 56 L68 96 L68 138 Q68 148 84 148 L156 148 Q172 148 172 138 L172 96 Z"
       />
+
+      {/* Brick pattern fill (lighter navy so bricks read on dark + light headers) */}
+      <g opacity="0.35">
+        {/* horizontal mortar lines */}
+        <path stroke="#FFFFFF" strokeWidth="1.1" d="M78 104 H162 M78 112 H162 M78 120 H162 M78 128 H162 M78 136 H162" />
+        {/* vertical brick offsets */}
+        <path stroke="#FFFFFF" strokeWidth="1.1" d="M90 104 V112 M110 104 V112 M130 104 V112 M150 104 V112" />
+        <path stroke="#FFFFFF" strokeWidth="1.1" d="M80 112 V120 M100 112 V120 M120 112 V120 M140 112 V120 M160 112 V120" />
+        <path stroke="#FFFFFF" strokeWidth="1.1" d="M90 120 V128 M110 120 V128 M130 120 V128 M150 120 V128" />
+        <path stroke="#FFFFFF" strokeWidth="1.1" d="M80 128 V136 M100 128 V136 M120 128 V136 M140 128 V136 M160 128 V136" />
+      </g>
+
+      {/* 4-pane window — cutouts (transparent) */}
+      <g fill="#FAF8F3" className="logo-window">
+        <rect x="108" y="108" width="10" height="10" rx="1" />
+        <rect x="122" y="108" width="10" height="10" rx="1" />
+        <rect x="108" y="122" width="10" height="10" rx="1" />
+        <rect x="122" y="122" width="10" height="10" rx="1" />
+      </g>
+
       {/* Wordmark */}
       <text
-        x="100"
-        y="148"
+        x="120"
+        y="162"
         textAnchor="middle"
         fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="11"
+        fontSize="13"
         fontWeight="700"
         fill="currentColor"
-        letterSpacing="1.2"
+        letterSpacing="1.4"
       >
         BRICK &amp; BUILT
+      </text>
+      <line x1="72" y1="168" x2="100" y2="168" stroke="currentColor" strokeWidth="1" opacity="0.55" />
+      <line x1="140" y1="168" x2="168" y2="168" stroke="currentColor" strokeWidth="1" opacity="0.55" />
+      <text
+        x="120"
+        y="172"
+        textAnchor="middle"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="7"
+        fontWeight="600"
+        fill="currentColor"
+        letterSpacing="2.2"
+      >
+        DEVELOPERS
       </text>
     </svg>
   );
