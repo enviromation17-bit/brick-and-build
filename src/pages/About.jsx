@@ -6,16 +6,16 @@ import { VALUES, CEO } from "../data/content";
 export default function About() {
   return (
     <>
-      <Hero eyebrow="The company" title="Built for the long term." compact lede="Brick & Build represents and develops residential and commercial property in Punjab, with Pak City Housing Society delivered and Toba Tek Singh in progress." />
+      <Hero eyebrow="The company" title="Built for the long term." compact lede="Brick & Built represents and develops residential and commercial property in Punjab, with Pak City Housing Society delivered and Toba Tek Singh in progress." />
 
       <section className="py-24">
         <div className="max-w-container mx-auto px-5 md:px-8 grid md:grid-cols-[0.85fr_1.15fr] gap-12">
           <Reveal>
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Origin</p>
-            <h2 className="mt-3 text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold tracking-tight text-navy">Named for the first material, and the last act.</h2>
+            <h2 className="mt-3 text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold tracking-tight text-navy">Named for the first material, and the lasting result.</h2>
           </Reveal>
           <Reveal delay={0.1} className="grid gap-5">
-            <p className="text-slate max-w-[60ch]">Brick is patience. Build is the verb. Pak City Housing Society — three sites across 29 acres in Pakpattan — is our delivered project. Toba Tek Singh, our next project, is currently in progress.</p>
+            <p className="text-slate max-w-[60ch]">Brick is patience. Built is the lasting result. Pak City Housing Society — three sites across 29 acres in Pakpattan — is our delivered project. Toba Tek Singh, our next project, is currently in progress.</p>
             <p className="text-slate max-w-[60ch]">Our home base is Pakpattan, Punjab, where our established team works directly with buyers rather than through call centers or franchise offices.</p>
             <p className="text-slate max-w-[60ch]">We'd rather be precise about what's confirmed and what isn't than overstate either.</p>
           </Reveal>

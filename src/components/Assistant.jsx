@@ -30,7 +30,7 @@ export default function Assistant() {
   const [messages, setMessages] = useState([{ who: "bot", text: "Hi! Ask me about Toba Tek Singh, our services, or how to reach us. I won't guess at prices or availability." }]);
   const [input, setInput] = useState("");
   const [offerCapture, setOfferCapture] = useState(false);
-  const [captureState, setCaptureState] = useState("idle"); // idle | sending | done | error
+  const [captureState, setCaptureState] = useState("idle");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const scrollRef = useRef(null);
@@ -88,7 +88,7 @@ export default function Assistant() {
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-line">
               <div>
-                <p className="text-[0.92rem] font-bold">Brick &amp; Build Assistant</p>
+                <p className="text-[0.92rem] font-bold">Brick &amp; Built Assistant</p>
                 <p className="text-[0.75rem] text-slate mt-0.5">Answers based on confirmed information only</p>
               </div>
               <button onClick={() => setOpen(false)} aria-label="Close assistant" className="p-1 text-navy">✕</button>

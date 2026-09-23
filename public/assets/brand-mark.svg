@@ -1,12 +1,10 @@
 <svg width="300" height="132" viewBox="0 0 300 132" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
-  <title id="title">Brick &amp; Build</title>
-  <desc id="desc">Brick &amp; Build property developers logo</desc>
+  <title id="title">Brick &amp; Built</title>
+  <desc id="desc">Brick &amp; Built Developers logo</desc>
   <text x="150" y="25" text-anchor="middle" fill="#FAF8F3" font-family="Georgia, serif" font-size="22" letter-spacing="4">BRICKS</text>
   <rect x="47" y="34" width="206" height="43" fill="none" stroke="#FAF8F3" stroke-width="1.2"/>
   <rect x="58" y="41" width="46" height="29" fill="#152A54"/>
   <text x="81" y="63" text-anchor="middle" fill="#FAF8F3" font-family="Georgia, serif" font-size="24">&amp;</text>
-  <path d="M112 70L130 57L145 67L161 48L177 62L193 51L208 68L224 45L242 60" stroke="#FAF8F3" stroke-width="1.2" opacity=".72"/>
-  <path d="M114 42L130 54L147 40L161 53L178 38L193 52L209 39L225 53L244 40" stroke="#FAF8F3" stroke-width="1.1" opacity=".72"/>
   <path d="M121 47V67M137 45V63M154 46V69M171 43V61M187 44V68M203 43V62M219 46V66M236 45V66" stroke="#FAF8F3" stroke-width=".8" opacity=".55"/>
   <text x="150" y="101" text-anchor="middle" fill="#FAF8F3" font-family="Georgia, serif" font-size="22" letter-spacing="4">BUILT</text>
   <text x="150" y="120" text-anchor="middle" fill="#FAF8F3" fill-opacity=".72" font-family="Manrope, Arial, sans-serif" font-size="8" font-weight="700" letter-spacing="3.2">DEVELOPERS</text>

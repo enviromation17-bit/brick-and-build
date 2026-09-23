@@ -5,7 +5,7 @@ import ProjectCard from "../components/ProjectCard";
 export default function Projects() {
   return (
     <>
-      <Hero eyebrow="Projects" title="The portfolio." media="/assets/media/pak-city-park.jpg" compact lede="One completed multi-site development, and one project currently in progress." />
+      <Hero eyebrow="Projects" title="The portfolio." media="/assets/media/service-residential.jpg" compact lede="One completed multi-site development, and one project currently in progress." />
 
       <section className="py-24">
         <div className="max-w-container mx-auto px-5 md:px-8">
@@ -15,7 +15,7 @@ export default function Projects() {
             <Reveal className="sm:col-span-2">
               <ProjectCard
                 to="/projects/pak-city"
-                img="/assets/media/pak-city-street.jpg"
+                img="/assets/media/service-residential.jpg"
                 kicker="Pakpattan · 29 Acres · 3 sites"
                 name="Pak City Housing Society"
                 location="Tibba Sher Kot, Behram Pur & Sheikh Jamal, Pakpattan"
@@ -26,11 +26,11 @@ export default function Projects() {
             <Reveal delay={0.06}>
               <ProjectCard
                 to="/projects/toba-tek-singh"
-                img="/assets/media/hero-3d.jpg"
+                img="/assets/media/service-land.jpg"
                 kicker="Land · Coming soon"
                 name="Toba Tek Singh"
                 location="Toba Tek Singh, Punjab"
-                summary="Represented by Brick & Build. Categories, pricing and availability are being confirmed."
+                summary="Represented by Brick & Built. Categories, pricing and availability are being confirmed."
               />
             </Reveal>
             <Reveal delay={0.1}>
