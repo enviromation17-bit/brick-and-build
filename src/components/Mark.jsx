@@ -1,18 +1,79 @@
 /**
- * @param {object} props
- * @param {string} [props.className]
- * @param {number} [props.size]
- * @param {"mark"|"full"} [props.variant]  mark = BB icon only (header); full = icon + wordmark (footer)
+ * Header: horizontal BB + “BRICK & BUILT” (readable, clickable)
+ * Footer: taller full lockup with DEVELOPERS
+ *
+ * @param {"mark"|"full"} [variant]
  */
 export default function Mark({ className = "", size = 48, variant = "mark" }) {
   const full = variant === "full";
-  const h = size;
-  const w = full ? Math.round(size * 1.15) : Math.round(size * 1.35);
-  const viewBox = full ? "0 0 400 360" : "0 0 400 280";
 
+  // Header lockup — wide, readable at navbar size
+  if (!full) {
+    const h = size;
+    const w = Math.round(size * 3.4);
+    return (
+      <svg
+        viewBox="0 0 280 72"
+        width={w}
+        height={h}
+        className={`block ${className}`}
+        role="img"
+        aria-label="Brick & Built Developers — Home"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        {/* BB badge */}
+        <g fill="currentColor">
+          <path d="M8 8h22c10 0 17 5 17 14 0 6-3 11-9 13 8 2 13 8 13 16 0 11-8 17-20 17H8V8zm12 12v12h8c4 0 6-2 6-6s-2-6-6-6h-8zm0 22v14h10c5 0 8-3 8-7s-3-7-8-7H20z" />
+          <path d="M52 8h22c10 0 17 5 17 14 0 6-3 11-9 13 8 2 13 8 13 16 0 11-8 17-20 17H52V8zm12 12v12h8c4 0 6-2 6-6s-2-6-6-6h-8zm0 22v14h10c5 0 8-3 8-7s-3-7-8-7H64z" />
+        </g>
+        {/* Brick underline under BB */}
+        <path
+          d="M6 62h88"
+          stroke="currentColor"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M10 66h80"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          opacity="0.55"
+        />
+        {/* Wordmark — always visible next to mark */}
+        <text
+          x="108"
+          y="34"
+          fill="currentColor"
+          fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          fontSize="18"
+          fontWeight="800"
+          letterSpacing="0.06em"
+        >
+          BRICK &amp; BUILT
+        </text>
+        <text
+          x="108"
+          y="54"
+          fill="currentColor"
+          fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+          fontSize="11"
+          fontWeight="600"
+          letterSpacing="0.28em"
+          opacity="0.85"
+        >
+          DEVELOPERS
+        </text>
+      </svg>
+    );
+  }
+
+  // Footer full mark
+  const h = size;
+  const w = Math.round(size * 1.2);
   return (
     <svg
-      viewBox={viewBox}
+      viewBox="0 0 320 300"
       width={w}
       height={h}
       className={`block ${className}`}
@@ -21,73 +82,56 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g fill="currentColor">
-        <path d="M95 40c38-4 70 6 84 36 8 16 7 36-5 50 19 11 31 30 26 54-6 42-40 64-86 64H52V42c16-2 30-2 43-2zm-12 68h26c19 0 30-10 30-23 0-14-11-21-28-21H83v44zm0 100h30c21 0 35-11 37-28 3-18-11-32-32-32H83v60z" />
-        <path d="M215 40c38-4 70 6 84 36 8 16 7 36-5 50 19 11 31 30 26 54-6 42-40 64-86 64h-62V42c16-2 30-2 43-2zm-12 68h26c19 0 30-10 30-23 0-14-11-21-28-21h-28v44zm0 100h30c21 0 35-11 37-28 3-18-11-32-32-32h-35v60z" />
+        <path d="M70 28h48c18 0 30 9 30 24 0 10-5 18-14 22 14 4 22 13 22 28 0 19-14 30-36 30H70V28zm22 22v22h18c7 0 11-3 11-10s-4-12-11-12H92zm0 40v26h22c9 0 14-5 14-13s-5-13-14-13H92z" />
+        <path d="M168 28h48c18 0 30 9 30 24 0 10-5 18-14 22 14 4 22 13 22 28 0 19-14 30-36 30h-50V28zm22 22v22h18c7 0 11-3 11-10s-4-12-11-12h-18zm0 40v26h22c9 0 14-5 14-13s-5-13-14-13h-22z" />
       </g>
       <path
-        d="M200 55c8 40 6 85-8 125 22-18 38-42 48-70 4-12 6-28 4-42-12 8-28 12-44-13z"
-        fill="currentColor"
-        opacity="0.95"
-      />
-      <path
-        d="M28 210c55 28 125 42 195 32 48-7 95-24 135-52"
+        d="M40 175c40 20 100 30 160 22 36-5 70-18 100-38"
         stroke="currentColor"
-        strokeWidth="10"
+        strokeWidth="8"
         strokeLinecap="round"
         fill="none"
       />
       <path
-        d="M40 224c58 30 130 42 200 28 40-8 78-22 112-42"
-        stroke="currentColor"
-        strokeWidth="4"
-        strokeLinecap="round"
-        fill="none"
-        opacity="0.85"
-      />
-      <path
         fill="currentColor"
-        d="M55 232c65 38 155 48 250 18 8 10 10 22 6 34-78 34-185 34-265-6 5-16 8-30 9-46z"
-        opacity="0.95"
+        d="M55 190c50 28 120 36 200 12 6 8 8 18 4 28-60 26-145 26-215-4 4-12 6-24 11-36z"
+        opacity="0.92"
       />
-      <g stroke="#FAF8F3" strokeWidth="1.2" opacity="0.45" fill="none">
-        <path d="M72 248h210M65 260h225M78 272h200" />
-        <path d="M100 244v32M125 246v30M150 244v34M175 246v32M200 244v34M225 246v30M250 244v32" />
+      <g stroke="#FAF8F3" strokeWidth="1.1" opacity="0.4" fill="none">
+        <path d="M70 204h170M65 214h180M75 224h160" />
       </g>
       <g fill="currentColor">
-        <rect x="300" y="205" width="10" height="32" rx="0.5" />
-        <rect x="312" y="190" width="12" height="47" rx="0.5" />
-        <rect x="326" y="198" width="9" height="39" rx="0.5" />
-        <rect x="337" y="182" width="14" height="55" rx="0.5" />
-        <rect x="353" y="192" width="10" height="45" rx="0.5" />
-        <rect x="365" y="200" width="8" height="37" rx="0.5" />
+        <rect x="250" y="168" width="8" height="26" />
+        <rect x="260" y="158" width="10" height="36" />
+        <rect x="272" y="164" width="7" height="30" />
+        <rect x="281" y="150" width="12" height="44" />
+        <rect x="295" y="160" width="8" height="34" />
       </g>
-      {full && (
-        <>
-          <text
-            x="200"
-            y="320"
-            textAnchor="middle"
-            fill="currentColor"
-            fontFamily="Georgia, 'Times New Roman', Times, serif"
-            fontSize="28"
-            fontWeight="600"
-            letterSpacing="3"
-          >
-            BRICKS &amp; BUILT
-          </text>
-          <text
-            x="200"
-            y="348"
-            textAnchor="middle"
-            fill="currentColor"
-            fontFamily="Georgia, 'Times New Roman', Times, serif"
-            fontSize="14"
-            letterSpacing="7"
-          >
-            DEVELOPERS
-          </text>
-        </>
-      )}
+      <text
+        x="160"
+        y="268"
+        textAnchor="middle"
+        fill="currentColor"
+        fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        fontSize="22"
+        fontWeight="800"
+        letterSpacing="0.08em"
+      >
+        BRICK &amp; BUILT
+      </text>
+      <text
+        x="160"
+        y="290"
+        textAnchor="middle"
+        fill="currentColor"
+        fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
+        fontSize="12"
+        fontWeight="600"
+        letterSpacing="0.32em"
+        opacity="0.85"
+      >
+        DEVELOPERS
+      </text>
     </svg>
   );
 }
