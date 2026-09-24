@@ -1,82 +1,41 @@
-export default function Mark({ className = "", size = 40 }) {
+/** Official BB monogram — client logo style, no white box, adapts via currentColor */
+export default function Mark({ className = "", size = 48 }) {
+  const h = size;
+  const w = Math.round(size * 1.35);
   return (
     <svg
-      viewBox="0 0 240 175"
-      width={Math.round(size * 1.9)}
-      height={size}
+      viewBox="0 0 340 280"
+      width={w}
+      height={h}
       className={`block ${className}`}
       role="img"
-      aria-label="Brick & Built Developers"
+      aria-label="Bricks & Built Developers"
     >
-      {/* Green leaves */}
-      <g fill="#2E7D32">
-        <ellipse cx="58" cy="30" rx="13" ry="6.5" transform="rotate(-42 58 30)" />
-        <ellipse cx="72" cy="18" rx="12" ry="6" transform="rotate(-28 72 18)" />
-        <ellipse cx="82" cy="34" rx="10" ry="5.5" transform="rotate(-55 82 34)" />
-        <ellipse cx="92" cy="24" rx="9" ry="5" transform="rotate(-18 92 24)" />
-        <ellipse cx="96" cy="44" rx="9" ry="5" transform="rotate(-48 96 44)" />
-        <ellipse cx="182" cy="30" rx="13" ry="6.5" transform="rotate(42 182 30)" />
-        <ellipse cx="168" cy="18" rx="12" ry="6" transform="rotate(28 168 18)" />
-        <ellipse cx="158" cy="34" rx="10" ry="5.5" transform="rotate(55 158 34)" />
-        <ellipse cx="148" cy="24" rx="9" ry="5" transform="rotate(18 148 24)" />
-        <ellipse cx="144" cy="44" rx="9" ry="5" transform="rotate(48 144 44)" />
+      {/* BB monogram */}
+      <g fill="currentColor">
+        <path d="M85 32c32-3 58 5 70 30 7 14 6 32-4 44 16 10 26 26 22 46-5 36-34 54-74 54H48V34c14-2 26-2 37-2zm-10 58h22c16 0 26-9 26-20 0-12-10-18-24-18H75v38zm0 86h26c18 0 30-10 32-24 2-16-10-28-28-28H75v52z" />
+        <path d="M188 32c32-3 58 5 70 30 7 14 6 32-4 44 16 10 26 26 22 46-5 36-34 54-74 54h-54V34c14-2 26-2 40-2zm-10 58h22c16 0 26-9 26-20 0-12-10-18-24-18h-24v38zm0 86h26c18 0 30-10 32-24 2-16-10-28-28-28h-30v52z" />
       </g>
-
-      {/* Branches */}
-      <g stroke="currentColor" strokeWidth="2.6" fill="none" strokeLinecap="round">
-        <path d="M120 60 C100 48 82 34 66 22" />
-        <path d="M120 60 C105 46 95 32 88 22" />
-        <path d="M120 60 C140 48 158 34 174 22" />
-        <path d="M120 60 C135 46 145 32 152 22" />
+      {/* Double flourish */}
+      <path d="M30 172c48 22 105 34 162 26 40-6 78-20 110-42" stroke="currentColor" strokeWidth="8" strokeLinecap="round" fill="none" />
+      <path d="M40 184c52 24 112 34 172 24 32-5 62-16 90-32" stroke="currentColor" strokeWidth="3.5" strokeLinecap="round" fill="none" opacity="0.8" />
+      {/* Brick arch */}
+      <path fill="currentColor" d="M52 192c55 32 130 40 205 16 6 8 8 18 4 28-65 28-155 28-220-4 4-14 6-26 11-40z" opacity="0.95" />
+      <g stroke="#FAF8F3" strokeWidth="1.15" opacity="0.5" fill="none">
+        <path d="M65 204h175M58 214h188M68 224h170" />
+        <path d="M90 200v28M112 202v26M134 200v30M156 202v28M178 200v30M200 202v26M222 200v28" />
       </g>
-
-      {/* House + window cutouts (transparent panes, no white) */}
-      <path
-        fill="currentColor"
-        fillRule="evenodd"
-        d="M120 56 L68 96 L68 138 Q68 148 84 148 L156 148 Q172 148 172 138 L172 96 Z
-           M108 108 h10 v10 h-10 Z
-           M122 108 h10 v10 h-10 Z
-           M108 122 h10 v10 h-10 Z
-           M122 122 h10 v10 h-10 Z"
-      />
-
-      {/* Brick pattern */}
-      <g opacity="0.3" stroke="#FFFFFF" strokeWidth="1" fill="none">
-        <path d="M78 104 H162 M78 112 H162 M78 120 H162 M78 128 H162 M78 136 H162" />
-        <path d="M90 104 V112 M110 104 V112 M130 104 V112 M150 104 V112" />
-        <path d="M80 112 V120 M100 112 V120 M120 112 V120 M140 112 V120 M160 112 V120" />
-        <path d="M90 120 V128 M110 120 V128 M130 120 V128 M150 120 V128" />
-        <path d="M80 128 V136 M100 128 V136 M120 128 V136 M140 128 V136 M160 128 V136" />
+      {/* Skyline */}
+      <g fill="currentColor">
+        <rect x="262" y="168" width="9" height="26" rx="0.5" />
+        <rect x="273" y="156" width="11" height="38" rx="0.5" />
+        <rect x="286" y="162" width="8" height="32" rx="0.5" />
+        <rect x="296" y="148" width="12" height="46" rx="0.5" />
+        <rect x="310" y="158" width="9" height="36" rx="0.5" />
       </g>
-
       {/* Wordmark */}
-      <text
-        x="120"
-        y="162"
-        textAnchor="middle"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="13"
-        fontWeight="700"
-        fill="currentColor"
-        letterSpacing="1.4"
-      >
-        BRICK &amp; BUILT
-      </text>
-      <line x1="72" y1="168" x2="100" y2="168" stroke="currentColor" strokeWidth="1" opacity="0.55" />
-      <line x1="140" y1="168" x2="168" y2="168" stroke="currentColor" strokeWidth="1" opacity="0.55" />
-      <text
-        x="120"
-        y="172"
-        textAnchor="middle"
-        fontFamily="Arial, Helvetica, sans-serif"
-        fontSize="7"
-        fontWeight="600"
-        fill="currentColor"
-        letterSpacing="2.2"
-      >
-        DEVELOPERS
-      </text>
+      <text x="170" y="258" textAnchor="middle" fill="currentColor" fontFamily="Georgia, 'Times New Roman', serif" fontSize="20" fontWeight="600" letterSpacing="2.5">BRICKS &amp; BUILT</text>
+      <text x="170" y="274" textAnchor="middle" fill="currentColor" fontFamily="Georgia, 'Times New Roman', serif" fontSize="10" letterSpacing="5.5">DEVELOPERS</text>
     </svg>
   );
 }
