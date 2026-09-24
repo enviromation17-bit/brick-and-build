@@ -13,8 +13,8 @@ const CHAPTERS = [
 const TOBA_MAP_EMBED = "https://www.google.com/maps?q=31.0061181,72.5204613&z=16&output=embed";
 const TOBA_MAP_LINK = "https://maps.app.goo.gl/5rzugB9Vw27r6Ukr9";
 
-/** Aerial housing community — hero background */
-const TOBA_HERO_IMG = "/assets/media/toba-hero.jpg";
+/** Aerial community photo you provided (hero background) */
+const TOBA_HERO_IMG = "https://litter.catbox.moe/7fid4g.jpg";
 
 export default function TobaTekSingh() {
   return (
@@ -68,7 +68,6 @@ export default function TobaTekSingh() {
         <div className="max-w-container mx-auto px-5 md:px-8">
           <Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Plot inventory</p></Reveal>
           <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Residential and commercial plots</h2></Reveal>
-          <Reveal delay={0.1}><p className="mt-4 max-w-[52ch] text-slate">We expect categories in the sizes Pakistani housing societies commonly use — but exact sizes, sectors and pricing haven't been confirmed. This section will fill in as that information is verified.</p></Reveal>
           <div className="mt-12 grid sm:grid-cols-3 gap-4">
             {["Residential", "Commercial", "Master plan"].map((t, i) => (
               <Reveal key={t} delay={0.06 * i} className="border border-line bg-paper2 rounded-xl p-8">
@@ -101,7 +100,6 @@ export default function TobaTekSingh() {
           <Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Community amenities</p></Reveal>
           <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">What's planned</h2></Reveal>
           <Reveal delay={0.1}><p className="mt-4 max-w-[52ch] text-slate">Amenities haven't been finalized or verified. We're not going to list specifics until they're confirmed by the company.</p></Reveal>
-          <Reveal delay={0.15}><p className="mt-8 text-sm text-slate border-l-2 border-gold pl-4">Information coming soon</p></Reveal>
         </div>
       </section>
 
@@ -124,12 +122,7 @@ export default function TobaTekSingh() {
           </Reveal>
           <Reveal delay={0.15}>
             <p className="mt-3 text-[0.85rem] text-slateLight">
-              <a
-                href={TOBA_MAP_LINK}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline decoration-gold text-white font-semibold"
-              >
+              <a href={TOBA_MAP_LINK} target="_blank" rel="noopener noreferrer" className="underline decoration-gold text-white font-semibold">
                 Open Toba Tek Singh location in Google Maps
               </a>
             </p>
