@@ -2,18 +2,69 @@ import { Link } from "react-router-dom";
 import { COMPANY } from "../data/content";
 import Mark from "./Mark";
 
+const SOCIAL = [
+  {
+    key: "facebook",
+    label: "Facebook",
+    href: () => COMPANY.social?.facebook,
+    icon: (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h2.5l.5-3H13v-2c0-.6.4-1 1-1z" />
+      </svg>
+    ),
+  },
+  {
+    key: "instagram",
+    label: "Instagram",
+    href: () => COMPANY.social?.instagram,
+    icon: (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1z" />
+      </svg>
+    ),
+  },
+  {
+    key: "linkedin",
+    label: "LinkedIn",
+    href: () => COMPANY.social?.linkedin,
+    icon: (
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+        <path d="M6.5 9H3.5v12h3V9zM5 3.5A1.75 1.75 0 1 0 5 7a1.75 1.75 0 0 0 0-3.5zM21 13.3c0-3.2-1.7-4.7-4-4.7a3.4 3.4 0 0 0-3 1.6V9H11v12h3v-6.4c0-1.7.8-2.7 2.2-2.7 1.3 0 1.8.9 1.8 2.7V21h3v-7.7z" />
+      </svg>
+    ),
+  },
+];
+
 export default function Footer() {
+  const links = SOCIAL.map((s) => ({ ...s, url: s.href() })).filter((s) => s.url && String(s.url).trim());
+
   return (
     <footer className="border-t border-lineDark bg-navyDeep text-white">
       <div className="max-w-container mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 py-16">
           <div>
-            <Link to="/" className="flex items-center text-white" aria-label="Brick & Built home">
-              <Mark size={48} className="h-12 w-auto max-w-[9rem]" />
+            <Link to="/" className="inline-flex items-center text-white" aria-label="Brick & Built home">
+              <Mark size={56} variant="full" className="h-14 w-auto max-w-[11rem]" />
             </Link>
             <p className="mt-5 max-w-[24rem] text-sm text-slateLight">
               An established property development company based in Pakpattan, Punjab — delivering and representing land, residential and commercial projects with transparency.
             </p>
+            {links.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-3">
+                {links.map((s) => (
+                  <a
+                    key={s.key}
+                    href={s.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={s.label}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/85 hover:bg-white/10 hover:text-white"
+                  >
+                    {s.icon}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
           <div>
             <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight">Company</p>
@@ -36,7 +87,9 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-lineDark">
-          <p className="py-5 text-[0.78rem] text-slateLight">© {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan. Official email and social channels are pending confirmation.</p>
+          <p className="py-5 text-[0.78rem] text-slateLight">
+            © {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan.
+          </p>
         </div>
       </div>
     </footer>

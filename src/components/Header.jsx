@@ -32,7 +32,8 @@ export default function Header() {
           className={`flex items-center shrink-0 ${dark ? "text-navy" : "text-white"}`}
           aria-label="Brick & Built home"
         >
-          <Mark size={48} className="h-12 w-auto max-w-[9rem]" />
+          {/* Icon only — avoids double wordmark in the bar */}
+          <Mark size={44} variant="mark" className="h-11 w-auto max-w-[7.5rem]" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">

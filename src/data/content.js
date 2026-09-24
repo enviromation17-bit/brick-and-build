@@ -5,6 +5,12 @@ export const COMPANY = {
   whatsapp: "923011783333",
   whatsappDisplay: "03011783333",
   hours: "9:00 AM – 10:00 PM, daily",
+  // Paste real profile URLs when ready (leave empty to hide icon)
+  social: {
+    facebook: "",
+    instagram: "",
+    linkedin: "",
+  },
 };
 
 export const NAV = [
