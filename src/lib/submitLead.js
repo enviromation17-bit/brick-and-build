@@ -1,6 +1,7 @@
 // Brick & Built — all leads (form, assistant, WhatsApp link) → Google Sheet CRM
+// Script 1: LeadsAPI (intake only)
 const LEAD_WEBHOOK_URL =
-  "https://script.google.com/macros/s/AKfycbycn3s1AHPA1RVWPkakOxkO-fbA5zoBSZZWjkjb4xQiggwMyK8oa6joSHeozNO4fOXSjQ/exec";
+  "https://script.google.com/macros/s/AKfycbwZGGCvUDyvjfWTxEqs2eopiAWna1g53XrKlDJfJXyJZhm6Fe60vqJqfb5KOo1uAEwZgw/exec";
 
 function detectSource(explicit) {
   if (explicit) return String(explicit).toLowerCase();
@@ -52,6 +53,5 @@ export async function submitLead(data) {
     body: JSON.stringify(payload),
   });
 
-  // no-cors cannot read response; treat as success if request was sent
   return { ok: true };
 }
