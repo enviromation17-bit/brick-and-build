@@ -1,6 +1,6 @@
 export const COMPANY = {
-  name: "Brick & Built",
-  fullName: "Brick & Built Developers",
+  name: "Bricks & Built",
+  fullName: "Bricks & Built Developers",
   location: "Pakpattan, Punjab, Pakistan",
   whatsapp: "923011783333",
   whatsappDisplay: "03011783333",
@@ -52,7 +52,7 @@ export const VALUES = [
 
 export const CEO = {
   name: "Waseem Bari",
-  title: "Chief Executive Officer, Brick & Built",
+  title: "Chief Executive Officer, Bricks & Built",
   note: "He has been doing this work for ten years.",
 };
 
@@ -63,7 +63,7 @@ export const TOBA_FACTS = [
   { label: "Commercial plots", value: "Pending", pending: true },
   { label: "Location", value: "Toba Tek Singh, Punjab" },
   { label: "Status", value: "Coming soon" },
-  { label: "Represented by", value: "Brick & Built" },
+  { label: "Represented by", value: "Bricks & Built" },
   { label: "Legal approvals / NOC", value: "Pending", pending: true },
 ];
 

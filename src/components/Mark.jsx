@@ -1,66 +1,53 @@
 /**
- * Header: horizontal BB + “BRICK & BUILT” (readable, clickable)
- * Footer: taller full lockup with DEVELOPERS
- *
- * @param {"mark"|"full"} [variant]
+ * Bricks & Built Developers mark
+ * variant "mark" = header (horizontal)
+ * variant "full" = footer (stacked)
  */
 export default function Mark({ className = "", size = 48, variant = "mark" }) {
   const full = variant === "full";
 
-  // Header lockup — wide, readable at navbar size
   if (!full) {
     const h = size;
-    const w = Math.round(size * 3.4);
+    const w = Math.round(size * 3.55);
     return (
       <svg
-        viewBox="0 0 280 72"
+        viewBox="0 0 300 72"
         width={w}
         height={h}
         className={`block ${className}`}
         role="img"
-        aria-label="Brick & Built Developers — Home"
+        aria-label="Bricks & Built Developers — Home"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* BB badge */}
+        {/* Refined BB — classic serif-style bowls */}
         <g fill="currentColor">
-          <path d="M8 8h22c10 0 17 5 17 14 0 6-3 11-9 13 8 2 13 8 13 16 0 11-8 17-20 17H8V8zm12 12v12h8c4 0 6-2 6-6s-2-6-6-6h-8zm0 22v14h10c5 0 8-3 8-7s-3-7-8-7H20z" />
-          <path d="M52 8h22c10 0 17 5 17 14 0 6-3 11-9 13 8 2 13 8 13 16 0 11-8 17-20 17H52V8zm12 12v12h8c4 0 6-2 6-6s-2-6-6-6h-8zm0 22v14h10c5 0 8-3 8-7s-3-7-8-7H64z" />
+          <path d="M6 6c2.2 0 4 .2 6 .2h18.5c6.8 0 12.2 1.6 15.8 4.6 3.4 2.8 5.2 6.8 5.2 11.6 0 4.6-1.6 8.4-4.8 11-2.2 1.8-5 3-8.2 3.6 4.2 1 7.6 2.8 10 5.4 2.8 3.2 4.2 7.4 4.2 12.2 0 5.6-2 10.2-5.8 13.6-3.8 3.4-9.4 5.2-16.6 5.2H12c-2 0-4 .2-6 .2V6zm16.5 12.5v14.5h10.2c3.6 0 6.2-.6 7.8-2 1.4-1.2 2.2-3 2.2-5.2 0-2.4-.8-4.2-2.4-5.2-1.6-1.2-4.2-2.1-7.8-2.1h-10zm0 25v16.5h12.2c4 0 7-.8 8.8-2.4 1.8-1.4 2.6-3.6 2.6-6.2 0-2.6-1-4.6-2.8-6-1.8-1.4-4.8-2-8.8-2h-12z" />
+          <path d="M58 6c2.2 0 4 .2 6 .2h18.5c6.8 0 12.2 1.6 15.8 4.6 3.4 2.8 5.2 6.8 5.2 11.6 0 4.6-1.6 8.4-4.8 11-2.2 1.8-5 3-8.2 3.6 4.2 1 7.6 2.8 10 5.4 2.8 3.2 4.2 7.4 4.2 12.2 0 5.6-2 10.2-5.8 13.6-3.8 3.4-9.4 5.2-16.6 5.2H64c-2 0-4 .2-6 .2V6zm16.5 12.5v14.5h10.2c3.6 0 6.2-.6 7.8-2 1.4-1.2 2.2-3 2.2-5.2 0-2.4-.8-4.2-2.4-5.2-1.6-1.2-4.2-2.1-7.8-2.1h-10zm0 25v16.5h12.2c4 0 7-.8 8.8-2.4 1.8-1.4 2.6-3.6 2.6-6.2 0-2.6-1-4.6-2.8-6-1.8-1.4-4.8-2-8.8-2h-12z" />
         </g>
-        {/* Brick underline under BB */}
-        <path
-          d="M6 62h88"
-          stroke="currentColor"
-          strokeWidth="3.5"
-          strokeLinecap="round"
-        />
-        <path
-          d="M10 66h80"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          opacity="0.55"
-        />
-        {/* Wordmark — always visible next to mark */}
+        {/* Subtle brick line under BB */}
+        <path d="M8 64h100" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" />
+        <path d="M12 67.5h92" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+
         <text
-          x="108"
-          y="34"
+          x="118"
+          y="32"
           fill="currentColor"
-          fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
-          fontSize="18"
-          fontWeight="800"
-          letterSpacing="0.06em"
+          fontFamily="Georgia, 'Times New Roman', Times, serif"
+          fontSize="17"
+          fontWeight="700"
+          letterSpacing="0.04em"
         >
-          BRICK &amp; BUILT
+          BRICKS &amp; BUILT
         </text>
         <text
-          x="108"
-          y="54"
+          x="118"
+          y="52"
           fill="currentColor"
-          fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
-          fontSize="11"
+          fontFamily="Georgia, 'Times New Roman', Times, serif"
+          fontSize="10.5"
           fontWeight="600"
-          letterSpacing="0.28em"
-          opacity="0.85"
+          letterSpacing="0.32em"
+          opacity="0.88"
         >
           DEVELOPERS
         </text>
@@ -68,12 +55,11 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
     );
   }
 
-  // Footer full mark
   const h = size;
-  const w = Math.round(size * 1.2);
+  const w = Math.round(size * 1.25);
   return (
     <svg
-      viewBox="0 0 320 300"
+      viewBox="0 0 340 310"
       width={w}
       height={h}
       className={`block ${className}`}
@@ -82,11 +68,11 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
       xmlns="http://www.w3.org/2000/svg"
     >
       <g fill="currentColor">
-        <path d="M70 28h48c18 0 30 9 30 24 0 10-5 18-14 22 14 4 22 13 22 28 0 19-14 30-36 30H70V28zm22 22v22h18c7 0 11-3 11-10s-4-12-11-12H92zm0 40v26h22c9 0 14-5 14-13s-5-13-14-13H92z" />
-        <path d="M168 28h48c18 0 30 9 30 24 0 10-5 18-14 22 14 4 22 13 22 28 0 19-14 30-36 30h-50V28zm22 22v22h18c7 0 11-3 11-10s-4-12-11-12h-18zm0 40v26h22c9 0 14-5 14-13s-5-13-14-13h-22z" />
+        <path d="M55 24c3 0 5.5.3 8 .3h42c14 0 25 3.2 32.5 9.4 7 5.8 10.5 14 10.5 24 0 9.5-3.2 17.2-9.8 22.5-4.5 3.6-10.2 6-16.8 7.2 8.6 2 15.5 5.8 20.5 11 5.8 6.5 8.6 15.2 8.6 25 0 11.5-4.2 21-12 28-7.8 7-19.2 10.6-34 10.6H63c-2.5 0-5 .3-8 .3V24zm28 26v30h22c7.5 0 12.8-1.3 16-3.8 2.8-2.4 4.4-6 4.4-10.5 0-4.8-1.6-8.4-4.8-10.6-3.2-2.4-8.5-4.1-16-4.1H83zm0 52v34h26c8.5 0 14.5-1.6 18-4.8 3.6-3 5.4-7.4 5.4-12.6 0-5.2-2-9.4-5.6-12.2-3.6-2.8-9.6-4.4-18-4.4H83z" />
+        <path d="M172 24c3 0 5.5.3 8 .3h42c14 0 25 3.2 32.5 9.4 7 5.8 10.5 14 10.5 24 0 9.5-3.2 17.2-9.8 22.5-4.5 3.6-10.2 6-16.8 7.2 8.6 2 15.5 5.8 20.5 11 5.8 6.5 8.6 15.2 8.6 25 0 11.5-4.2 21-12 28-7.8 7-19.2 10.6-34 10.6h-52c-2.5 0-5 .3-8 .3V24zm28 26v30h22c7.5 0 12.8-1.3 16-3.8 2.8-2.4 4.4-6 4.4-10.5 0-4.8-1.6-8.4-4.8-10.6-3.2-2.4-8.5-4.1-16-4.1h-22zm0 52v34h26c8.5 0 14.5-1.6 18-4.8 3.6-3 5.4-7.4 5.4-12.6 0-5.2-2-9.4-5.6-12.2-3.6-2.8-9.6-4.4-18-4.4h-26z" />
       </g>
       <path
-        d="M40 175c40 20 100 30 160 22 36-5 70-18 100-38"
+        d="M36 182c48 22 115 34 180 24 40-6 78-20 110-42"
         stroke="currentColor"
         strokeWidth="8"
         strokeLinecap="round"
@@ -94,41 +80,41 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
       />
       <path
         fill="currentColor"
-        d="M55 190c50 28 120 36 200 12 6 8 8 18 4 28-60 26-145 26-215-4 4-12 6-24 11-36z"
+        d="M50 196c55 30 130 38 210 14 6 8 8 18 4 28-65 28-155 28-230-4 4-14 7-26 16-38z"
         opacity="0.92"
       />
       <g stroke="#FAF8F3" strokeWidth="1.1" opacity="0.4" fill="none">
-        <path d="M70 204h170M65 214h180M75 224h160" />
+        <path d="M68 210h185M62 220h195M72 230h175" />
       </g>
       <g fill="currentColor">
-        <rect x="250" y="168" width="8" height="26" />
-        <rect x="260" y="158" width="10" height="36" />
-        <rect x="272" y="164" width="7" height="30" />
-        <rect x="281" y="150" width="12" height="44" />
-        <rect x="295" y="160" width="8" height="34" />
+        <rect x="262" y="172" width="9" height="28" />
+        <rect x="273" y="160" width="11" height="40" />
+        <rect x="286" y="166" width="8" height="34" />
+        <rect x="296" y="152" width="13" height="48" />
+        <rect x="311" y="162" width="9" height="38" />
       </g>
       <text
-        x="160"
-        y="268"
+        x="170"
+        y="276"
         textAnchor="middle"
         fill="currentColor"
-        fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
-        fontSize="22"
-        fontWeight="800"
-        letterSpacing="0.08em"
+        fontFamily="Georgia, 'Times New Roman', Times, serif"
+        fontSize="24"
+        fontWeight="700"
+        letterSpacing="0.06em"
       >
-        BRICK &amp; BUILT
+        BRICKS &amp; BUILT
       </text>
       <text
-        x="160"
-        y="290"
+        x="170"
+        y="298"
         textAnchor="middle"
         fill="currentColor"
-        fontFamily="system-ui, -apple-system, 'Segoe UI', Arial, sans-serif"
-        fontSize="12"
+        fontFamily="Georgia, 'Times New Roman', Times, serif"
+        fontSize="13"
         fontWeight="600"
-        letterSpacing="0.32em"
-        opacity="0.85"
+        letterSpacing="0.34em"
+        opacity="0.88"
       >
         DEVELOPERS
       </text>
