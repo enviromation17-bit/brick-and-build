@@ -10,6 +10,9 @@ const CHAPTERS = [
   { n: "03", title: "Construction progress", body: "Project development and site details will be published as they are confirmed.", reverse: false, img: "/assets/media/service-land.jpg" },
 ];
 
+const TOBA_MAP_EMBED = "https://www.google.com/maps?q=31.0061181,72.5204613&z=16&output=embed";
+const TOBA_MAP_LINK = "https://maps.app.goo.gl/5rzugB9Vw27r6Ukr9";
+
 export default function TobaTekSingh() {
   return (
     <>
@@ -97,16 +100,29 @@ export default function TobaTekSingh() {
           <Reveal>
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slateLight">Location</p>
             <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-white">Toba Tek Singh, Punjab</h2>
-            <p className="mt-4 max-w-[56ch] text-slateLight">Located in the Toba Tek Singh area. Precise location details and access routes will be added once confirmed — the map below shows the general area.</p>
+            <p className="mt-4 max-w-[56ch] text-slateLight">Project site location in Toba Tek Singh. Open the map link for turn-by-turn directions.</p>
           </Reveal>
-          <Reveal delay={0.1} className="mt-8 max-w-[56rem] aspect-video rounded-2xl overflow-hidden border border-line">
+          <Reveal delay={0.1} className="mt-8 max-w-[56rem] aspect-video rounded-2xl overflow-hidden border border-white/15">
             <iframe
-              src="https://www.google.com/maps?q=Toba+Tek+Singh,+Punjab,+Pakistan&output=embed"
+              src={TOBA_MAP_EMBED}
               className="w-full h-full border-0"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Toba Tek Singh, Punjab map"
+              title="Toba Tek Singh project map"
+              allowFullScreen
             />
+          </Reveal>
+          <Reveal delay={0.15}>
+            <p className="mt-3 text-[0.85rem] text-slateLight">
+              <a
+                href={TOBA_MAP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-gold text-white font-semibold"
+              >
+                Open Toba Tek Singh location in Google Maps
+              </a>
+            </p>
           </Reveal>
         </div>
       </section>

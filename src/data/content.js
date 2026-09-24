@@ -5,11 +5,10 @@ export const COMPANY = {
   whatsapp: "923011783333",
   whatsappDisplay: "03011783333",
   hours: "9:00 AM – 10:00 PM, daily",
-  // Paste real profile URLs when ready (leave empty to hide icon)
   social: {
-    facebook: "",
-    instagram: "",
-    linkedin: "",
+    facebook: "https://www.facebook.com/profile.php?id=61594532437592",
+    instagram: "https://www.instagram.com/bricks.built.developers/",
+    linkedin: "https://www.linkedin.com/in/bricks-and-built-developers-5a037443a",
   },
 };
 
