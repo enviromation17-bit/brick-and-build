@@ -13,11 +13,21 @@ const CHAPTERS = [
 const TOBA_MAP_EMBED = "https://www.google.com/maps?q=31.0061181,72.5204613&z=16&output=embed";
 const TOBA_MAP_LINK = "https://maps.app.goo.gl/5rzugB9Vw27r6Ukr9";
 
+/** Aerial housing community — hero background */
+const TOBA_HERO_IMG = "/assets/media/toba-hero.jpg";
+
 export default function TobaTekSingh() {
   return (
     <>
-      <Hero eyebrow="" title="Toba Tek Singh" lede="A project represented by Brick & Built in Toba Tek Singh, Punjab. Sales have not begun — full details are being confirmed and will be published here as they're verified.">
-        <span className="inline-flex w-fit border border-gold/50 bg-gold/15 px-4 py-1.5 text-[0.68rem] font-bold tracking-[0.18em] uppercase rounded-pill text-gold">Coming soon · Land development</span>
+      <Hero
+        eyebrow="Toba Tek Singh"
+        title="A new community, planned with care."
+        lede="A project represented by Bricks & Built in Toba Tek Singh, Punjab. Sales have not begun — full details are being confirmed and will be published here as they're verified."
+        media={TOBA_HERO_IMG}
+      >
+        <span className="inline-flex w-fit border border-gold/50 bg-gold/15 px-4 py-1.5 text-[0.68rem] font-bold tracking-[0.18em] uppercase rounded-pill text-gold">
+          Coming soon · Land development
+        </span>
       </Hero>
 
       <section className="py-10 border-y border-line bg-paper2">
