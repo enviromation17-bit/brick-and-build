@@ -44,12 +44,7 @@ export default function About() {
 
           <Reveal delay={0.1} className="mt-8 md:mt-10 border border-line bg-paper2 rounded-2xl p-5 sm:p-6 md:p-8">
             <div className="ceo-card">
-              {/* Quote — left on desktop, after profile on mobile */}
-              <blockquote className="ceo-quote">
-                <p>“{CEO.quote}”</p>
-              </blockquote>
-
-              {/* Photo + bio — right on desktop */}
+              {/* Left — photo + name, title, bio */}
               <div className="ceo-profile">
                 <div className="ceo-photo">
                   <Photo
@@ -65,6 +60,11 @@ export default function About() {
                   <p className="mt-3 text-sm text-slate leading-relaxed">{CEO.bio}</p>
                 </div>
               </div>
+
+              {/* Right — quote */}
+              <blockquote className="ceo-quote">
+                <p>“{CEO.quote}”</p>
+              </blockquote>
             </div>
           </Reveal>
         </div>
