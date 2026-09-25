@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import Assistant from "./components/Assistant";
+import PageMeta from "./components/PageMeta";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -25,6 +26,7 @@ export default function App() {
         Skip to main content
       </a>
       <ScrollToTop />
+      <PageMeta />
       <Header />
       <main id="main-content" tabIndex={-1}>
         <Routes>

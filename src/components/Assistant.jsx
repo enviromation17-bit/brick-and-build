@@ -74,8 +74,8 @@ export default function Assistant() {
         aria-label={open ? "Close assistant" : "Open assistant"}
         aria-expanded={open}
         aria-controls="assistant-panel"
-        className="fixed right-4 sm:right-5 z-[60] h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-4 font-bold text-sm shadow-lift focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
-        style={{ bottom: `calc(4.75rem + ${safeBottom})` }}
+        className="fixed right-3 sm:right-5 z-[60] h-11 sm:h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-3.5 sm:px-4 font-bold text-sm shadow-lift focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+        style={{ bottom: `calc(4.35rem + ${safeBottom})` }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.75, type: "spring", stiffness: 200, damping: 16 }}
@@ -85,7 +85,7 @@ export default function Assistant() {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M21 12a8 8 0 01-8 8H7l-4 3 1-5.2A8 8 0 1121 12z" stroke="currentColor" strokeWidth="1.6" />
         </svg>
-        Assistant
+        <span className="hidden xs:inline sm:inline">Assistant</span>
       </motion.button>
 
       <AnimatePresence>
@@ -99,8 +99,8 @@ export default function Assistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.2 }}
-            className="fixed right-4 sm:right-5 z-[65] w-[min(360px,calc(100vw-2rem))] max-h-[min(28rem,68vh)] bg-paper2 border border-line rounded-2xl shadow-lift flex flex-col overflow-hidden"
-            style={{ bottom: `calc(8.25rem + ${safeBottom})` }}
+            className="fixed right-3 sm:right-5 z-[65] w-[min(360px,calc(100vw-1.5rem))] max-h-[min(28rem,65vh)] bg-paper2 border border-line rounded-2xl shadow-lift flex flex-col overflow-hidden"
+            style={{ bottom: `calc(7.75rem + ${safeBottom})` }}
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-line">
               <div>

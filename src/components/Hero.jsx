@@ -4,7 +4,7 @@ export default function Hero({ eyebrow, title, lede, media, poster, compact = fa
   const isVideo = media?.toLowerCase().endsWith(".mp4");
 
   return (
-    <section className={`relative overflow-hidden ${compact ? "min-h-[52dvh] sm:min-h-[62dvh]" : "min-h-[100dvh]"}`}>
+    <section className={`relative overflow-hidden ${compact ? "min-h-[48dvh] sm:min-h-[58dvh]" : "min-h-[100dvh]"}`}>
       <div className="absolute inset-0">
         {isVideo ? (
           <video
@@ -38,8 +38,8 @@ export default function Hero({ eyebrow, title, lede, media, poster, compact = fa
 
       <div
         className={`relative z-10 flex flex-col justify-end ${
-          compact ? "min-h-[52dvh] sm:min-h-[62dvh]" : "min-h-[100dvh]"
-        } max-w-container mx-auto px-5 md:px-8 pt-24 pb-12 sm:pt-28 sm:pb-14 md:pt-32 md:pb-20`}
+          compact ? "min-h-[48dvh] sm:min-h-[58dvh]" : "min-h-[100dvh]"
+        } max-w-container mx-auto px-5 md:px-8 pt-24 pb-16 sm:pt-28 sm:pb-14 md:pt-32 md:pb-20`}
       >
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -72,7 +72,7 @@ export default function Hero({ eyebrow, title, lede, media, poster, compact = fa
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto [&>a]:w-full [&>a]:justify-center sm:[&>a]:w-auto"
+            className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 w-full sm:w-auto [&>a]:w-full [&>a]:justify-center sm:[&>a]:w-auto pb-14 sm:pb-0"
           >
             {children}
           </motion.div>
