@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom";
+import Hero from "../components/Hero";
+import Reveal from "../components/Reveal";
+import Photo from "../components/Photo";
 import { PROCESS } from "../data/content";
 
 const BOOKS = [
@@ -7,58 +10,12 @@ const BOOKS = [
   { n: "03", title: "Residential", body: "Homes people keep — plots, villas and apartments for families and individual buyers.", to: "/contact", img: "/assets/media/service-residential.jpg" },
 ];
 
-function ServicesHero() {
-  return (
-    <section className="relative min-h-[44dvh] overflow-hidden bg-navy sm:min-h-[56dvh]">
-      <img src="/assets/media/pak-city-park.jpg" alt="Pak City development" className="absolute inset-0 h-full w-full object-cover" />
-      <div className="absolute inset-0 bg-gradient-to-t from-navyDeep via-navy/60 to-navy/50" />
-      <div className="relative z-10 mx-auto flex min-h-[44dvh] max-w-container flex-col justify-end px-5 pb-8 pt-24 sm:min-h-[56dvh] sm:px-8 sm:pb-14 sm:pt-28">
-        <p className="text-[0.75rem] font-bold uppercase tracking-[0.28em] text-gold">Services</p>
-        <h1 className="mt-3 max-w-[40rem] text-[clamp(2rem,7vw,4.6rem)] font-extrabold leading-[1.05] tracking-tight text-white">What we work on.</h1>
-        <p className="mt-4 max-w-[32rem] text-[0.95rem] leading-relaxed text-white/90 sm:text-[1rem] md:text-[1.1rem]">Land development, commercial and residential — three practices, one established standard of transparency.</p>
-      </div>
-    </section>
-  );
-}
-
 export default function Services() {
   return (
     <>
-      <ServicesHero />
-      <section className="py-24">
-        <div className="mx-auto max-w-container px-5 md:px-8">
-          <p className="text-[0.75rem] font-bold uppercase tracking-[0.22em] text-slate">Practices</p>
-          <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Pick a focus area.</h2>
-          <div className="mt-12 grid gap-5">
-            {BOOKS.map((book) => (
-              <Link key={book.title} to={book.to} className="grid overflow-hidden rounded-2xl border border-line md:grid-cols-2">
-                <img src={book.img} alt="" loading="lazy" className="aspect-[4/3] h-full w-full object-cover" />
-                <div className="flex flex-col justify-center bg-paper2 p-10">
-                  <p className="text-[0.75rem] font-bold uppercase tracking-[0.02em] text-slate">{book.n}</p>
-                  <h3 className="mt-2 font-display text-[2rem] text-navy">{book.title}</h3>
-                  <p className="mt-3 max-w-[34ch] text-slate">{book.body}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="bg-navy py-24 text-white">
-        <div className="mx-auto max-w-container px-5 md:px-8">
-          <p className="text-[0.75rem] font-bold uppercase tracking-[0.22em] text-gold">Method</p>
-          <h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight">Acquire. Masterplan. Develop. Steward.</h2>
-          <div className="mt-12 grid gap-px bg-lineDark sm:grid-cols-2 lg:grid-cols-4">
-            {PROCESS.map((step) => (
-              <div key={step.n} className="bg-navy p-8">
-                <p className="text-2xl font-extrabold text-gold">{step.n}</p>
-                <h3 className="mt-5 text-[1.4rem] font-extrabold text-white">{step.title}</h3>
-                <p className="mt-2.5 text-sm text-white/70">{step.body}</p>
-              </div>
-            ))}
-          </div>
-          <Link to="/contact" className="mt-10 inline-flex h-12 items-center rounded-pill bg-white px-8 text-sm font-bold text-navy hover:bg-paper2">Enquire</Link>
-        </div>
-      </section>
+      <Hero eyebrow="Services" title="What we work on." media="/assets/media/pak-city-park.jpg" compact lede="Land development, commercial and residential — three practices, one established standard of transparency." />
+      <section className="py-24"><div className="max-w-container mx-auto px-5 md:px-8"><Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Practices</p></Reveal><Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Pick a focus area.</h2></Reveal><div className="mt-12 grid gap-5">{BOOKS.map((b, i) => <Reveal key={b.title} delay={0.06 * i}><Link to={b.to} className="grid md:grid-cols-2 overflow-hidden rounded-2xl border border-line">{b.img ? <img src={b.img} alt="" loading="lazy" className="w-full h-full object-cover aspect-[4/3]" /> : <Photo label={b.title} aspect="aspect-[4/3]" className="!rounded-none !border-0" />}<div className="bg-paper2 p-10 flex flex-col justify-center"><p className="text-[0.75rem] font-bold tracking-[0.02em] uppercase text-slate">{b.n}</p><h3 className="font-display text-[2rem] mt-2 text-navy">{b.title}</h3><p className="mt-3 max-w-[34ch] text-slate">{b.body}</p></div></Link></Reveal>)}</div></div></section>
+      <section className="py-24 bg-navy text-white"><div className="max-w-container mx-auto px-5 md:px-8"><Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-gold">Method</p></Reveal><Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight">Acquire. Masterplan. Develop. Steward.</h2></Reveal><div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-lineDark">{PROCESS.map((p, i) => <Reveal key={p.n} delay={0.05 * i} className="bg-navy p-8"><p className="text-2xl font-extrabold text-gold">{p.n}</p><h3 className="mt-5 text-[1.4rem] font-extrabold text-white">{p.title}</h3><p className="mt-2.5 text-sm text-white/70">{p.body}</p></Reveal>)}</div><Reveal delay={0.2}><Link to="/contact" className="mt-10 inline-flex h-12 items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2">Enquire</Link></Reveal></div></section>
     </>
   );
 }
