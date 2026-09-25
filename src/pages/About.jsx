@@ -8,11 +8,11 @@ export default function About() {
     <>
       <Hero eyebrow="The company" title="Built for the long term." compact lede="Bricks & Built represents and develops residential and commercial property in Punjab, with Pak City Housing Society delivered and Toba Tek Singh in progress." />
 
-      <section className="py-24">
-        <div className="max-w-container mx-auto px-5 md:px-8 grid md:grid-cols-[0.85fr_1.15fr] gap-12">
+      <section className="py-16 md:py-24">
+        <div className="max-w-container mx-auto px-5 md:px-8 grid md:grid-cols-[0.85fr_1.15fr] gap-8 md:gap-12">
           <Reveal>
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Origin</p>
-            <h2 className="mt-3 text-[clamp(1.9rem,3.4vw,2.6rem)] font-extrabold tracking-tight text-navy">Named for the first material, and the lasting result.</h2>
+            <h2 className="mt-3 text-[clamp(1.75rem,3.4vw,2.6rem)] font-extrabold tracking-tight text-navy">Named for the first material, and the lasting result.</h2>
           </Reveal>
           <Reveal delay={0.1} className="grid gap-5">
             <p className="text-slate max-w-[60ch]">Brick is patience. Built is the lasting result. Pak City Housing Society — three sites across 29 acres in Pakpattan — is our delivered project. Toba Tek Singh, our next project, is currently in progress.</p>
@@ -22,14 +22,14 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-24 bg-paper2 border-y border-line">
+      <section className="py-16 md:py-24 bg-paper2 border-y border-line">
         <div className="max-w-container mx-auto px-5 md:px-8">
           <Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">What we stand for</p></Reveal>
-          <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">A few working principles.</h2></Reveal>
-          <div className="mt-10 grid sm:grid-cols-2 gap-4">
+          <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">A few working principles.</h2></Reveal>
+          <div className="mt-8 md:mt-10 grid sm:grid-cols-2 gap-4">
             {VALUES.map((v, i) => (
-              <Reveal key={v.title} delay={0.05 * i} className="border border-line bg-white rounded-xl p-8 shadow-sm">
-                <h3 className="font-display text-[1.6rem] text-navy">{v.title}</h3>
+              <Reveal key={v.title} delay={0.05 * i} className="border border-line bg-white rounded-xl p-6 md:p-8 shadow-sm">
+                <h3 className="font-display text-[1.4rem] md:text-[1.6rem] text-navy">{v.title}</h3>
                 <p className="mt-3 text-sm text-slate">{v.body}</p>
               </Reveal>
             ))}
@@ -37,31 +37,31 @@ export default function About() {
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-16 md:py-24">
         <div className="max-w-container mx-auto px-5 md:px-8">
           <Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Leadership</p></Reveal>
-          <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Led by our CEO.</h2></Reveal>
+          <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Led by our CEO.</h2></Reveal>
 
-          <Reveal delay={0.1} className="mt-10 border border-line bg-paper2 rounded-2xl p-6 md:p-8">
-            <div className="grid md:grid-cols-2 gap-10 md:gap-12 items-center">
-              {/* Left — quote */}
-              <blockquote className="border-l-2 border-gold pl-5 md:pl-6">
-                <p className="text-[1.1rem] md:text-[1.25rem] font-display italic leading-relaxed text-navy">
-                  “{CEO.quote}”
-                </p>
+          <Reveal delay={0.1} className="mt-8 md:mt-10 border border-line bg-paper2 rounded-2xl p-5 sm:p-6 md:p-8">
+            <div className="ceo-card">
+              {/* Quote — left on desktop, after profile on mobile */}
+              <blockquote className="ceo-quote">
+                <p>“{CEO.quote}”</p>
               </blockquote>
 
-              {/* Right — photo + name, title, bio */}
-              <div className="grid sm:grid-cols-[180px_1fr] gap-6 items-center">
-                <Photo
-                  label="Waseem Bari, CEO"
-                  src="/assets/ceo-waseem-bari.jpg"
-                  aspect="aspect-square"
-                  className="!rounded-xl border-2 !border-gold max-w-[180px]"
-                />
-                <div>
-                  <h3 className="font-display text-[1.55rem] text-navy">{CEO.name}</h3>
-                  <p className="mt-1.5 text-slate">{CEO.title}</p>
+              {/* Photo + bio — right on desktop */}
+              <div className="ceo-profile">
+                <div className="ceo-photo">
+                  <Photo
+                    label="Waseem Bari, CEO"
+                    src="/assets/ceo-waseem-bari.jpg"
+                    aspect="aspect-square"
+                    className="!rounded-xl border-2 !border-gold"
+                  />
+                </div>
+                <div className="ceo-copy">
+                  <h3 className="font-display text-[1.4rem] md:text-[1.55rem] text-navy">{CEO.name}</h3>
+                  <p className="mt-1.5 text-sm md:text-base text-slate">{CEO.title}</p>
                   <p className="mt-3 text-sm text-slate leading-relaxed">{CEO.bio}</p>
                 </div>
               </div>
