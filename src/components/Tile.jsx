@@ -1,19 +1,16 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
 import Photo from "./Photo";
 
 export default function Tile({ n, title, body, to, img }) {
   return (
-    <motion.div whileHover="hover" whileTap={{ scale: 0.985 }} initial="rest" animate="rest">
-      <Link to={to} className="relative block min-h-[22rem] rounded-2xl overflow-hidden">
+    <div>
+      <Link to={to} className="relative block min-h-[22rem] rounded-2xl overflow-hidden group">
         <div className="absolute inset-0">
           {img ? (
-            <motion.img
+            <img
               src={img}
               alt=""
-              className="w-full h-full object-cover"
-              variants={{ rest: { scale: 1 }, hover: { scale: 1.06 } }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <Photo label={title} aspect="" className="h-full !rounded-none" />
@@ -26,6 +23,6 @@ export default function Tile({ n, title, body, to, img }) {
           <p className="mt-2 max-w-[22rem] text-white/85 text-sm">{body}</p>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
