@@ -41,16 +41,16 @@ export default function Footer() {
   return (
     <footer className="border-t border-lineDark bg-navyDeep text-white">
       <div className="max-w-container mx-auto px-5 md:px-8">
-        <div className="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 py-16">
-          <div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 sm:gap-10 py-10 sm:py-12 md:py-16">
+          <div className="sm:col-span-2 md:col-span-1">
             <Link to="/" className="inline-flex items-center text-white" aria-label="Bricks & Built home">
-              <Mark size={56} variant="full" className="h-14 w-auto max-w-[11rem]" />
+              <Mark size={56} variant="full" className="h-12 sm:h-14 w-auto max-w-[11rem]" />
             </Link>
-            <p className="mt-5 max-w-[24rem] text-sm text-slateLight">
+            <p className="mt-4 sm:mt-5 max-w-[24rem] text-sm text-slateLight leading-relaxed">
               An established property development company based in Pakpattan, Punjab — delivering and representing land, residential and commercial projects with transparency.
             </p>
             {links.length > 0 && (
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">
                 {links.map((s) => (
                   <a
                     key={s.key}
@@ -58,7 +58,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={s.label}
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/20 text-white/85 hover:bg-white/10 hover:text-white"
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/85 hover:bg-white/10 hover:text-white"
                   >
                     {s.icon}
                   </a>
@@ -68,20 +68,44 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight">Company</p>
-            <ul className="mt-4 grid gap-2.5 text-sm">
-              <li><Link to="/about" className="text-white/85 hover:text-white">About</Link></li>
-              <li><Link to="/services" className="text-white/85 hover:text-white">Services</Link></li>
-              <li><Link to="/contact" className="text-white/85 hover:text-white">Contact</Link></li>
+            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm">
+              <li>
+                <Link to="/about" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link to="/services" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  Services
+                </Link>
+              </li>
+              <li>
+                <Link to="/contact" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
           <div>
             <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight">Projects</p>
-            <ul className="mt-4 grid gap-2.5 text-sm">
-              <li><Link to="/projects/pak-city" className="text-white/85 hover:text-white">Pak City Housing Society</Link></li>
-              <li><Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white">Toba Tek Singh</Link></li>
-              <li><Link to="/projects" className="text-white/85 hover:text-white">All projects</Link></li>
+            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm">
+              <li>
+                <Link to="/projects/pak-city" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  Pak City Housing Society
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  Toba Tek Singh
+                </Link>
+              </li>
+              <li>
+                <Link to="/projects" className="text-white/85 hover:text-white py-0.5 inline-block">
+                  All projects
+                </Link>
+              </li>
             </ul>
-            <p className="mt-5 text-[0.82rem] text-slateLight leading-relaxed">
+            <p className="mt-4 sm:mt-5 text-[0.82rem] text-slateLight leading-relaxed">
               <Link to="/projects/pak-city" className="text-white/85 hover:text-white">
                 Pakpattan, Punjab, Pakistan
               </Link>
@@ -97,7 +121,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-lineDark">
-          <p className="py-5 text-[0.78rem] text-slateLight">
+          <p className="py-4 sm:py-5 text-[0.78rem] text-slateLight">
             © {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan.
           </p>
         </div>

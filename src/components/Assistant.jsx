@@ -62,18 +62,23 @@ export default function Assistant() {
     }
   };
 
+  const safeBottom = "env(safe-area-inset-bottom, 0px)";
+
   return (
     <>
       <motion.button
         onClick={() => setOpen((v) => !v)}
-        className="fixed right-5 bottom-[5.2rem] z-[60] h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-4 font-bold text-sm shadow-lift"
+        className="fixed right-4 sm:right-5 z-[60] h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-4 font-bold text-sm shadow-lift"
+        style={{ bottom: `calc(4.75rem + ${safeBottom})` }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.75, type: "spring", stiffness: 200, damping: 16 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12a8 8 0 01-8 8H7l-4 3 1-5.2A8 8 0 1121 12z" stroke="currentColor" strokeWidth="1.6" /></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M21 12a8 8 0 01-8 8H7l-4 3 1-5.2A8 8 0 1121 12z" stroke="currentColor" strokeWidth="1.6" />
+        </svg>
         Assistant
       </motion.button>
 
@@ -84,14 +89,17 @@ export default function Assistant() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
             transition={{ duration: 0.2 }}
-            className="fixed right-5 bottom-[8.6rem] z-[65] w-[min(360px,calc(100vw-2.5rem))] max-h-[min(28rem,68vh)] bg-paper2 border border-line rounded-2xl shadow-lift flex flex-col overflow-hidden"
+            className="fixed right-4 sm:right-5 z-[65] w-[min(360px,calc(100vw-2rem))] max-h-[min(28rem,68vh)] bg-paper2 border border-line rounded-2xl shadow-lift flex flex-col overflow-hidden"
+            style={{ bottom: `calc(8.25rem + ${safeBottom})` }}
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-line">
               <div>
-                <p className="text-[0.92rem] font-bold">Brick &amp; Built Assistant</p>
+                <p className="text-[0.92rem] font-bold">Bricks &amp; Built Assistant</p>
                 <p className="text-[0.75rem] text-slate mt-0.5">Answers based on confirmed information only</p>
               </div>
-              <button onClick={() => setOpen(false)} aria-label="Close assistant" className="p-1 text-navy">✕</button>
+              <button onClick={() => setOpen(false)} aria-label="Close assistant" className="p-1 text-navy">
+                ✕
+              </button>
             </div>
 
             <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-2.5">
@@ -101,7 +109,9 @@ export default function Assistant() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   className={`max-w-[88%] px-3.5 py-2 rounded-2xl text-[0.88rem] leading-relaxed ${
-                    m.who === "bot" ? "bg-paper text-navy self-start rounded-bl-sm border border-line" : "bg-navy text-white self-end rounded-br-sm"
+                    m.who === "bot"
+                      ? "bg-paper text-navy self-start rounded-bl-sm border border-line"
+                      : "bg-navy text-white self-end rounded-br-sm"
                   }`}
                 >
                   {m.text}
@@ -109,7 +119,10 @@ export default function Assistant() {
                     <>
                       <br />
                       <button
-                        onClick={() => { navigate(m.href); setOpen(false); }}
+                        onClick={() => {
+                          navigate(m.href);
+                          setOpen(false);
+                        }}
                         className="underline decoration-gold font-bold text-navy"
                       >
                         {m.cta}
@@ -120,13 +133,22 @@ export default function Assistant() {
               ))}
 
               {offerCapture && (
-                <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="max-w-[92%] px-3.5 py-3 rounded-2xl text-[0.88rem] bg-paper text-navy border border-line self-start rounded-bl-sm">
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="max-w-[92%] px-3.5 py-3 rounded-2xl text-[0.88rem] bg-paper text-navy border border-line self-start rounded-bl-sm"
+                >
                   {captureState === "done" ? (
                     <p>Thanks — our team will reach out shortly.</p>
                   ) : captureState === "error" ? (
                     <p>
                       Something went wrong — please message us on{" "}
-                      <a href={`https://wa.me/${COMPANY.whatsapp}`} target="_blank" rel="noopener noreferrer" className="underline decoration-gold font-bold text-navy">
+                      <a
+                        href={`https://wa.me/${COMPANY.whatsapp}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline decoration-gold font-bold text-navy"
+                      >
                         WhatsApp
                       </a>{" "}
                       instead.
@@ -134,9 +156,23 @@ export default function Assistant() {
                   ) : (
                     <div className="grid gap-2">
                       <p>Want our team to follow up directly? Leave your name and number.</p>
-                      <input className="field-input h-9 text-[0.82rem]" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} />
-                      <input className="field-input h-9 text-[0.82rem]" placeholder="Phone / WhatsApp" value={phone} onChange={(e) => setPhone(e.target.value)} />
-                      <button onClick={send} disabled={captureState === "sending"} className="h-9 rounded-pill bg-navy text-white text-[0.8rem] font-bold disabled:opacity-60">
+                      <input
+                        className="field-input h-9 text-[0.82rem]"
+                        placeholder="Your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      <input
+                        className="field-input h-9 text-[0.82rem]"
+                        placeholder="Phone / WhatsApp"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                      <button
+                        onClick={send}
+                        disabled={captureState === "sending"}
+                        className="h-9 rounded-pill bg-navy text-white text-[0.8rem] font-bold disabled:opacity-60"
+                      >
                         {captureState === "sending" ? "Sending..." : "Share details"}
                       </button>
                     </div>
@@ -147,7 +183,11 @@ export default function Assistant() {
 
             <div className="flex flex-wrap gap-2 px-4 pb-3">
               {["Where are you based?", "Tell me about Toba Tek Singh", "How can I contact you?"].map((s) => (
-                <button key={s} onClick={() => ask(s)} className="text-[0.76rem] border border-line rounded-pill px-3 py-1.5 text-slate hover:border-navy hover:text-navy">
+                <button
+                  key={s}
+                  onClick={() => ask(s)}
+                  className="text-[0.76rem] border border-line rounded-pill px-3 py-1.5 text-slate hover:border-navy hover:text-navy"
+                >
                   {s}
                 </button>
               ))}
@@ -165,10 +205,12 @@ export default function Assistant() {
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask a question..."
                 aria-label="Ask the assistant"
-                className="flex-1 bg-transparent border-none px-4 py-3.5 text-[0.88rem] focus:outline-none text-navy placeholder:text-slate"
+                className="flex-1 bg-transparent border-none px-4 py-3.5 text-[16px] sm:text-[0.88rem] focus:outline-none text-navy placeholder:text-slate"
               />
               <button type="submit" aria-label="Send" className="px-4 text-navy">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" /></svg>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                  <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
+                </svg>
               </button>
             </form>
           </motion.div>
