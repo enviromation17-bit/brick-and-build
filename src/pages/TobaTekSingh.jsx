@@ -54,9 +54,10 @@ export default function TobaTekSingh() {
               poster="/assets/media/service-land.jpg"
               className="w-full aspect-video object-cover"
               controls
+              muted
               playsInline
               preload="metadata"
-              aria-label="Construction progress time-lapse from land to completed homes"
+              aria-label="Construction progress time-lapse from empty land to completed homes"
             >
               Your browser does not support the video tag.
             </video>
