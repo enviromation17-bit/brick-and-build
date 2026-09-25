@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://brick-and-build.vercel.app/sitemap.xml
+Sitemap: https://bricksandbuiltdevelopers.com/sitemap.xml
