@@ -27,7 +27,9 @@ function reply(input) {
 export default function Assistant() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState([{ who: "bot", text: "Hi! Ask me about Toba Tek Singh, our services, or how to reach us. I won't guess at prices or availability." }]);
+  const [messages, setMessages] = useState([
+    { who: "bot", text: "Hi! Ask me about Toba Tek Singh, our services, or how to reach us. I won't guess at prices or availability." },
+  ]);
   const [input, setInput] = useState("");
   const [offerCapture, setOfferCapture] = useState(false);
   const [captureState, setCaptureState] = useState("idle");
@@ -67,8 +69,12 @@ export default function Assistant() {
   return (
     <>
       <motion.button
+        type="button"
         onClick={() => setOpen((v) => !v)}
-        className="fixed right-4 sm:right-5 z-[60] h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-4 font-bold text-sm shadow-lift"
+        aria-label={open ? "Close assistant" : "Open assistant"}
+        aria-expanded={open}
+        aria-controls="assistant-panel"
+        className="fixed right-4 sm:right-5 z-[60] h-12 inline-flex items-center gap-2 rounded-pill bg-navy text-white px-4 font-bold text-sm shadow-lift focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
         style={{ bottom: `calc(4.75rem + ${safeBottom})` }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
@@ -76,7 +82,7 @@ export default function Assistant() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M21 12a8 8 0 01-8 8H7l-4 3 1-5.2A8 8 0 1121 12z" stroke="currentColor" strokeWidth="1.6" />
         </svg>
         Assistant
@@ -85,6 +91,10 @@ export default function Assistant() {
       <AnimatePresence>
         {open && (
           <motion.div
+            id="assistant-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="assistant-title"
             initial={{ opacity: 0, y: 16, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.97 }}
@@ -94,15 +104,23 @@ export default function Assistant() {
           >
             <div className="flex items-center justify-between px-4 py-3 border-b border-line">
               <div>
-                <p className="text-[0.92rem] font-bold">Bricks &amp; Built Assistant</p>
+                <p id="assistant-title" className="text-[0.92rem] font-bold">
+                  Bricks &amp; Built Assistant
+                </p>
                 <p className="text-[0.75rem] text-slate mt-0.5">Answers based on confirmed information only</p>
               </div>
-              <button onClick={() => setOpen(false)} aria-label="Close assistant" className="p-1 text-navy">
+              <button type="button" onClick={() => setOpen(false)} aria-label="Close assistant" className="p-1 text-navy">
                 ✕
               </button>
             </div>
 
-            <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-2.5">
+            <div
+              ref={scrollRef}
+              className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-2.5"
+              role="log"
+              aria-live="polite"
+              aria-relevant="additions"
+            >
               {messages.map((m, i) => (
                 <motion.div
                   key={i}
@@ -119,6 +137,7 @@ export default function Assistant() {
                     <>
                       <br />
                       <button
+                        type="button"
                         onClick={() => {
                           navigate(m.href);
                           setOpen(false);
@@ -139,9 +158,9 @@ export default function Assistant() {
                   className="max-w-[92%] px-3.5 py-3 rounded-2xl text-[0.88rem] bg-paper text-navy border border-line self-start rounded-bl-sm"
                 >
                   {captureState === "done" ? (
-                    <p>Thanks — our team will reach out shortly.</p>
+                    <p role="status">Thanks — our team will reach out shortly.</p>
                   ) : captureState === "error" ? (
-                    <p>
+                    <p role="alert">
                       Something went wrong — please message us on{" "}
                       <a
                         href={`https://wa.me/${COMPANY.whatsapp}`}
@@ -156,21 +175,34 @@ export default function Assistant() {
                   ) : (
                     <div className="grid gap-2">
                       <p>Want our team to follow up directly? Leave your name and number.</p>
+                      <label className="sr-only" htmlFor="assistant-name">
+                        Your name
+                      </label>
                       <input
+                        id="assistant-name"
                         className="field-input h-9 text-[0.82rem]"
                         placeholder="Your name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        autoComplete="name"
                       />
+                      <label className="sr-only" htmlFor="assistant-phone">
+                        Phone or WhatsApp
+                      </label>
                       <input
+                        id="assistant-phone"
                         className="field-input h-9 text-[0.82rem]"
                         placeholder="Phone / WhatsApp"
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
+                        autoComplete="tel"
+                        type="tel"
                       />
                       <button
+                        type="button"
                         onClick={send}
                         disabled={captureState === "sending"}
+                        aria-busy={captureState === "sending"}
                         className="h-9 rounded-pill bg-navy text-white text-[0.8rem] font-bold disabled:opacity-60"
                       >
                         {captureState === "sending" ? "Sending..." : "Share details"}
@@ -181,10 +213,11 @@ export default function Assistant() {
               )}
             </div>
 
-            <div className="flex flex-wrap gap-2 px-4 pb-3">
+            <div className="flex flex-wrap gap-2 px-4 pb-3" role="group" aria-label="Suggested questions">
               {["Where are you based?", "Tell me about Toba Tek Singh", "How can I contact you?"].map((s) => (
                 <button
                   key={s}
+                  type="button"
                   onClick={() => ask(s)}
                   className="text-[0.76rem] border border-line rounded-pill px-3 py-1.5 text-slate hover:border-navy hover:text-navy"
                 >
@@ -199,16 +232,17 @@ export default function Assistant() {
                 e.preventDefault();
                 ask(input);
               }}
+              aria-label="Ask the assistant"
             >
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask a question..."
-                aria-label="Ask the assistant"
+                aria-label="Ask a question"
                 className="flex-1 bg-transparent border-none px-4 py-3.5 text-[16px] sm:text-[0.88rem] focus:outline-none text-navy placeholder:text-slate"
               />
-              <button type="submit" aria-label="Send" className="px-4 text-navy">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <button type="submit" aria-label="Send message" className="px-4 text-navy">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round" />
                 </svg>
               </button>
