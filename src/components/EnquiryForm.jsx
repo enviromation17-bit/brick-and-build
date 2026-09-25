@@ -34,30 +34,72 @@ export default function EnquiryForm({
   return (
     <AnimatePresence mode="wait">
       {done ? (
-        <motion.div key="thanks" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="rounded-2xl bg-paper2 border border-line p-10">
+        <motion.div
+          key="thanks"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="rounded-2xl bg-paper2 border border-line p-10"
+          role="status"
+          aria-live="polite"
+        >
           <h3 className="font-display text-2xl text-navy">Thank you for reaching out</h3>
-          <p className="mt-3 text-sm text-slate">Our team will follow up with you shortly — for the fastest response, message us directly on WhatsApp.</p>
+          <p className="mt-3 text-sm text-slate">
+            Our team will follow up with you shortly — for the fastest response, message us directly on WhatsApp.
+          </p>
         </motion.div>
       ) : (
-        <motion.form key="form" initial={{ opacity: 1 }} exit={{ opacity: 0 }} onSubmit={onSubmit}>
+        <motion.form
+          key="form"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onSubmit={onSubmit}
+          noValidate
+          aria-label="Enquiry form"
+        >
           <div className="grid sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="name">Full name</label>
-              <input className="field-input" id="name" name="name" type="text" required />
+              <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="name">
+                Full name <span className="text-navy" aria-hidden="true">*</span>
+                <span className="sr-only"> (required)</span>
+              </label>
+              <input
+                className="field-input"
+                id="name"
+                name="name"
+                type="text"
+                required
+                autoComplete="name"
+                aria-required="true"
+              />
             </div>
             <div>
-              <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="phone">Phone / WhatsApp</label>
-              <input className="field-input" id="phone" name="phone" type="tel" required />
+              <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="phone">
+                Phone / WhatsApp <span className="text-navy" aria-hidden="true">*</span>
+                <span className="sr-only"> (required)</span>
+              </label>
+              <input
+                className="field-input"
+                id="phone"
+                name="phone"
+                type="tel"
+                required
+                autoComplete="tel"
+                aria-required="true"
+              />
             </div>
             {extraFields && (
               <>
                 <div>
-                  <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="email">Email</label>
-                  <input className="field-input" id="email" name="email" type="email" />
+                  <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="email">
+                    Email
+                  </label>
+                  <input className="field-input" id="email" name="email" type="email" autoComplete="email" />
                 </div>
                 <div>
-                  <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="whatsapp">WhatsApp (if different)</label>
-                  <input className="field-input" id="whatsapp" name="whatsapp" type="tel" />
+                  <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="whatsapp">
+                    WhatsApp (if different)
+                  </label>
+                  <input className="field-input" id="whatsapp" name="whatsapp" type="tel" autoComplete="tel" />
                 </div>
               </>
             )}
@@ -65,36 +107,68 @@ export default function EnquiryForm({
 
           <fieldset className="mt-5 border-none p-0">
             <legend className="block text-[0.78rem] text-slate mb-1.5">Which best describes you</legend>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Your role">
               {roleOptions.map((r) => (
-                <button type="button" key={r} className={`chip ${role === r ? "selected" : ""}`} onClick={() => setRole(r)}>{r}</button>
+                <button
+                  type="button"
+                  key={r}
+                  className={`chip ${role === r ? "selected" : ""}`}
+                  onClick={() => setRole(r)}
+                  aria-pressed={role === r}
+                >
+                  {r}
+                </button>
               ))}
             </div>
           </fieldset>
 
           <fieldset className="mt-5 border-none p-0">
             <legend className="block text-[0.78rem] text-slate mb-1.5">Interest</legend>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2" role="group" aria-label="Interest">
               {interestOptions.map((i) => (
-                <button type="button" key={i} className={`chip ${interest === i ? "selected" : ""}`} onClick={() => setInterest(i)}>{i}</button>
+                <button
+                  type="button"
+                  key={i}
+                  className={`chip ${interest === i ? "selected" : ""}`}
+                  onClick={() => setInterest(i)}
+                  aria-pressed={interest === i}
+                >
+                  {i}
+                </button>
               ))}
             </div>
           </fieldset>
 
           <div className="mt-5">
-            <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="message">Message (optional)</label>
-            <textarea className="field-input" id="message" name="message" placeholder="Tell us what you're looking for." />
+            <label className="block text-[0.78rem] text-slate mb-1.5" htmlFor="message">
+              Message (optional)
+            </label>
+            <textarea
+              className="field-input"
+              id="message"
+              name="message"
+              placeholder="Tell us what you're looking for."
+            />
           </div>
 
           <motion.button
             type="submit"
             disabled={status.state === "sending"}
             whileTap={{ scale: 0.96 }}
-            className="mt-6 h-12 px-7 rounded-pill bg-navy text-white font-bold text-sm disabled:opacity-60 hover:bg-navy2"
+            className="mt-6 h-12 px-7 rounded-pill bg-navy text-white font-bold text-sm disabled:opacity-60 hover:bg-navy2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+            aria-busy={status.state === "sending"}
           >
             {status.state === "sending" ? "Sending..." : submitLabel}
           </motion.button>
-          <p className={`mt-3 text-sm ${status.state === "error" ? "text-[#b3402c]" : "text-slate"}`}>{status.message}</p>
+
+          <p
+            className={`mt-3 text-sm ${status.state === "error" ? "text-[#b3402c]" : "text-slate"}`}
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            {status.message}
+          </p>
         </motion.form>
       )}
     </AnimatePresence>

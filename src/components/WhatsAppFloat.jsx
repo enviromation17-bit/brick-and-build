@@ -7,7 +7,8 @@ export default function WhatsAppFloat() {
       href={`https://wa.me/${COMPANY.whatsapp}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed right-4 sm:right-5 z-[60] inline-flex items-center gap-2 rounded-pill bg-[#25D366] text-[#0b3d1f] px-4 py-3 font-bold text-sm shadow-lift float-safe-bottom"
+      aria-label={`Chat on WhatsApp at ${COMPANY.whatsappDisplay}`}
+      className="fixed right-4 sm:right-5 z-[60] inline-flex items-center gap-2 rounded-pill bg-[#25D366] text-[#0b3d1f] px-4 py-3 font-bold text-sm shadow-lift focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#25D366]"
       style={{ bottom: "calc(1.25rem + env(safe-area-inset-bottom, 0px))" }}
       initial={{ scale: 0, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
@@ -15,7 +16,7 @@ export default function WhatsAppFloat() {
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
     >
-      WhatsApp
+      <span aria-hidden="true">WhatsApp</span>
     </motion.a>
   );
 }

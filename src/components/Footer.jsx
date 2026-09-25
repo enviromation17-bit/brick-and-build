@@ -39,86 +39,90 @@ export default function Footer() {
   const links = SOCIAL.map((s) => ({ ...s, url: s.href() })).filter((s) => s.url && String(s.url).trim());
 
   return (
-    <footer className="border-t border-lineDark bg-navyDeep text-white">
+    <footer role="contentinfo" className="border-t border-lineDark bg-navyDeep text-white">
       <div className="max-w-container mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 sm:gap-10 py-10 sm:py-12 md:py-16">
           <div className="sm:col-span-2 md:col-span-1">
-            <Link to="/" className="inline-flex items-center text-white" aria-label="Bricks & Built home">
+            <Link to="/" className="inline-flex items-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Bricks & Built home">
               <Mark size={56} variant="full" className="h-12 sm:h-14 w-auto max-w-[11rem]" />
             </Link>
             <p className="mt-4 sm:mt-5 max-w-[24rem] text-sm text-slateLight leading-relaxed">
               An established property development company based in Pakpattan, Punjab — delivering and representing land, residential and commercial projects with transparency.
             </p>
             {links.length > 0 && (
-              <div className="mt-5 sm:mt-6 flex flex-wrap gap-3">
+              <nav className="mt-5 sm:mt-6 flex flex-wrap gap-3" aria-label="Social media">
                 {links.map((s) => (
                   <a
                     key={s.key}
                     href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/85 hover:bg-white/10 hover:text-white"
+                    aria-label={`${s.label} (opens in a new tab)`}
+                    className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/20 text-white/85 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {s.icon}
                   </a>
                 ))}
-              </div>
+              </nav>
             )}
           </div>
-          <div>
-            <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight">Company</p>
-            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm">
+          <nav aria-label="Company">
+            <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight" id="footer-company">
+              Company
+            </p>
+            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm" aria-labelledby="footer-company">
               <li>
-                <Link to="/about" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/about" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   About
                 </Link>
               </li>
               <li>
-                <Link to="/services" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/services" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Services
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/contact" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Contact
                 </Link>
               </li>
             </ul>
-          </div>
-          <div>
-            <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight">Projects</p>
-            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm">
+          </nav>
+          <nav aria-label="Projects">
+            <p className="text-[0.72rem] tracking-[0.2em] uppercase text-slateLight" id="footer-projects">
+              Projects
+            </p>
+            <ul className="mt-3 sm:mt-4 grid gap-2.5 text-sm" aria-labelledby="footer-projects">
               <li>
-                <Link to="/projects/pak-city" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/projects/pak-city" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Pak City Housing Society
                 </Link>
               </li>
               <li>
-                <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   Toba Tek Singh
                 </Link>
               </li>
               <li>
-                <Link to="/projects" className="text-white/85 hover:text-white py-0.5 inline-block">
+                <Link to="/projects" className="text-white/85 hover:text-white py-0.5 inline-block focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                   All projects
                 </Link>
               </li>
             </ul>
             <p className="mt-4 sm:mt-5 text-[0.82rem] text-slateLight leading-relaxed">
-              <Link to="/projects/pak-city" className="text-white/85 hover:text-white">
+              <Link to="/projects/pak-city" className="text-white/85 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Pakpattan, Punjab, Pakistan
               </Link>
               <br />
-              <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white">
+              <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
                 Toba Tek Singh, Punjab, Pakistan
               </Link>
               <br />
-              WhatsApp: {COMPANY.whatsappDisplay}
+              <span>WhatsApp: {COMPANY.whatsappDisplay}</span>
               <br />
-              {COMPANY.hours}
+              <span>{COMPANY.hours}</span>
             </p>
-          </div>
+          </nav>
         </div>
         <div className="border-t border-lineDark">
           <p className="py-4 sm:py-5 text-[0.78rem] text-slateLight">

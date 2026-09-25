@@ -16,12 +16,22 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setMobileOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [mobileOpen]);
+
   const dark = scrolled || mobileOpen;
   const tone = dark ? "text-navy" : "text-white";
   const toneMuted = dark ? "text-slate" : "text-white/70";
 
   return (
     <header
+      role="banner"
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-200 ${
         dark ? "bg-paper/95 backdrop-blur border-b border-line" : "bg-transparent border-b border-transparent"
       }`}
@@ -30,8 +40,8 @@ export default function Header() {
         <Link
           to="/"
           className={`flex items-center shrink-0 rounded-lg px-1 py-1 -ml-1 transition-opacity hover:opacity-90 active:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${dark ? "text-navy focus-visible:outline-navy" : "text-white focus-visible:outline-white"}`}
-          aria-label="Brick & Built Developers — Home"
-          title="Brick & Built — Home"
+          aria-label="Bricks & Built Developers — Home"
+          title="Bricks & Built — Home"
         >
           <Mark size={40} variant="mark" className="h-10 w-auto max-w-[min(14rem,55vw)]" />
         </Link>
@@ -47,18 +57,24 @@ export default function Header() {
               >
                 <button
                   type="button"
-                  className={`px-3 py-2 text-sm font-semibold flex items-center gap-1 ${toneMuted} ${dark ? "hover:text-navy" : "hover:text-white"}`}
+                  className={`px-3 py-2 text-sm font-semibold flex items-center gap-1 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${toneMuted} ${dark ? "hover:text-navy focus-visible:outline-navy" : "hover:text-white focus-visible:outline-white"}`}
                   onClick={() => setDropOpen((v) => !v)}
                   aria-expanded={dropOpen}
+                  aria-haspopup="true"
+                  aria-controls="projects-menu"
+                  id="projects-menu-button"
                 >
                   {item.label}
-                  <svg viewBox="0 0 12 8" fill="none" width="10" height="7" className={`transition-transform ${dropOpen ? "rotate-180" : ""}`}>
+                  <svg viewBox="0 0 12 8" fill="none" width="10" height="7" className={`transition-transform ${dropOpen ? "rotate-180" : ""}`} aria-hidden="true">
                     <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.6" />
                   </svg>
                 </button>
                 <AnimatePresence>
                   {dropOpen && (
                     <motion.div
+                      id="projects-menu"
+                      role="menu"
+                      aria-labelledby="projects-menu-button"
                       initial={{ opacity: 0, y: -4 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -4 }}
@@ -67,7 +83,12 @@ export default function Header() {
                     >
                       <div className="rounded-2xl border border-line bg-paper2 shadow-lift overflow-hidden">
                         {item.dropdown.map((d) => (
-                          <Link key={d.to} to={d.to} className="block px-5 py-4 border-b border-line last:border-0 hover:bg-paper text-navy">
+                          <Link
+                            key={d.to}
+                            to={d.to}
+                            role="menuitem"
+                            className="block px-5 py-4 border-b border-line last:border-0 hover:bg-paper text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy focus-visible:outline-offset-[-2px]"
+                          >
                             <strong className="block text-[0.92rem] font-bold">{d.label}</strong>
                             <span className="block mt-1 text-[0.78rem] text-slate">{d.sub}</span>
                           </Link>
@@ -82,26 +103,42 @@ export default function Header() {
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `relative px-3 py-2 text-sm font-semibold ${isActive ? tone : toneMuted}`
+                  `relative px-3 py-2 text-sm font-semibold rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${isActive ? tone : toneMuted} ${dark ? "focus-visible:outline-navy" : "focus-visible:outline-white"}`
                 }
               >
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    {item.label}
+                    {isActive && <span className="sr-only"> (current page)</span>}
+                  </>
+                )}
               </NavLink>
             )
           )}
         </nav>
 
         <div className="flex items-center gap-3">
-          <Link to="/contact" className="hidden sm:inline-flex h-11 items-center rounded-pill bg-navy text-white px-6 text-sm font-bold hover:bg-navy2">
+          <Link
+            to="/contact"
+            className="hidden sm:inline-flex h-11 items-center rounded-pill bg-navy text-white px-6 text-sm font-bold hover:bg-navy2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navy"
+          >
             Enquire
           </Link>
           <button
-            className={`lg:hidden inline-flex items-center justify-center w-11 h-11 ${tone}`}
-            aria-label="Toggle menu"
+            type="button"
+            className={`lg:hidden inline-flex items-center justify-center w-11 h-11 rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${tone} ${dark ? "focus-visible:outline-navy" : "focus-visible:outline-white"}`}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
             aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
             onClick={() => setMobileOpen((v) => !v)}
           >
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" /></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              {mobileOpen ? (
+                <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+              )}
+            </svg>
           </button>
         </div>
       </div>
@@ -109,24 +146,41 @@ export default function Header() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.2 }}
             className="lg:hidden overflow-hidden bg-paper border-t border-line"
           >
-            <nav className="flex flex-col px-5 pb-8 text-navy">
-              <Link to="/" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>Home</Link>
-              <Link to="/about" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>About</Link>
-              <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate">Projects</p>
-              <Link to="/projects/pak-city" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>Pak City Housing Society</Link>
-              <Link to="/projects/toba-tek-singh" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
-                Toba Tek Singh <span className="text-gold text-[0.7rem] tracking-[0.14em] uppercase ml-2">Coming soon</span>
+            <nav className="flex flex-col px-5 pb-8 text-navy" aria-label="Mobile">
+              <Link to="/" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+                Home
               </Link>
-              <Link to="/projects" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>All projects</Link>
+              <Link to="/about" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+                About
+              </Link>
+              <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate" id="mobile-projects-label">
+                Projects
+              </p>
+              <div role="group" aria-labelledby="mobile-projects-label">
+                <Link to="/projects/pak-city" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                  Pak City Housing Society
+                </Link>
+                <Link to="/projects/toba-tek-singh" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                  Toba Tek Singh <span className="text-gold text-[0.7rem] tracking-[0.14em] uppercase ml-2">Coming soon</span>
+                </Link>
+                <Link to="/projects" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                  All projects
+                </Link>
+              </div>
               <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate">Services</p>
-              <Link to="/services" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>All services</Link>
-              <Link to="/contact" className="py-4 text-lg font-bold" onClick={() => setMobileOpen(false)}>Contact</Link>
+              <Link to="/services" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+                All services
+              </Link>
+              <Link to="/contact" className="py-4 text-lg font-bold" onClick={() => setMobileOpen(false)}>
+                Contact
+              </Link>
             </nav>
           </motion.div>
         )}

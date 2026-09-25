@@ -7,7 +7,6 @@
 html {
   scroll-behavior: smooth;
   background: #FAF8F3;
-  /* iOS notch / home indicator */
   padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) 0 env(safe-area-inset-left, 0);
 }
 body {
@@ -25,6 +24,45 @@ img, video {
   backface-visibility: hidden;
 }
 a { color: inherit; text-decoration: none; }
+
+/* Skip link — visible on keyboard focus */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100%;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: #152A54;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border-radius: 0.5rem;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 1rem;
+  outline: 2px solid #B8935A;
+  outline-offset: 2px;
+}
+
+/* Screen-reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Consistent keyboard focus */
+:focus-visible {
+  outline: 2px solid #152A54;
+  outline-offset: 2px;
+}
 
 .font-display {
   font-family: 'Cormorant Garamond', serif;
@@ -44,6 +82,7 @@ a { color: inherit; text-decoration: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .marquee-track { animation: none; }
+  html { scroll-behavior: auto; }
 }
 
 .chip {
@@ -61,6 +100,10 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   border-color: #152A54;
 }
+.chip:focus-visible {
+  outline: 2px solid #152A54;
+  outline-offset: 2px;
+}
 
 .field-input {
   height: 2.9rem;
@@ -74,6 +117,11 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.92rem;
 }
 .field-input::placeholder { color: #9AA3AF; }
+.field-input:focus {
+  outline: 2px solid #152A54;
+  outline-offset: 1px;
+  border-color: #152A54;
+}
 textarea.field-input {
   height: auto;
   min-height: 7rem;
@@ -109,7 +157,6 @@ textarea.field-input {
   justify-self: center;
 }
 
-/* Mobile first: photo → text → quote */
 @media (max-width: 767px) {
   .ceo-card {
     grid-template-columns: 1fr;
@@ -134,18 +181,15 @@ textarea.field-input {
   .ceo-copy {
     text-align: center;
   }
-
   body {
     overflow-x: hidden;
   }
-
   .field-input {
-    font-size: 16px; /* stops iOS zoom on focus */
+    font-size: 16px;
     min-height: 2.9rem;
   }
 }
 
-/* Tablet */
 @media (min-width: 768px) and (max-width: 1023px) {
   .ceo-card {
     grid-template-columns: 1fr 1fr;
@@ -159,7 +203,6 @@ textarea.field-input {
   }
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
   .ceo-card {
     grid-template-columns: 1fr 1.15fr;
