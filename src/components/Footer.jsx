@@ -43,7 +43,7 @@ export default function Footer() {
       <div className="max-w-container mx-auto px-5 md:px-8">
         <div className="grid md:grid-cols-[1.2fr_1fr_1fr] gap-10 py-16">
           <div>
-            <Link to="/" className="inline-flex items-center text-white" aria-label="Brick & Built home">
+            <Link to="/" className="inline-flex items-center text-white" aria-label="Bricks & Built home">
               <Mark size={56} variant="full" className="h-14 w-auto max-w-[11rem]" />
             </Link>
             <p className="mt-5 max-w-[24rem] text-sm text-slateLight">
@@ -82,7 +82,17 @@ export default function Footer() {
               <li><Link to="/projects" className="text-white/85 hover:text-white">All projects</Link></li>
             </ul>
             <p className="mt-5 text-[0.82rem] text-slateLight leading-relaxed">
-              {COMPANY.location}<br />WhatsApp: {COMPANY.whatsappDisplay}<br />{COMPANY.hours}
+              <Link to="/projects/pak-city" className="text-white/85 hover:text-white">
+                Pakpattan, Punjab, Pakistan
+              </Link>
+              <br />
+              <Link to="/projects/toba-tek-singh" className="text-white/85 hover:text-white">
+                Toba Tek Singh, Punjab, Pakistan
+              </Link>
+              <br />
+              WhatsApp: {COMPANY.whatsappDisplay}
+              <br />
+              {COMPANY.hours}
             </p>
           </div>
         </div>
