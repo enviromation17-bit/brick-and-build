@@ -15,10 +15,17 @@ export default function Home() {
         poster="/assets/media/service-land.jpg"
         lede="An established property development company delivering residential, commercial and land projects — including Pak City Housing Society in Pakpattan — with our next project underway in Toba Tek Singh."
       >
-        <Link to="/projects/toba-tek-singh" className="h-12 inline-flex items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2">
+        <Link
+          to="/projects/toba-tek-singh"
+          className="h-12 inline-flex items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2"
+          style={{ backgroundColor: "#FFFFFF", color: "#152A54" }}
+        >
           Explore Toba Tek Singh
         </Link>
-        <Link to="/projects/pak-city" className="h-12 inline-flex items-center rounded-pill border border-white/50 text-white px-8 font-bold text-sm hover:bg-white hover:text-navy">
+        <Link
+          to="/projects/pak-city"
+          className="h-12 inline-flex items-center rounded-pill border border-white/60 text-white px-8 font-bold text-sm hover:bg-white hover:text-navy"
+        >
           View completed work
         </Link>
       </Hero>
@@ -130,7 +137,7 @@ export default function Home() {
             <p className="mt-5 max-w-[28rem] text-white/80 leading-relaxed">Direct access to our team — no call centers, no sales floors.</p>
           </Reveal>
           <Reveal delay={0.15}>
-            <Link to="/contact" className="mt-8 inline-flex h-12 w-full sm:w-auto justify-center items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2">
+            <Link to="/contact" className="mt-8 inline-flex h-12 w-full sm:w-auto justify-center items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2" style={{ backgroundColor: "#FFFFFF", color: "#152A54" }}>
               Get in touch
             </Link>
           </Reveal>

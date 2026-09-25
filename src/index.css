@@ -4,18 +4,26 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force light UI even when phone is in dark mode */
 html {
+  color-scheme: light only;
   scroll-behavior: smooth;
-  background: #FAF8F3;
+  background: #FAF8F3 !important;
   padding: env(safe-area-inset-top, 0) env(safe-area-inset-right, 0) 0 env(safe-area-inset-left, 0);
 }
 body {
   margin: 0;
-  background: #FAF8F3;
-  color: #152A54;
+  background: #FAF8F3 !important;
+  color: #152A54 !important;
   font-family: 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Stop browser dark-mode from restyling form controls */
+input, textarea, select, button {
+  color-scheme: light;
+}
+
 img, video {
   max-width: 100%;
   display: block;
@@ -25,7 +33,6 @@ img, video {
 }
 a { color: inherit; text-decoration: none; }
 
-/* Skip link — visible on keyboard focus */
 .skip-link {
   position: absolute;
   left: 1rem;
@@ -45,7 +52,6 @@ a { color: inherit; text-decoration: none; }
   outline-offset: 2px;
 }
 
-/* Screen-reader only */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -58,7 +64,6 @@ a { color: inherit; text-decoration: none; }
   border: 0;
 }
 
-/* Consistent keyboard focus */
 :focus-visible {
   outline: 2px solid #152A54;
   outline-offset: 2px;
@@ -110,13 +115,17 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   border-radius: 0.6rem;
   border: 1px solid #E5E1D6;
-  background: #FFFFFF;
+  background: #FFFFFF !important;
+  color: #152A54 !important;
   padding: 0 1rem;
-  color: #152A54;
   font-family: 'Manrope', sans-serif;
   font-size: 0.92rem;
+  -webkit-text-fill-color: #152A54;
 }
-.field-input::placeholder { color: #9AA3AF; }
+.field-input::placeholder {
+  color: #9AA3AF;
+  -webkit-text-fill-color: #9AA3AF;
+}
 .field-input:focus {
   outline: 2px solid #152A54;
   outline-offset: 1px;
@@ -129,8 +138,37 @@ textarea.field-input {
   resize: vertical;
 }
 
-/* —— CEO leadership card —— */
-/* Desktop/tablet: profile (left) | quote (right) */
+/* Map card (no blocked Google iframe on mobile) */
+.map-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  min-height: 12rem;
+  border-radius: 1rem;
+  border: 1px solid #E5E1D6;
+  background:
+    linear-gradient(160deg, rgba(21, 42, 84, 0.92) 0%, rgba(14, 29, 61, 0.95) 100%),
+    #152A54;
+  color: #fff;
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+.map-card a.map-open {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0.85rem;
+  height: 2.75rem;
+  padding: 0 1.5rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #152A54;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+
+/* CEO card */
 .ceo-card {
   display: grid;
   gap: 1.75rem;
@@ -158,7 +196,6 @@ textarea.field-input {
   justify-self: center;
 }
 
-/* Mobile: photo + bio first, quote below */
 @media (max-width: 767px) {
   .ceo-card {
     grid-template-columns: 1fr;
@@ -190,7 +227,6 @@ textarea.field-input {
   }
 }
 
-/* Tablet: profile left, quote right */
 @media (min-width: 768px) and (max-width: 1023px) {
   .ceo-card {
     grid-template-columns: 1.15fr 1fr;
@@ -204,7 +240,6 @@ textarea.field-input {
   }
 }
 
-/* Desktop: profile left, quote right */
 @media (min-width: 1024px) {
   .ceo-card {
     grid-template-columns: 1.15fr 1fr;

@@ -3,6 +3,8 @@ import Reveal from "../components/Reveal";
 import EnquiryForm from "../components/EnquiryForm";
 import { COMPANY } from "../data/content";
 
+const PAK_MAP_LINK = "https://maps.app.goo.gl/k24Qfhx6XDQKKP4x9";
+
 export default function Contact() {
   return (
     <>
@@ -48,26 +50,23 @@ export default function Contact() {
             >
               Message us on WhatsApp
             </a>
-            <div className="mt-6 aspect-video rounded-2xl overflow-hidden border border-line">
-              <iframe
-                src="https://www.google.com/maps?q=30.3358251,73.4026166&z=17&output=embed"
-                className="w-full h-full border-0"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Pak City, Pakpattan map"
-                allowFullScreen
-              />
-            </div>
-            <p className="mt-2.5 text-[0.78rem] text-slate">
-              Pak City, Pakpattan —{" "}
+
+            {/* Mobile-safe map: Google iframe is often blocked on phones */}
+            <div className="mt-6 map-card">
+              <p className="text-[0.72rem] font-bold tracking-[0.18em] uppercase text-gold">Location</p>
+              <p className="mt-2 text-[1.05rem] font-bold text-white">Pak City, Pakpattan</p>
+              <p className="mt-1 text-sm text-white/75">Punjab, Pakistan</p>
               <a
-                href="https://maps.app.goo.gl/k24Qfhx6XDQKKP4x9"
+                className="map-open"
+                href={PAK_MAP_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline decoration-gold text-navy font-semibold"
               >
                 Open in Google Maps
               </a>
+            </div>
+            <p className="mt-2.5 text-[0.78rem] text-slate">
+              Tap the button to open directions in the Google Maps app.
             </p>
           </Reveal>
 
