@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import WhatsAppFloat from "./components/WhatsAppFloat";
 import Assistant from "./components/Assistant";
 import PageMeta from "./components/PageMeta";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -15,13 +16,17 @@ import Contact from "./pages/Contact";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [pathname]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return null;
 }
 
-export default function App() {
+function AppShell() {
+  const { pathname } = useLocation();
+
   return (
-    <BrowserRouter>
+    <ErrorBoundary resetKey={pathname} key={pathname}>
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
@@ -42,6 +47,14 @@ export default function App() {
       <Footer />
       <WhatsAppFloat />
       <Assistant />
+    </ErrorBoundary>
+  );
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppShell />
     </BrowserRouter>
   );
 }
