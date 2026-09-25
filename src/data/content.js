@@ -53,11 +53,13 @@ export const VALUES = [
 export const CEO = {
   name: "Waseem Bari",
   title: "Chief Executive Officer, Bricks & Built",
-  note: "He has been doing this work for ten years.",
+  bio: "He has been doing this work for ten years.",
+  quote:
+    "We design communities that stay within a family's budget and respect the land — green spaces, honest pricing, and homes people can actually afford.",
 };
 
 export const TOBA_FACTS = [
-  { label: "Land area", value: "Pending", pending: true },
+  { label: "Land area", value: "20 Acres" },
   { label: "Sectors", value: "Pending", pending: true },
   { label: "Residential plots", value: "Pending", pending: true },
   { label: "Commercial plots", value: "Pending", pending: true },

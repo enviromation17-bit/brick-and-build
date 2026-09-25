@@ -6,7 +6,7 @@ import { VALUES, CEO } from "../data/content";
 export default function About() {
   return (
     <>
-      <Hero eyebrow="The company" title="Built for the long term." compact lede="Brick & Built represents and develops residential and commercial property in Punjab, with Pak City Housing Society delivered and Toba Tek Singh in progress." />
+      <Hero eyebrow="The company" title="Built for the long term." compact lede="Bricks & Built represents and develops residential and commercial property in Punjab, with Pak City Housing Society delivered and Toba Tek Singh in progress." />
 
       <section className="py-24">
         <div className="max-w-container mx-auto px-5 md:px-8 grid md:grid-cols-[0.85fr_1.15fr] gap-12">
@@ -46,7 +46,10 @@ export default function About() {
             <div>
               <h3 className="font-display text-[1.6rem] text-navy">{CEO.name}</h3>
               <p className="mt-2 text-slate">{CEO.title}</p>
-              <p className="mt-4 text-sm text-slate border-l-2 border-gold pl-4 max-w-[40ch]">{CEO.note}</p>
+              <p className="mt-3 text-sm text-slate">{CEO.bio}</p>
+              <blockquote className="mt-4 text-sm text-navy border-l-2 border-gold pl-4 max-w-[42ch] italic leading-relaxed">
+                “{CEO.quote}”
+              </blockquote>
             </div>
           </Reveal>
         </div>
