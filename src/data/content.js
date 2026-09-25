@@ -53,7 +53,7 @@ export const VALUES = [
 export const CEO = {
   name: "Waseem Bari",
   title: "Chief Executive Officer, Bricks & Built",
-  bio: "He has been doing this work for ten years.",
+  bio: "He has been in the real estate and land development field for ten years. Over that time he has led projects from land acquisition through planning and delivery across Punjab, with a focus on practical, affordable communities families can grow into.",
   quote:
     "We design communities that stay within a family's budget and respect the land — green spaces, honest pricing, and homes people can actually afford.",
 };

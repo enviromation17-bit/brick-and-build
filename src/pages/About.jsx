@@ -41,15 +41,32 @@ export default function About() {
         <div className="max-w-container mx-auto px-5 md:px-8">
           <Reveal><p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Leadership</p></Reveal>
           <Reveal delay={0.05}><h2 className="mt-3 text-[clamp(1.9rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Led by our CEO.</h2></Reveal>
-          <Reveal delay={0.1} className="mt-10 grid sm:grid-cols-[220px_1fr] gap-10 items-center border border-line bg-paper2 rounded-2xl p-8">
-            <Photo label="Waseem Bari, CEO" src="/assets/ceo-waseem-bari.jpg" aspect="aspect-square" className="!rounded-xl border-2 !border-gold" />
-            <div>
-              <h3 className="font-display text-[1.6rem] text-navy">{CEO.name}</h3>
-              <p className="mt-2 text-slate">{CEO.title}</p>
-              <p className="mt-3 text-sm text-slate">{CEO.bio}</p>
-              <blockquote className="mt-4 text-sm text-navy border-l-2 border-gold pl-4 max-w-[42ch] italic leading-relaxed">
-                “{CEO.quote}”
+
+          <Reveal delay={0.1} className="mt-10 border border-line bg-paper2 rounded-2xl p-6 md:p-8">
+            <div className="grid md:grid-cols-[1fr_200px_1.15fr] gap-8 md:gap-10 items-center">
+              {/* Left — quote */}
+              <blockquote className="order-2 md:order-1 border-l-2 border-gold pl-5 md:pl-6">
+                <p className="text-[1.05rem] md:text-[1.15rem] font-display italic leading-relaxed text-navy">
+                  “{CEO.quote}”
+                </p>
               </blockquote>
+
+              {/* Center — photo */}
+              <div className="order-1 md:order-2 justify-self-center w-full max-w-[200px]">
+                <Photo
+                  label="Waseem Bari, CEO"
+                  src="/assets/ceo-waseem-bari.jpg"
+                  aspect="aspect-square"
+                  className="!rounded-xl border-2 !border-gold"
+                />
+              </div>
+
+              {/* Right — name, title, bio only */}
+              <div className="order-3">
+                <h3 className="font-display text-[1.6rem] text-navy">{CEO.name}</h3>
+                <p className="mt-1.5 text-slate">{CEO.title}</p>
+                <p className="mt-4 text-sm text-slate leading-relaxed max-w-[40ch]">{CEO.bio}</p>
+              </div>
             </div>
           </Reveal>
         </div>
