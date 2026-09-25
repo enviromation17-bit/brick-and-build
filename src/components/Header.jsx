@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
 import { NAV } from "../data/content";
 import Mark from "./Mark";
 
@@ -69,34 +68,23 @@ export default function Header() {
                     <path d="M1 1l5 5 5-5" stroke="currentColor" strokeWidth="1.6" />
                   </svg>
                 </button>
-                <AnimatePresence>
-                  {dropOpen && (
-                    <motion.div
-                      id="projects-menu"
-                      role="menu"
-                      aria-labelledby="projects-menu-button"
-                      initial={{ opacity: 0, y: -4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -4 }}
-                      transition={{ duration: 0.15 }}
-                      className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[300px]"
-                    >
-                      <div className="rounded-2xl border border-line bg-paper2 shadow-lift overflow-hidden">
-                        {item.dropdown.map((d) => (
-                          <Link
-                            key={d.to}
-                            to={d.to}
-                            role="menuitem"
-                            className="block px-5 py-4 border-b border-line last:border-0 hover:bg-paper text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy focus-visible:outline-offset-[-2px]"
-                          >
-                            <strong className="block text-[0.92rem] font-bold">{d.label}</strong>
-                            <span className="block mt-1 text-[0.78rem] text-slate">{d.sub}</span>
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {dropOpen && (
+                  <div id="projects-menu" role="menu" aria-labelledby="projects-menu-button" className="absolute left-1/2 -translate-x-1/2 top-full pt-2 w-[300px]">
+                    <div className="rounded-2xl border border-line bg-paper2 shadow-lift overflow-hidden">
+                      {item.dropdown.map((d) => (
+                        <Link
+                          key={d.to}
+                          to={d.to}
+                          role="menuitem"
+                          className="block px-5 py-4 border-b border-line last:border-0 hover:bg-paper text-navy focus-visible:outline focus-visible:outline-2 focus-visible:outline-navy focus-visible:outline-offset-[-2px]"
+                        >
+                          <strong className="block text-[0.92rem] font-bold">{d.label}</strong>
+                          <span className="block mt-1 text-[0.78rem] text-slate">{d.sub}</span>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ) : (
               <NavLink
@@ -143,48 +131,39 @@ export default function Header() {
         </div>
       </div>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden overflow-hidden bg-paper border-t border-line"
-          >
-            <nav className="flex flex-col px-5 pb-8 text-navy" aria-label="Mobile">
-              <Link to="/" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
-                Home
+      {mobileOpen && (
+        <div id="mobile-menu" className="lg:hidden overflow-hidden bg-paper border-t border-line">
+          <nav className="flex flex-col px-5 pb-8 text-navy" aria-label="Mobile">
+            <Link to="/" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+              Home
+            </Link>
+            <Link to="/about" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+              About
+            </Link>
+            <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate" id="mobile-projects-label">
+              Projects
+            </p>
+            <div role="group" aria-labelledby="mobile-projects-label">
+              <Link to="/projects/pak-city" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                Pak City Housing Society
               </Link>
-              <Link to="/about" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
-                About
+              <Link to="/projects/toba-tek-singh" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                Toba Tek Singh <span className="text-gold text-[0.7rem] tracking-[0.14em] uppercase ml-2">Coming soon</span>
               </Link>
-              <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate" id="mobile-projects-label">
-                Projects
-              </p>
-              <div role="group" aria-labelledby="mobile-projects-label">
-                <Link to="/projects/pak-city" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
-                  Pak City Housing Society
-                </Link>
-                <Link to="/projects/toba-tek-singh" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
-                  Toba Tek Singh <span className="text-gold text-[0.7rem] tracking-[0.14em] uppercase ml-2">Coming soon</span>
-                </Link>
-                <Link to="/projects" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
-                  All projects
-                </Link>
-              </div>
-              <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate">Services</p>
-              <Link to="/services" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
-                All services
+              <Link to="/projects" className="py-4 border-b border-line text-lg font-bold block" onClick={() => setMobileOpen(false)}>
+                All projects
               </Link>
-              <Link to="/contact" className="py-4 text-lg font-bold" onClick={() => setMobileOpen(false)}>
-                Contact
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </div>
+            <p className="pt-4 text-[0.72rem] tracking-[0.2em] uppercase text-slate">Services</p>
+            <Link to="/services" className="py-4 border-b border-line text-lg font-bold" onClick={() => setMobileOpen(false)}>
+              All services
+            </Link>
+            <Link to="/contact" className="py-4 text-lg font-bold" onClick={() => setMobileOpen(false)}>
+              Contact
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
