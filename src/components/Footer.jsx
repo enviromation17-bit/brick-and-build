@@ -43,8 +43,12 @@ export default function Footer() {
       <div className="max-w-container mx-auto px-5 md:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[1.2fr_1fr_1fr] gap-8 sm:gap-10 py-10 sm:py-12 md:py-16">
           <div className="sm:col-span-2 md:col-span-1">
-            <Link to="/" className="inline-flex items-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white" aria-label="Bricks & Built home">
-              <Mark size={56} variant="full" className="h-12 sm:h-14 w-auto max-w-[11rem]" />
+            <Link
+              to="/"
+              className="inline-flex items-center text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              aria-label="Bricks & Built home"
+            >
+              <Mark size={64} variant="full" className="h-14 sm:h-16 w-auto max-w-[12rem]" />
             </Link>
             <p className="mt-4 sm:mt-5 max-w-[24rem] text-sm text-slateLight leading-relaxed">
               An established property development company based in Pakpattan, Punjab — delivering and representing land, residential and commercial projects with transparency.

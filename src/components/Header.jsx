@@ -36,14 +36,14 @@ export default function Header() {
         dark ? "bg-paper/95 backdrop-blur border-b border-line" : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-container mx-auto flex items-center justify-between gap-4 h-[4.5rem] px-5 md:px-8">
+      <div className="max-w-container mx-auto flex items-center justify-between gap-4 h-[4.75rem] px-5 md:px-8">
         <Link
           to="/"
           className={`flex items-center shrink-0 rounded-lg px-1 py-1 -ml-1 transition-opacity hover:opacity-90 active:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${dark ? "text-navy focus-visible:outline-navy" : "text-white focus-visible:outline-white"}`}
           aria-label="Bricks & Built Developers — Home"
           title="Bricks & Built — Home"
         >
-          <Mark size={40} variant="mark" className="h-10 w-auto max-w-[min(14rem,55vw)]" />
+          <Mark size={46} variant="mark" className="h-11 w-auto max-w-[min(16rem,62vw)] sm:h-12" />
         </Link>
 
         <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
