@@ -94,12 +94,7 @@ export default function Header() {
                   `relative px-3 py-2 text-sm font-semibold rounded-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 ${isActive ? tone : toneMuted} ${dark ? "focus-visible:outline-navy" : "focus-visible:outline-white"}`
                 }
               >
-                {({ isActive }) => (
-                  <>
-                    {item.label}
-                    {isActive && <span className="sr-only"> (current page)</span>}
-                  </>
-                )}
+                {item.label}
               </NavLink>
             )
           )}
