@@ -2,6 +2,7 @@ import Hero from "../components/Hero";
 import Reveal from "../components/Reveal";
 import Photo from "../components/Photo";
 import EnquiryForm from "../components/EnquiryForm";
+import ScrollScrubVideo from "../components/ScrollScrubVideo";
 import { TOBA_FACTS, COMPANY } from "../data/content";
 
 const CHAPTERS = [
@@ -12,6 +13,33 @@ const CHAPTERS = [
 
 const TOBA_MAP_LINK = "https://maps.app.goo.gl/5rzugB9Vw27r6Ukr9";
 const TOBA_HERO_IMG = "https://litter.catbox.moe/7fid4g.jpg";
+
+const SCRUB_STAGES = [
+  {
+    at: 0,
+    kicker: "Stage 01",
+    title: "Open land",
+    body: "The journey begins with verified land — the foundation of every Bricks & Built community.",
+  },
+  {
+    at: 0.28,
+    kicker: "Stage 02",
+    title: "Framing & structure",
+    body: "Roads, plots and built form take shape as the site moves from plan to construction.",
+  },
+  {
+    at: 0.58,
+    kicker: "Stage 03",
+    title: "Rising homes",
+    body: "Residential fabric grows into a liveable community families can grow into.",
+  },
+  {
+    at: 0.82,
+    kicker: "Toba Tek Singh",
+    title: "A community, planned with care",
+    body: "Scroll through the progress story. Full plot details will be published as they are confirmed.",
+  },
+];
 
 export default function TobaTekSingh() {
   return (
@@ -43,28 +71,21 @@ export default function TobaTekSingh() {
         </div>
       </section>
 
-      <section className="py-14 sm:py-20 md:py-24 bg-navy">
-        <div className="max-w-container mx-auto px-5 md:px-8">
+      <section className="bg-navy">
+        <div className="max-w-container mx-auto px-5 md:px-8 pt-14 sm:pt-20">
           <Reveal>
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-gold">Progress</p>
             <h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight text-white">From land to built community.</h2>
-            <p className="mt-4 max-w-[48ch] text-slateLight">How a housing community takes shape — from open land through construction to completed residences.</p>
-          </Reveal>
-          <Reveal delay={0.1} className="mt-10 max-w-[56rem] mx-auto rounded-2xl overflow-hidden border border-white/10 shadow-lift bg-black/40">
-            <video
-              src="/assets/media/toba-timelapse-web.mp4"
-              poster="/assets/media/service-land.jpg"
-              className="w-full aspect-video object-cover"
-              controls
-              muted
-              playsInline
-              preload="metadata"
-              aria-label="Construction progress time-lapse from empty land to completed homes"
-            >
-              Your browser does not support the video tag.
-            </video>
+            <p className="mt-4 max-w-[48ch] text-slateLight pb-8">Scroll down — the video advances with you, with each stage explained on screen.</p>
           </Reveal>
         </div>
+        <ScrollScrubVideo
+          src="/assets/media/toba-timelapse-web.mp4"
+          poster="/assets/media/service-land.jpg"
+          stages={SCRUB_STAGES}
+          heightVh={280}
+          ariaLabel="Scroll-driven time-lapse from empty land to construction progress"
+        />
       </section>
 
       <section className="py-14 sm:py-20 md:py-24">
