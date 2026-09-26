@@ -1,8 +1,7 @@
 import { useEffect, useRef } from "react";
 
 /**
- * Lightweight Canvas gold dust — Option B style:
- * soft drift + desktop cursor part-away. No WebGL / Three.js.
+ * Canvas gold dust — stronger visibility + desktop cursor part-away.
  */
 export default function GoldParticles({ className = "" }) {
   const canvasRef = useRef(null);
@@ -17,8 +16,8 @@ export default function GoldParticles({ className = "" }) {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    const isMobile = window.matchMedia("(max-width: 768px)").matches || "ontouchstart" in window;
-    const count = isMobile ? 48 : 110;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    const count = isMobile ? 70 : 160;
     let w = 0;
     let h = 0;
     let raf = 0;
@@ -31,10 +30,10 @@ export default function GoldParticles({ className = "" }) {
       return {
         x: Math.random(),
         y: Math.random(),
-        r: 0.4 + Math.random() * (isMobile ? 1.2 : 1.8),
-        vx: (Math.random() - 0.5) * 0.00025,
-        vy: -0.00015 - Math.random() * 0.00035,
-        a: 0.15 + Math.random() * 0.45,
+        r: 1.1 + Math.random() * (isMobile ? 2.2 : 2.8),
+        vx: (Math.random() - 0.5) * 0.0004,
+        vy: -0.00025 - Math.random() * 0.00055,
+        a: 0.4 + Math.random() * 0.55,
       };
     }
 
@@ -42,9 +41,10 @@ export default function GoldParticles({ className = "" }) {
       const parent = canvas.parentElement;
       if (!parent) return;
       const rect = parent.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.75);
       w = rect.width;
       h = rect.height;
+      if (w < 2 || h < 2) return;
       canvas.width = Math.max(1, Math.floor(w * dpr));
       canvas.height = Math.max(1, Math.floor(h * dpr));
       canvas.style.width = `${w}px`;
@@ -66,9 +66,9 @@ export default function GoldParticles({ className = "" }) {
           const dx = px - mouse.x;
           const dy = py - mouse.y;
           const dist = Math.hypot(dx, dy) || 1;
-          const radius = 90;
+          const radius = 120;
           if (dist < radius) {
-            const force = (1 - dist / radius) * 0.012;
+            const force = (1 - dist / radius) * 0.018;
             p.x += (dx / dist) * force;
             p.y += (dy / dist) * force;
           }
@@ -81,9 +81,15 @@ export default function GoldParticles({ className = "" }) {
         if (p.x < -0.05) p.x = 1.05;
         if (p.x > 1.05) p.x = -0.05;
 
+        const px = p.x * w;
+        const py = p.y * h;
+        const g = ctx.createRadialGradient(px, py, 0, px, py, p.r * 2.2);
+        g.addColorStop(0, `rgba(232, 201, 120, ${p.a})`);
+        g.addColorStop(0.45, `rgba(184, 147, 90, ${p.a * 0.7})`);
+        g.addColorStop(1, "rgba(184, 147, 90, 0)");
         ctx.beginPath();
-        ctx.fillStyle = `rgba(184, 147, 90, ${p.a})`;
-        ctx.arc(p.x * w, p.y * h, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = g;
+        ctx.arc(px, py, p.r * 2.2, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -101,7 +107,11 @@ export default function GoldParticles({ className = "" }) {
     };
 
     resize();
-    tick();
+    // delay one frame so parent has layout
+    requestAnimationFrame(() => {
+      resize();
+      tick();
+    });
 
     const ro = typeof ResizeObserver !== "undefined" ? new ResizeObserver(resize) : null;
     if (ro && canvas.parentElement) ro.observe(canvas.parentElement);
@@ -121,7 +131,7 @@ export default function GoldParticles({ className = "" }) {
           raf = 0;
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.02 }
     );
     io.observe(canvas);
 
@@ -139,7 +149,7 @@ export default function GoldParticles({ className = "" }) {
   return (
     <canvas
       ref={canvasRef}
-      className={`pointer-events-none absolute inset-0 z-[1] ${className}`}
+      className={`pointer-events-none absolute inset-0 z-[2] ${className}`}
       aria-hidden="true"
     />
   );
