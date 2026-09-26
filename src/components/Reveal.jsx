@@ -1,14 +1,40 @@
+import { useEffect, useRef, useState } from "react";
+
 /**
- * Lightweight fade-in — pure CSS, no framer-motion.
- * Always visible (no stuck opacity:0).
+ * Scroll-triggered reveal — pure CSS + IntersectionObserver.
+ * Starts hidden, plays once in view; stays visible after.
  */
 export default function Reveal({ children, delay = 0, className = "", ...rest }) {
-  const style = delay
-    ? { animationDelay: `${Math.min(delay, 0.4)}s` }
-    : undefined;
+  const ref = useRef(null);
+  const [on, setOn] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (typeof IntersectionObserver === "undefined") {
+      setOn(true);
+      return;
+    }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setOn(true);
+          io.disconnect();
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
   return (
-    <div className={`reveal-in ${className}`.trim()} style={style} {...rest}>
+    <div
+      ref={ref}
+      className={`reveal-io ${on ? "is-in" : ""} ${className}`.trim()}
+      style={delay ? { transitionDelay: `${Math.min(delay, 0.35)}s` } : undefined}
+      {...rest}
+    >
       {children}
     </div>
   );

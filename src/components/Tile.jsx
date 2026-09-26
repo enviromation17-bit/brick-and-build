@@ -4,23 +4,27 @@ import Photo from "./Photo";
 export default function Tile({ n, title, body, to, img }) {
   return (
     <div>
-      <Link to={to} className="relative block min-h-[22rem] rounded-2xl overflow-hidden group">
+      <Link to={to} className="relative block min-h-[22rem] rounded-2xl overflow-hidden group card-lift">
         <div className="absolute inset-0">
           {img ? (
             <img
               src={img}
               alt=""
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
             />
           ) : (
             <Photo label={title} aspect="" className="h-full !rounded-none" />
           )}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-navyDeep/90 via-navy/20 to-transparent" />
-        <div className="relative z-10 h-full flex flex-col justify-end p-8">
+        <div className="absolute inset-0 bg-gradient-to-t from-navyDeep/95 via-navy/30 to-transparent transition-opacity duration-500" />
+        <div className="absolute inset-x-0 top-0 h-1 bg-gold scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" aria-hidden="true" />
+        <div className="relative z-10 h-full flex flex-col justify-end p-7 sm:p-8">
           <p className="text-[0.75rem] font-bold tracking-[0.02em] uppercase text-gold">{n}</p>
-          <h3 className="mt-2 text-[1.9rem] font-extrabold tracking-tight text-white">{title}</h3>
+          <h3 className="mt-2 text-[1.7rem] sm:text-[1.9rem] font-extrabold tracking-tight text-white">{title}</h3>
           <p className="mt-2 max-w-[22rem] text-white/85 text-sm">{body}</p>
+          <span className="mt-4 inline-flex text-[0.78rem] font-bold text-white/90 tracking-wide opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-400">
+            Explore →
+          </span>
         </div>
       </Link>
     </div>
