@@ -9,6 +9,7 @@ export default function Home() {
   return (
     <>
       <Hero
+        cinematic
         eyebrow="Pakpattan · Punjab · Pakistan"
         title="Toba Tek Singh is next."
         media="/assets/media/hero-frontpage-web.mp4"
@@ -17,7 +18,7 @@ export default function Home() {
       >
         <Link
           to="/projects/toba-tek-singh"
-          className="h-12 inline-flex items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2"
+          className="h-12 inline-flex items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2 btn-glow"
           style={{ backgroundColor: "#FFFFFF", color: "#152A54" }}
         >
           Explore Toba Tek Singh
@@ -29,6 +30,34 @@ export default function Home() {
           View completed work
         </Link>
       </Hero>
+
+      {/* Film statement — big editorial type */}
+      <section className="relative py-20 sm:py-28 md:py-36 bg-navyDeep overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.07] pointer-events-none film-grain" aria-hidden="true" />
+        <div className="max-w-container mx-auto px-5 md:px-8 relative z-10">
+          <p className="text-[0.72rem] font-bold tracking-[0.32em] uppercase text-gold">The standard</p>
+          <h2 className="mt-6 max-w-[16ch] text-[clamp(2.2rem,6.5vw,4.8rem)] font-extrabold tracking-[-0.03em] leading-[1.02] text-white">
+            <span className="text-outline-soft">Brick is patience.</span>
+            <br />
+            <span className="text-gold">Built is the result.</span>
+          </h2>
+          <p className="mt-8 max-w-[36ch] text-white/70 text-base sm:text-lg leading-relaxed">
+            Land first. Honest figures. Communities people can actually afford — in Pakpattan and now Toba Tek Singh.
+          </p>
+          <div className="mt-10 flex flex-wrap gap-8 sm:gap-14">
+            {[
+              { n: "29", l: "Acres delivered" },
+              { n: "3", l: "Pak City sites" },
+              { n: "20", l: "Acres next" },
+            ].map((s) => (
+              <div key={s.l}>
+                <p className="text-[clamp(2rem,4vw,3rem)] font-extrabold text-white tabular-nums">{s.n}</p>
+                <p className="mt-1 text-[0.72rem] font-bold tracking-[0.18em] uppercase text-white/45">{s.l}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <div className="overflow-hidden border-y border-lineDark bg-navy py-4 sm:py-5">
         <div className="marquee-track">
@@ -50,7 +79,10 @@ export default function Home() {
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Services</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Land. Commercial. Residential.</h2>
+            <h2 className="mt-3 text-[clamp(1.85rem,4vw,3.4rem)] font-extrabold tracking-tight text-navy leading-[1.05]">
+              Land. Commercial.
+              <br className="hidden sm:block" /> Residential.
+            </h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 max-w-[40ch] text-slate leading-relaxed">Three practices, one established standard: land development, commercial and residential.</p>
@@ -71,7 +103,7 @@ export default function Home() {
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-slate">Projects</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight text-navy">Delivered, and in progress.</h2>
+            <h2 className="mt-3 text-[clamp(1.85rem,4vw,3.4rem)] font-extrabold tracking-tight text-navy">Delivered, and in progress.</h2>
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 max-w-[46ch] text-slate leading-relaxed">
@@ -110,11 +142,11 @@ export default function Home() {
             <p className="text-[0.75rem] font-bold tracking-[0.22em] uppercase text-gold">Method</p>
           </Reveal>
           <Reveal delay={0.05}>
-            <h2 className="mt-3 text-[clamp(1.75rem,3.6vw,3rem)] font-extrabold tracking-tight">How we approach land and development.</h2>
+            <h2 className="mt-3 text-[clamp(1.85rem,4vw,3.4rem)] font-extrabold tracking-tight">How we approach land and development.</h2>
           </Reveal>
           <div className="mt-8 sm:mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-lineDark">
             {PROCESS.map((p, i) => (
-              <Reveal key={p.n} delay={0.05 * i} className="bg-navy p-6 sm:p-8">
+              <Reveal key={p.n} delay={0.05 * i} className="bg-navy p-6 sm:p-8 process-card">
                 <p className="text-2xl font-extrabold text-gold">{p.n}</p>
                 <h3 className="mt-4 sm:mt-5 text-[1.25rem] sm:text-[1.4rem] font-extrabold text-white">{p.title}</h3>
                 <p className="mt-2.5 text-sm text-white/70 leading-relaxed">{p.body}</p>
@@ -124,20 +156,27 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative overflow-hidden py-16 sm:py-24 md:py-28">
+      <section className="relative overflow-hidden py-20 sm:py-28 md:py-32">
         <div className="absolute inset-0">
           <div className="w-full h-full" style={{ background: "linear-gradient(135deg, #1C3564 0%, #152A54 55%, #0E1D3D 100%)" }} />
+          <div className="absolute inset-0 film-grain opacity-40" aria-hidden="true" />
         </div>
         <div className="relative z-10 max-w-container mx-auto px-5 md:px-8">
           <p className="text-[0.75rem] font-bold tracking-[0.28em] uppercase text-gold">Home base</p>
           <Reveal>
-            <h2 className="mt-4 max-w-[34rem] text-[clamp(1.85rem,4vw,3.4rem)] font-extrabold tracking-tight text-white">Pakpattan is where we're based.</h2>
+            <h2 className="mt-5 max-w-[14ch] text-[clamp(2rem,5.5vw,4rem)] font-extrabold tracking-[-0.03em] leading-[1.02] text-white">
+              Pakpattan is where we&apos;re based.
+            </h2>
           </Reveal>
           <Reveal delay={0.1}>
-            <p className="mt-5 max-w-[28rem] text-white/80 leading-relaxed">Direct access to our team — no call centers, no sales floors.</p>
+            <p className="mt-5 max-w-[28rem] text-white/80 leading-relaxed text-base sm:text-lg">Direct access to our team — no call centers, no sales floors.</p>
           </Reveal>
           <Reveal delay={0.15}>
-            <Link to="/contact" className="mt-8 inline-flex h-12 w-full sm:w-auto justify-center items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2" style={{ backgroundColor: "#FFFFFF", color: "#152A54" }}>
+            <Link
+              to="/contact"
+              className="mt-10 inline-flex h-12 w-full sm:w-auto justify-center items-center rounded-pill bg-white text-navy px-8 font-bold text-sm hover:bg-paper2 btn-glow"
+              style={{ backgroundColor: "#FFFFFF", color: "#152A54" }}
+            >
               Get in touch
             </Link>
           </Reveal>
