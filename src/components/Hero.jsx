@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import GoldParticles from "./GoldParticles";
 
 export default function Hero({
   eyebrow,
@@ -82,7 +83,10 @@ export default function Hero({
           style={cinematic && !compact ? { opacity: 0.55 + dim * 0.4 } : undefined}
         />
         {cinematic && !compact ? (
-          <div className="absolute inset-0 pointer-events-none film-grain" aria-hidden="true" />
+          <>
+            <div className="absolute inset-0 pointer-events-none film-grain" aria-hidden="true" />
+            <GoldParticles />
+          </>
         ) : null}
       </div>
 
@@ -102,23 +106,15 @@ export default function Hero({
 
         {cinematic ? (
           <h1 className="mt-4 sm:mt-5 max-w-[18ch] text-[clamp(2.35rem,8vw,5.2rem)] font-extrabold tracking-[-0.03em] leading-[0.98] text-white">
-            {String(title)
-              .split("\n")
-              .flatMap((line) => line.split(/(?<=\.\s)|(?<=\s)/))
-              .filter(Boolean)
-              .length > 0 ? (
-              <span className="film-title-wrap">
-                {String(title)
-                  .split(" ")
-                  .map((word, i) => (
-                    <span key={i} className="film-word" style={{ animationDelay: `${0.12 + i * 0.07}s` }}>
-                      {word}&nbsp;
-                    </span>
-                  ))}
-              </span>
-            ) : (
-              title
-            )}
+            <span className="film-title-wrap">
+              {String(title)
+                .split(" ")
+                .map((word, i) => (
+                  <span key={i} className="film-word" style={{ animationDelay: `${0.12 + i * 0.07}s` }}>
+                    {word}&nbsp;
+                  </span>
+                ))}
+            </span>
           </h1>
         ) : (
           <h1 className="reveal-in reveal-d1 mt-3 sm:mt-4 max-w-[40rem] text-[clamp(2rem,7vw,4.6rem)] font-extrabold tracking-tight leading-[1.05] text-white">

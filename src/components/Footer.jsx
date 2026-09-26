@@ -128,9 +128,20 @@ export default function Footer() {
             </p>
           </nav>
         </div>
-        <div className="border-t border-lineDark">
-          <p className="py-4 sm:py-5 text-[0.78rem] text-slateLight">
+        <div className="border-t border-lineDark py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <p className="text-[0.78rem] text-slateLight">
             © {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan.
+          </p>
+          <p className="text-[0.78rem] text-slateLight">
+            Built by{" "}
+            <a
+              href="https://enviromation17-bit.github.io/my-portfolio/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/85 hover:text-gold underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            >
+              Revolt
+            </a>
           </p>
         </div>
       </div>
