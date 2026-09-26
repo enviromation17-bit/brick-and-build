@@ -21,6 +21,11 @@ header a,header button.linkish{color:#fff;text-decoration:none;font-size:.85rem;
 .login p{margin:0 0 18px;color:var(--slate);font-size:.92rem}
 label{display:block;font-size:.78rem;color:var(--slate);margin-bottom:6px}
 input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:12px;background:#fff}
+.pw-wrap{position:relative;margin-bottom:12px}
+.pw-wrap input{margin-bottom:0;padding-right:44px}
+.pw-toggle{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:transparent;border-radius:8px;cursor:pointer;color:var(--slate);display:grid;place-items:center;padding:0}
+.pw-toggle:hover{background:#F4F2EC;color:var(--navy)}
+.pw-toggle svg{display:block}
 button.primary{width:100%;border:0;border-radius:999px;padding:12px 16px;background:var(--navy);color:#fff;font-weight:700;cursor:pointer;font:inherit}
 button.primary:disabled{opacity:.6;cursor:wait}
 .err{color:var(--bad);font-size:.88rem;margin:0 0 10px;line-height:1.4}
@@ -58,6 +63,8 @@ var CONFIG = {
   sheetUrl: "https://docs.google.com/spreadsheets/d/1lmSD_-ZFJcwhriyb_jBDP7ShKB86VWVfWejoVA50a54/edit",
   key: "bb_admin_v4"
 };
+var EYE_OPEN = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg>';
+var EYE_OFF = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 3l18 18M10.5 10.6A3 3 0 0013.4 13.5M7 7.3C4.6 8.7 3 12 3 12s3.5 7 10 7c1.8 0 3.4-.4 4.7-1M14.1 9.9C15.2 10.7 16 12 16 12s-3.5 7-10 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
 function el(h){var d=document.createElement("div");d.innerHTML=h.trim();return d.firstChild;}
 function esc(s){
   return String(s==null?"":s)
@@ -102,13 +109,27 @@ function renderLogin(err){
     '<p>Enter your name and admin password. Stays signed in until Logout.</p>'+
     (err?('<p class="err">'+esc(err)+'</p>'):'')+
     '<label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="username" autofocus />'+
-    '<label for="pw">Password</label><input id="pw" type="password" placeholder="Admin password from Admin.gs" autocomplete="current-password" />'+
+    '<label for="pw">Password</label>'+
+    '<div class="pw-wrap">'+
+    '<input id="pw" type="password" placeholder="Admin password from Admin.gs" autocomplete="current-password" />'+
+    '<button type="button" class="pw-toggle" id="pwToggle" aria-label="Show password" title="Show password">'+EYE_OPEN+'</button>'+
+    '</div>'+
     '<button class="primary" id="go" type="button">Open dashboard</button>'+
     '<div class="hint"><strong>Login tips</strong><br/>'+
     'Password must match ADMIN_PASSWORD in Admin.gs<br/>'+
     'After change: Deploy, Manage deployments, New version<br/>'+
     'Sheet tab name must be Leads</div></div></div>'
   ));
+  var pwInput=document.getElementById("pw");
+  var toggle=document.getElementById("pwToggle");
+  toggle.onclick=function(){
+    var show=pwInput.type==="password";
+    pwInput.type=show?"text":"password";
+    toggle.innerHTML=show?EYE_OFF:EYE_OPEN;
+    toggle.setAttribute("aria-label",show?"Hide password":"Show password");
+    toggle.title=show?"Hide password":"Show password";
+    pwInput.focus();
+  };
   function go(){
     var name=document.getElementById("name").value.trim();
     var password=document.getElementById("pw").value;
