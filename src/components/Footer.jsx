@@ -132,12 +132,16 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 bg-[#0a1528]">
-        <div className="max-w-container mx-auto px-5 md:px-8 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      {/* Bottom bar — credit on LEFT so floating WA/Assistant do not cover it */}
+      <div
+        className="border-t border-white/10 bg-[#0a1528]"
+        style={{ paddingBottom: "calc(5.5rem + env(safe-area-inset-bottom, 0px))" }}
+      >
+        <div className="max-w-container mx-auto px-5 md:px-8 pt-4 sm:pt-5">
           <p className="text-[0.8rem] text-white/55">
             © {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan.
           </p>
-          <p className="text-[0.8rem] text-white/55">
+          <p className="mt-1.5 text-[0.8rem] text-white/55">
             Built by{" "}
             <a
               href={PORTFOLIO_URL}
