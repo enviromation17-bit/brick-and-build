@@ -132,7 +132,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom bar — always last line of footer */}
       <div className="border-t border-white/10 bg-[#0a1528]">
         <div className="max-w-container mx-auto px-5 md:px-8 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <p className="text-[0.8rem] text-white/55">
@@ -146,7 +145,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="font-semibold text-gold hover:text-white underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
             >
-              Revolt
+              Renolt
             </a>
           </p>
         </div>
