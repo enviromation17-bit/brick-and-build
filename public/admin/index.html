@@ -1,86 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bricks & Built — Admin CRM</title>
-  <meta name="robots" content="noindex, nofollow" />
-  <style>
-    :root { --navy:#152A54; --navy2:#1e3a6e; --bg:#F4F2EC; --paper:#fff; --line:#E4E0D6; --slate:#5c6578; --ok:#1B7A4E; --warn:#8A6D1A; --bad:#8A2A1A; }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:var(--bg);color:var(--navy);min-height:100vh}
-    a{color:var(--navy2)}
-    header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
-    header .brand{font-weight:700} header .brand span{opacity:.75;font-weight:500;font-size:.85rem;margin-left:8px}
-    header nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    header a,header button.linkish{color:#fff;text-decoration:none;font-size:.85rem;background:transparent;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit}
-    .wrap{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
-    .login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,#0f1f40,#152A54 50%,#1a3560)}
-    .login{width:100%;max-width:400px;background:var(--paper);border-radius:18px;padding:28px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
-    .login h1{margin:0 0 6px;font-size:1.35rem}
-    .login p{margin:0 0 18px;color:var(--slate);font-size:.92rem}
-    label{display:block;font-size:.78rem;color:var(--slate);margin-bottom:6px}
-    input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:12px;background:#fff}
-    button.primary{width:100%;border:0;border-radius:999px;padding:12px 16px;background:var(--navy);color:#fff;font-weight:700;cursor:pointer;font:inherit}
-    button.primary:disabled{opacity:.6;cursor:wait}
-    .err{color:var(--bad);font-size:.88rem;margin:0 0 10px;line-height:1.4}
-    .overview-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);margin:0 0 12px;font-weight:700}
-    .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:22px}
-    .stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
-    .stat b{display:block;font-size:1.55rem} .stat span{font-size:.72rem;color:var(--slate);text-transform:uppercase}
-    .panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
-    .panel-h{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
-    .panel-h h2{margin:0;font-size:1rem}
-    .toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-    .toolbar input,.toolbar select{margin:0;width:auto;min-width:120px}
-    table{width:100%;border-collapse:collapse;font-size:.88rem}
-    th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-    th{background:#EEF1F7;font-size:.7rem;text-transform:uppercase;color:var(--slate)}
-    .badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.72rem;font-weight:700;background:#EEF1F7}
-    .badge.whatsapp{background:#E7F8EE;color:var(--ok)} .badge.assistant{background:#FFF6E0;color:var(--warn)}
-    select.status{display:block!important;padding:8px 10px;border-radius:8px;border:1px solid var(--line);font-size:.85rem;min-width:120px;background:#fff;margin-bottom:6px}
-    button.danger{display:inline-block!important;background:#fff;color:var(--bad);border:1px solid #e8c4c0;border-radius:8px;padding:7px 12px;font-size:.8rem;font-weight:600;cursor:pointer}
-    button.danger:disabled{opacity:.5}
-    .msg{color:var(--slate);max-width:200px;word-break:break-word}
-    .muted{color:var(--slate);font-size:.78rem}
-    .empty{padding:28px 16px;text-align:center;color:var(--slate)}
-    .user-chip{font-size:.85rem;opacity:.9}
-    .hint{margin-top:14px;padding:12px;background:#F4F2EC;border-radius:10px;font-size:.8rem;color:var(--slate);line-height:1.45}
-    @media(max-width:720px){
-      table,thead,tbody,th,td,tr{display:block} thead{display:none}
-      tr{border-bottom:1px solid var(--line);padding:12px} td{border:0;padding:6px 0}
-      td::before{content:attr(data-label);display:block;font-size:.68rem;color:#888;text-transform:uppercase;margin-bottom:4px}
-      select.status,button.danger{width:100%}
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Bricks and Built Admin CRM</title>
+<meta name="robots" content="noindex, nofollow" />
+<style>
+:root{--navy:#152A54;--bg:#F4F2EC;--paper:#fff;--line:#E4E0D6;--slate:#5c6578;--ok:#1B7A4E;--warn:#8A6D1A;--bad:#8A2A1A}
+*{box-sizing:border-box}
+body{margin:0;font-family:Segoe UI,system-ui,sans-serif;background:var(--bg);color:var(--navy);min-height:100vh}
+a{color:#1e3a6e}
+header{background:var(--navy);color:#fff;padding:14px 20px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+header .brand{font-weight:700} header .brand span{opacity:.75;font-weight:500;font-size:.85rem;margin-left:8px}
+header nav{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+header a,header button.linkish{color:#fff;text-decoration:none;font-size:.85rem;background:transparent;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 12px;cursor:pointer;font:inherit}
+.wrap{max-width:1100px;margin:0 auto;padding:20px 16px 40px}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:24px;background:linear-gradient(160deg,#0f1f40,#152A54 50%,#1a3560)}
+.login{width:100%;max-width:400px;background:var(--paper);border-radius:18px;padding:28px 24px;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.login h1{margin:0 0 6px;font-size:1.35rem}
+.login p{margin:0 0 18px;color:var(--slate);font-size:.92rem}
+label{display:block;font-size:.78rem;color:var(--slate);margin-bottom:6px}
+input,select{width:100%;padding:11px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;margin-bottom:12px;background:#fff}
+button.primary{width:100%;border:0;border-radius:999px;padding:12px 16px;background:var(--navy);color:#fff;font-weight:700;cursor:pointer;font:inherit}
+button.primary:disabled{opacity:.6;cursor:wait}
+.err{color:var(--bad);font-size:.88rem;margin:0 0 10px;line-height:1.4}
+.overview-title{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;color:var(--slate);margin:0 0 12px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:22px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-size:1.55rem}.stat span{font-size:.72rem;color:var(--slate);text-transform:uppercase}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:18px}
+.panel-h{padding:12px 16px;border-bottom:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.panel-h h2{margin:0;font-size:1rem}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.toolbar input,.toolbar select{margin:0;width:auto;min-width:120px}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:#EEF1F7;font-size:.7rem;text-transform:uppercase;color:var(--slate)}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;font-size:.72rem;font-weight:700;background:#EEF1F7}
+.badge.whatsapp{background:#E7F8EE;color:var(--ok)}.badge.assistant{background:#FFF6E0;color:var(--warn)}
+select.status{display:block!important;padding:8px 10px;border-radius:8px;border:1px solid var(--line);font-size:.85rem;min-width:120px;background:#fff;margin-bottom:6px}
+button.danger{display:inline-block!important;background:#fff;color:var(--bad);border:1px solid #e8c4c0;border-radius:8px;padding:7px 12px;font-size:.8rem;font-weight:600;cursor:pointer}
+button.danger:disabled{opacity:.5}
+.msg{color:var(--slate);max-width:200px;word-break:break-word}
+.muted{color:var(--slate);font-size:.78rem}
+.empty{padding:28px 16px;text-align:center;color:var(--slate)}
+.user-chip{font-size:.85rem;opacity:.9}
+.hint{margin-top:14px;padding:12px;background:#F4F2EC;border-radius:10px;font-size:.8rem;color:var(--slate);line-height:1.45}
+@media(max-width:720px){table,thead,tbody,th,td,tr{display:block}thead{display:none}tr{border-bottom:1px solid var(--line);padding:12px}td{border:0;padding:6px 0}td::before{content:attr(data-label);display:block;font-size:.68rem;color:#888;text-transform:uppercase;margin-bottom:4px}select.status,button.danger{width:100%}}
+</style>
 </head>
 <body>
 <div id="app"></div>
 <script>
-const CONFIG = {
+(function(){
+var CONFIG = {
   apiUrl: "https://script.google.com/macros/s/AKfycbzytJepR1Q-TtlsH40X1w_eakbxcWn3znBNukGAPARNhM5lDblAr2y5jm5sYKYkpLG_tA/exec",
   sheetUrl: "https://docs.google.com/spreadsheets/d/1lmSD_-ZFJcwhriyb_jBDP7ShKB86VWVfWejoVA50a54/edit",
   key: "bb_admin_v4"
 };
-function el(h){const d=document.createElement("div");d.innerHTML=h.trim();return d.firstChild}
-function esc(s){return String(s??"").replace(/[&<>"']/g,function(c){return ({"&":"&","<":"<",">":">",'"':""","'":"&#39;"}[c]);});}
-function wa(phone){const d=String(phone||"").replace(/\D/g,"").replace(/^0/,"92");return d?"https://wa.me/"+d:"#"}
-function isToday(ts){if(!ts)return false;const s=String(ts);const n=new Date();const p=function(x){return String(x).padStart(2,"0")};const a=n.getFullYear()+"-"+p(n.getMonth()+1)+"-"+p(n.getDate());const b=(n.getMonth()+1)+"/"+n.getDate()+"/"+n.getFullYear();return s.indexOf(a)===0||s.indexOf(b)===0;}
-function getAuth(){try{return JSON.parse(localStorage.getItem(CONFIG.key)||"null")}catch(e){return null}}
-function setAuth(name,password){localStorage.setItem(CONFIG.key,JSON.stringify({name:name,password:password,at:Date.now()}))}
-function clearAuth(){localStorage.removeItem(CONFIG.key)}
+function el(h){var d=document.createElement("div");d.innerHTML=h.trim();return d.firstChild;}
+function esc(s){
+  return String(s==null?"":s)
+    .replace(/&/g,"&"+"amp;")
+    .replace(/</g,"&"+"lt;")
+    .replace(/>/g,"&"+"gt;")
+    .replace(/"/g,"&"+"quot;")
+    .replace(/'/g,"&#39;");
+}
+function wa(phone){var d=String(phone||"").replace(/\D/g,"").replace(/^0/,"92");return d?("https://wa.me/"+d):"#";}
+function isToday(ts){
+  if(!ts)return false;
+  var s=String(ts);var n=new Date();
+  function p(x){return String(x).padStart(2,"0");}
+  var a=n.getFullYear()+"-"+p(n.getMonth()+1)+"-"+p(n.getDate());
+  var b=(n.getMonth()+1)+"/"+n.getDate()+"/"+n.getFullYear();
+  return s.indexOf(a)===0||s.indexOf(b)===0;
+}
+function getAuth(){try{return JSON.parse(localStorage.getItem(CONFIG.key)||"null");}catch(e){return null;}}
+function setAuth(name,password){localStorage.setItem(CONFIG.key,JSON.stringify({name:name,password:password,at:Date.now()}));}
+function clearAuth(){localStorage.removeItem(CONFIG.key);}
 function api(params, passwordOverride){
   return new Promise(function(resolve,reject){
     var cb="bb_"+Date.now()+"_"+Math.floor(Math.random()*1e6);
-    var t=setTimeout(function(){cleanup();reject(new Error("Timeout connecting to Google Sheet. Check Admin.gs is deployed as Web app (Anyone)."))},25000);
+    var t=setTimeout(function(){cleanup();reject(new Error("Timeout. Check Admin.gs is deployed as Web app (Anyone)."));},25000);
     var script;
-    function cleanup(){clearTimeout(t);try{delete window[cb]}catch(e){window[cb]=undefined}if(script&&script.parentNode)script.parentNode.removeChild(script)}
-    window[cb]=function(data){cleanup();if(!data||data.ok===false){reject(new Error((data&&data.error)||"Request failed"));}else resolve(data);};
+    function cleanup(){clearTimeout(t);try{delete window[cb];}catch(e){window[cb]=undefined;}if(script&&script.parentNode)script.parentNode.removeChild(script);}
+    window[cb]=function(data){cleanup();if(!data||data.ok===false)reject(new Error((data&&data.error)||"Request failed"));else resolve(data);};
     var auth=getAuth();
-    var pw = passwordOverride != null ? passwordOverride : (auth ? auth.password : "");
+    var pw=passwordOverride!=null?passwordOverride:(auth?auth.password:"");
     script=document.createElement("script");
     script.src=CONFIG.apiUrl+(CONFIG.apiUrl.indexOf("?")>=0?"&":"?")+params+"&password="+encodeURIComponent(pw)+"&callback="+encodeURIComponent(cb);
-    script.onerror=function(){cleanup();reject(new Error("Network error — cannot reach Apps Script"))};
+    script.onerror=function(){cleanup();reject(new Error("Network error"));};
     document.body.appendChild(script);
   });
 }
@@ -88,62 +98,83 @@ function renderLogin(err){
   document.getElementById("app").innerHTML="";
   document.getElementById("app").appendChild(el(
     '<div class="login-wrap"><div class="login">'+
-      '<h1>Bricks & Built Admin</h1>'+
-      '<p>Enter your name and admin password. Stay signed in until Logout.</p>'+
-      (err?'<p class="err">'+esc(err)+'</p>':'')+
-      '<label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="username" autofocus />'+
-      '<label for="pw">Password</label><input id="pw" type="password" placeholder="Admin password from Admin.gs" autocomplete="current-password" />'+
-      '<button class="primary" id="go" type="button">Open dashboard</button>'+
-      '<div class="hint"><strong>Login tips</strong><br/>'+
-      '• Password must match <code>ADMIN_PASSWORD</code> in Admin.gs<br/>'+
-      '• After changing password: Deploy → Manage deployments → Edit → New version<br/>'+
-      '• Sheet tab name must be <strong>Leads</strong></div>'+
-    '</div></div>'
+    '<h1>Bricks and Built Admin</h1>'+
+    '<p>Enter your name and admin password. Stays signed in until Logout.</p>'+
+    (err?('<p class="err">'+esc(err)+'</p>'):'')+
+    '<label for="name">Name</label><input id="name" type="text" placeholder="Your name" autocomplete="username" autofocus />'+
+    '<label for="pw">Password</label><input id="pw" type="password" placeholder="Admin password from Admin.gs" autocomplete="current-password" />'+
+    '<button class="primary" id="go" type="button">Open dashboard</button>'+
+    '<div class="hint"><strong>Login tips</strong><br/>'+
+    'Password must match ADMIN_PASSWORD in Admin.gs<br/>'+
+    'After change: Deploy, Manage deployments, New version<br/>'+
+    'Sheet tab name must be Leads</div></div></div>'
   ));
-  var go=async function(){
+  function go(){
     var name=document.getElementById("name").value.trim();
     var password=document.getElementById("pw").value;
     if(!name)return renderLogin("Enter your name");
     if(!password)return renderLogin("Enter password");
-    var btn=document.getElementById("go");btn.disabled=true;btn.textContent="Checking…";
-    try{
-      await api("api=leads", password);
+    var btn=document.getElementById("go");btn.disabled=true;btn.textContent="Checking...";
+    api("api=leads", password).then(function(){
       setAuth(name, password);
       loadDashboard();
-    }catch(e){
+    }).catch(function(e){
       clearAuth();
       var msg=e.message||"";
-      if(/unauth/i.test(msg)) renderLogin("Wrong password. Open Admin.gs → check ADMIN_PASSWORD → Deploy → Manage deployments → New version.");
+      if(/unauth/i.test(msg)) renderLogin("Wrong password. Check ADMIN_PASSWORD in Admin.gs then Deploy New version.");
       else renderLogin(msg);
-    }
-  };
+    });
+  }
   document.getElementById("go").onclick=go;
-  document.getElementById("pw").onkeydown=function(e){if(e.key==="Enter")go()};
-  document.getElementById("name").onkeydown=function(e){if(e.key==="Enter")document.getElementById("pw").focus()};
+  document.getElementById("pw").onkeydown=function(e){if(e.key==="Enter")go();};
+  document.getElementById("name").onkeydown=function(e){if(e.key==="Enter")document.getElementById("pw").focus();};
 }
-async function loadDashboard(){
+function loadDashboard(){
   if(!getAuth())return renderLogin();
-  document.getElementById("app").innerHTML='<div class="wrap"><p class="muted">Loading leads…</p></div>';
-  try{
-    var data=await api("api=leads");
+  document.getElementById("app").innerHTML='<div class="wrap"><p class="muted">Loading leads...</p></div>';
+  api("api=leads").then(function(data){
     var leads=Array.isArray(data.leads)?data.leads:[];
     renderDash(leads);
-  }catch(e){
-    if(/unauth/i.test(e.message)){clearAuth();return renderLogin("Session expired or password changed — log in again");}
+  }).catch(function(e){
+    if(/unauth/i.test(e.message)){clearAuth();return renderLogin("Session expired — log in again");}
     document.getElementById("app").innerHTML='<div class="wrap"><p class="err">'+esc(e.message)+'</p><button class="primary" id="back" style="max-width:220px" type="button">Back to login</button></div>';
-    document.getElementById("back").onclick=function(){clearAuth();renderLogin()};
-  }
+    document.getElementById("back").onclick=function(){clearAuth();renderLogin();};
+  });
 }
 function renderDash(leads){
   var auth=getAuth();
   var counts={total:leads.length,new:0,contacted:0,qualified:0,won:0,lost:0,today:0};
-  leads.forEach(function(l){var s=String(l.status||"new").toLowerCase();if(counts[s]!==undefined)counts[s]++;else counts.new++;if(isToday(l.timestamp))counts.today++;});
+  leads.forEach(function(l){
+    var s=String(l.status||"new").toLowerCase();
+    if(counts[s]!==undefined)counts[s]++;else counts.new++;
+    if(isToday(l.timestamp))counts.today++;
+  });
   var root=document.getElementById("app");root.innerHTML="";
-  root.appendChild(el('<header><div class="brand">Bricks & Built <span>Admin CRM</span></div><nav><span class="user-chip">Hi, '+esc(auth.name)+'</span><a href="'+esc(CONFIG.sheetUrl)+'" target="_blank" rel="noopener">Google Sheet</a><button type="button" class="linkish" id="refresh">Refresh</button><button type="button" class="linkish" id="logout">Logout</button></nav></header>'));
+  root.appendChild(el(
+    '<header><div class="brand">Bricks and Built <span>Admin CRM</span></div><nav>'+
+    '<span class="user-chip">Hi, '+esc(auth.name)+'</span>'+
+    '<a href="'+esc(CONFIG.sheetUrl)+'" target="_blank" rel="noopener">Google Sheet</a>'+
+    '<button type="button" class="linkish" id="refresh">Refresh</button>'+
+    '<button type="button" class="linkish" id="logout">Logout</button></nav></header>'
+  ));
   var wrap=el('<div class="wrap"></div>');
-  wrap.appendChild(el('<p class="overview-title">Overview</p><div class="stats"><div class="stat"><b>'+counts.total+'</b><span>Total leads</span></div><div class="stat"><b>'+counts.new+'</b><span>New</span></div><div class="stat"><b>'+counts.today+'</b><span>Today</span></div><div class="stat"><b>'+counts.contacted+'</b><span>Contacted</span></div><div class="stat"><b>'+counts.qualified+'</b><span>Qualified</span></div><div class="stat"><b>'+counts.won+'</b><span>Won</span></div></div>'));
+  wrap.appendChild(el(
+    '<p class="overview-title">Overview</p><div class="stats">'+
+    '<div class="stat"><b>'+counts.total+'</b><span>Total leads</span></div>'+
+    '<div class="stat"><b>'+counts.new+'</b><span>New</span></div>'+
+    '<div class="stat"><b>'+counts.today+'</b><span>Today</span></div>'+
+    '<div class="stat"><b>'+counts.contacted+'</b><span>Contacted</span></div>'+
+    '<div class="stat"><b>'+counts.qualified+'</b><span>Qualified</span></div>'+
+    '<div class="stat"><b>'+counts.won+'</b><span>Won</span></div></div>'
+  ));
   var panel=el('<div class="panel"></div>');
-  panel.appendChild(el('<div class="panel-h"><h2>Recent leads ('+leads.length+')</h2><div class="toolbar"><input type="search" id="q" placeholder="Search…" /><select id="filterSource"><option value="">All sources</option><option>form</option><option>whatsapp</option><option>assistant</option></select><select id="filterStatus"><option value="">All statuses</option><option>new</option><option>contacted</option><option>qualified</option><option>won</option><option>lost</option></select></div></div>'));
+  panel.appendChild(el(
+    '<div class="panel-h"><h2>Recent leads ('+leads.length+')</h2><div class="toolbar">'+
+    '<input type="search" id="q" placeholder="Search" />'+
+    '<select id="filterSource"><option value="">All sources</option><option>form</option><option>whatsapp</option><option>assistant</option></select>'+
+    '<select id="filterStatus"><option value="">All statuses</option><option>new</option><option>contacted</option><option>qualified</option><option>won</option><option>lost</option></select>'+
+    '</div></div>'
+  ));
   var tableWrap=el('<div style="overflow:auto"></div>');
   var table=el('<table><thead><tr><th>When</th><th>Source</th><th>Name</th><th>Phone</th><th>Interest</th><th>Message</th><th>Status</th><th>Actions</th></tr></thead><tbody id="tb"></tbody></table>');
   var tb=table.querySelector("#tb");
@@ -152,20 +183,59 @@ function renderDash(leads){
     var fs=document.getElementById("filterSource").value;
     var fst=document.getElementById("filterStatus").value;
     tb.innerHTML="";
-    var list=leads.filter(function(l){if(fs&&String(l.source)!==fs)return false;if(fst&&String(l.status||"new").toLowerCase()!==fst)return false;if(!q)return true;return [l.name,l.phone,l.interest,l.message,l.id].join(" ").toLowerCase().includes(q);});
-    if(!list.length){tb.innerHTML='<tr><td colspan="8" class="empty">No leads. Check Sheet tab name is <strong>Leads</strong>.</td></tr>';return;}
+    var list=leads.filter(function(l){
+      if(fs&&String(l.source)!==fs)return false;
+      if(fst&&String(l.status||"new").toLowerCase()!==fst)return false;
+      if(!q)return true;
+      return [l.name,l.phone,l.interest,l.message,l.id].join(" ").toLowerCase().indexOf(q)>=0;
+    });
+    if(!list.length){tb.innerHTML='<tr><td colspan="8" class="empty">No leads. Sheet tab must be named Leads.</td></tr>';return;}
     list.forEach(function(l){
-      var st=String(l.status||"new").toLowerCase();var src=String(l.source||"form").toLowerCase();var id=String(l.id||"");
-      var opts=["new","contacted","qualified","won","lost"].map(function(s){return '<option value="'+s+'" '+(s===st?"selected":"")+'>'+s+'</option>';}).join("");
+      var st=String(l.status||"new").toLowerCase();
+      var src=String(l.source||"form").toLowerCase();
+      var id=String(l.id||"");
+      var opts=["new","contacted","qualified","won","lost"].map(function(s){
+        return '<option value="'+s+'"'+(s===st?' selected':'')+'>'+s+'</option>';
+      }).join("");
       var tr=document.createElement("tr");
-      tr.innerHTML='<td data-label="When">'+esc(l.timestamp||"")+'</td><td data-label="Source"><span class="badge '+esc(src)+'">'+esc(src)+'</span></td><td data-label="Name"><strong>'+esc(l.name||"")+'</strong><div class="muted">'+esc(id)+'</div></td><td data-label="Phone"><a href="'+wa(l.phone)+'" target="_blank" rel="noopener">'+esc(l.phone||"")+'</a></td><td data-label="Interest">'+esc(l.interest||"—")+'</td><td data-label="Message" class="msg">'+esc(l.message||"")+'</td><td data-label="Status"><select class="status" data-id="'+esc(id)+'">'+opts+'</select></td><td data-label="Actions"><button type="button" class="danger" data-del="'+esc(id)+'">Delete</button></td>';
+      tr.innerHTML=
+        '<td data-label="When">'+esc(l.timestamp||"")+'</td>'+
+        '<td data-label="Source"><span class="badge '+esc(src)+'">'+esc(src)+'</span></td>'+
+        '<td data-label="Name"><strong>'+esc(l.name||"")+'</strong><div class="muted">'+esc(id)+'</div></td>'+
+        '<td data-label="Phone"><a href="'+wa(l.phone)+'" target="_blank" rel="noopener">'+esc(l.phone||"")+'</a></td>'+
+        '<td data-label="Interest">'+esc(l.interest||"-")+'</td>'+
+        '<td data-label="Message" class="msg">'+esc(l.message||"")+'</td>'+
+        '<td data-label="Status"><select class="status" data-id="'+esc(id)+'">'+opts+'</select></td>'+
+        '<td data-label="Actions"><button type="button" class="danger" data-del="'+esc(id)+'">Delete</button></td>';
       tb.appendChild(tr);
     });
-    tb.querySelectorAll("select.status").forEach(function(sel){sel.onchange=async function(){sel.disabled=true;try{await api("api=status&id="+encodeURIComponent(sel.dataset.id)+"&status="+encodeURIComponent(sel.value));var lead=leads.find(function(x){return String(x.id)===String(sel.dataset.id)});if(lead)lead.status=sel.value;}catch(e){alert("Status failed: "+e.message);loadDashboard();return}sel.disabled=false;};});
-    tb.querySelectorAll("[data-del]").forEach(function(btn){btn.onclick=async function(){var id=btn.getAttribute("data-del");var lead=leads.find(function(x){return String(x.id)===String(id)});if(!confirm("Delete lead?\n\n"+(lead?lead.name+" — "+id:id)))return;btn.disabled=true;btn.textContent="…";try{await api("api=delete&id="+encodeURIComponent(id));var i=leads.findIndex(function(x){return String(x.id)===String(id)});if(i>=0)leads.splice(i,1);renderDash(leads);}catch(e){alert("Delete failed: "+e.message);btn.disabled=false;btn.textContent="Delete"}};});
+    tb.querySelectorAll("select.status").forEach(function(sel){
+      sel.onchange=function(){
+        sel.disabled=true;
+        api("api=status&id="+encodeURIComponent(sel.dataset.id)+"&status="+encodeURIComponent(sel.value))
+          .then(function(){
+            var lead=leads.find(function(x){return String(x.id)===String(sel.dataset.id);});
+            if(lead)lead.status=sel.value;
+            sel.disabled=false;
+          }).catch(function(e){alert("Status failed: "+e.message);loadDashboard();});
+      };
+    });
+    tb.querySelectorAll("[data-del]").forEach(function(btn){
+      btn.onclick=function(){
+        var id=btn.getAttribute("data-del");
+        var lead=leads.find(function(x){return String(x.id)===String(id);});
+        if(!confirm("Delete lead?\n\n"+(lead?(lead.name+" — "+id):id)))return;
+        btn.disabled=true;btn.textContent="...";
+        api("api=delete&id="+encodeURIComponent(id)).then(function(){
+          var i=leads.findIndex(function(x){return String(x.id)===String(id);});
+          if(i>=0)leads.splice(i,1);
+          renderDash(leads);
+        }).catch(function(e){alert("Delete failed: "+e.message);btn.disabled=false;btn.textContent="Delete";});
+      };
+    });
   }
   tableWrap.appendChild(table);panel.appendChild(tableWrap);wrap.appendChild(panel);root.appendChild(wrap);
-  document.getElementById("logout").onclick=function(){clearAuth();renderLogin()};
+  document.getElementById("logout").onclick=function(){clearAuth();renderLogin();};
   document.getElementById("refresh").onclick=loadDashboard;
   document.getElementById("q").oninput=paint;
   document.getElementById("filterSource").onchange=paint;
@@ -173,6 +243,7 @@ function renderDash(leads){
   paint();
 }
 if(getAuth())loadDashboard();else renderLogin();
+})();
 </script>
 </body>
 </html>
