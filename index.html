@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" style="color-scheme: light;">
+<html lang="en" style="color-scheme: light only;">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/assets/brand-logo.jpg">
+<link rel="shortcut icon" href="/mark.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#152A54">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FAF8F3">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
 <title>Bricks & Built Developers — Toba Tek Singh & Pakpattan Property Development</title>
 <meta name="description" content="Bricks & Built is an established property development company in Pakpattan, Punjab. Pak City Housing Society delivered. Next project: Toba Tek Singh. Land, residential and commercial plots with transparent delivery.">
 <meta name="keywords" content="Bricks and Built, Bricks & Built Developers, Toba Tek Singh housing, Pakpattan property, Pak City Housing Society, land development Punjab, residential plots, commercial plots Pakistan">
@@ -20,14 +23,15 @@
 <meta property="og:url" content="https://bricksandbuiltdevelopers.com/">
 <meta property="og:title" content="Bricks & Built Developers — Toba Tek Singh & Pakpattan">
 <meta property="og:description" content="Established property development company. Pak City Housing Society delivered. Next focus: Toba Tek Singh. Land, residential and commercial projects in Punjab.">
-<meta property="og:image" content="https://bricksandbuiltdevelopers.com/assets/brand-logo-final.jpg">
+<meta property="og:image" content="https://bricksandbuiltdevelopers.com/assets/brand-logo.jpg">
+<meta property="og:image:alt" content="Bricks and Built Developers logo">
 <meta property="og:locale" content="en_PK">
 <meta property="og:site_name" content="Bricks & Built Developers">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Bricks & Built Developers — Toba Tek Singh & Pakpattan">
 <meta name="twitter:description" content="Pak City Housing Society delivered. Next project underway in Toba Tek Singh. Transparent land, residential and commercial development in Punjab.">
-<meta name="twitter:image" content="https://bricksandbuiltdevelopers.com/assets/brand-logo-final.jpg">
+<meta name="twitter:image" content="https://bricksandbuiltdevelopers.com/assets/brand-logo.jpg">
 
 <script type="application/ld+json">
 {
@@ -36,7 +40,8 @@
   "name": "Bricks & Built Developers",
   "alternateName": "Bricks & Built",
   "url": "https://bricksandbuiltdevelopers.com",
-  "logo": "https://bricksandbuiltdevelopers.com/assets/brand-logo-final.jpg",
+  "logo": "https://bricksandbuiltdevelopers.com/assets/brand-logo.jpg",
+  "image": "https://bricksandbuiltdevelopers.com/assets/brand-logo.jpg",
   "description": "Established property development company based in Pakpattan, Punjab. Delivered Pak City Housing Society. Current focus: Toba Tek Singh.",
   "address": {
     "@type": "PostalAddress",
@@ -49,7 +54,19 @@
 }
 </script>
 <style>
-  html, body { margin: 0; background: #FAF8F3; }
+  html { color-scheme: light only !important; }
+  html, body {
+    margin: 0;
+    background: #FAF8F3 !important;
+    color: #152A54 !important;
+  }
+  @media (prefers-color-scheme: dark) {
+    html, body {
+      background: #FAF8F3 !important;
+      color: #152A54 !important;
+      color-scheme: light only !important;
+    }
+  }
   #root:empty::before {
     content: "Loading Bricks & Built…";
     display: block;
