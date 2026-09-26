@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import GoldParticles from "./GoldParticles";
 
 export default function Hero({
   eyebrow,
@@ -83,10 +82,7 @@ export default function Hero({
           style={cinematic && !compact ? { opacity: 0.55 + dim * 0.4 } : undefined}
         />
         {cinematic && !compact ? (
-          <>
-            <div className="absolute inset-0 pointer-events-none film-grain" aria-hidden="true" />
-            <GoldParticles />
-          </>
+          <div className="absolute inset-0 pointer-events-none film-grain" aria-hidden="true" />
         ) : null}
       </div>
 

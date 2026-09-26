@@ -35,6 +35,8 @@ const SOCIAL = [
   },
 ];
 
+const PORTFOLIO_URL = "https://enviromation17-bit.github.io/my-portfolio/";
+
 export default function Footer() {
   const links = SOCIAL.map((s) => ({ ...s, url: s.href() })).filter((s) => s.url && String(s.url).trim());
 
@@ -128,17 +130,21 @@ export default function Footer() {
             </p>
           </nav>
         </div>
-        <div className="border-t border-lineDark py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-          <p className="text-[0.78rem] text-slateLight">
+      </div>
+
+      {/* Bottom bar — always last line of footer */}
+      <div className="border-t border-white/10 bg-[#0a1528]">
+        <div className="max-w-container mx-auto px-5 md:px-8 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <p className="text-[0.8rem] text-white/55">
             © {new Date().getFullYear()} {COMPANY.fullName}, Pakpattan.
           </p>
-          <p className="text-[0.78rem] text-slateLight">
+          <p className="text-[0.8rem] text-white/55">
             Built by{" "}
             <a
-              href="https://enviromation17-bit.github.io/my-portfolio/"
+              href={PORTFOLIO_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/85 hover:text-gold underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="font-semibold text-gold hover:text-white underline underline-offset-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
             >
               Revolt
             </a>
