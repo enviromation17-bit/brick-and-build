@@ -1,8 +1,9 @@
 /**
- * Classic BB logo (brick arch + skyline)
- * White plate = always visible on dark hero and light header
+ * Classic BB logo — white plate for visibility on hero + header
+ * Primary: logo-bb-classic.jpg  |  Fallback: brand-logo.jpg
  */
 const LOGO_SRC = "/assets/logo-bb-classic.jpg";
+const LOGO_FALLBACK = "/assets/brand-logo.jpg";
 
 export default function Mark({ className = "", size = 48, variant = "mark" }) {
   const full = variant === "full";
@@ -27,6 +28,11 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
           className="block object-contain"
           style={{ height: h, width: "auto", maxWidth: "100%" }}
           decoding="async"
+          onError={(e) => {
+            if (e.currentTarget.src.indexOf("brand-logo") === -1) {
+              e.currentTarget.src = LOGO_FALLBACK;
+            }
+          }}
         />
       </span>
     </span>
