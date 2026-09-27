@@ -41,7 +41,7 @@ export default function WhatsAppFloat() {
       setStatus({ state: "error", message: "Please enter name and phone." });
       return;
     }
-    setStatus({ state: "sending", message: "Saving…" });
+    setStatus({ state: "sending", message: "Please wait…" });
     try {
       await submitLead({
         name: n,
@@ -62,7 +62,7 @@ export default function WhatsAppFloat() {
     } catch {
       setStatus({
         state: "error",
-        message: "Could not save. Opening WhatsApp anyway…",
+        message: "Something went wrong. Opening WhatsApp anyway…",
       });
       openChat(n, p, interest);
     }
@@ -97,10 +97,10 @@ export default function WhatsAppFloat() {
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2 id="wa-form-title" className="text-lg font-extrabold text-navy">
-                  Message on WhatsApp
+                  Chat with us on WhatsApp
                 </h2>
-                <p className="mt-1 text-sm text-slate">
-                  Leave your details first — we save them to our CRM, then open WhatsApp.
+                <p className="mt-1 text-sm text-slate leading-relaxed">
+                  Share your name and number so our team can assist you — then continue on WhatsApp.
                 </p>
               </div>
               <button
@@ -163,7 +163,7 @@ export default function WhatsAppFloat() {
                 disabled={status.state === "sending"}
                 className="w-full h-12 rounded-pill bg-[#25D366] text-[#0b3d1f] font-bold text-sm disabled:opacity-60 hover:bg-[#1fbd59]"
               >
-                {status.state === "sending" ? "Saving…" : "Continue to WhatsApp"}
+                {status.state === "sending" ? "Please wait…" : "Continue to WhatsApp"}
               </button>
 
               {status.message ? (
@@ -180,7 +180,7 @@ export default function WhatsAppFloat() {
                 className="w-full text-sm text-slate underline underline-offset-2"
                 onClick={() => openChat(name.trim() || "Guest", phone.trim() || "-", interest)}
               >
-                Skip form — open WhatsApp only
+                Skip — open WhatsApp only
               </button>
             </form>
           </div>
