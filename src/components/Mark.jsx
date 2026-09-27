@@ -1,6 +1,6 @@
 /**
  * Classic BB logo (brick arch + skyline)
- * White plate keeps it visible on dark hero and light header
+ * White plate = always visible on dark hero and light header
  */
 const LOGO_SRC = "/assets/logo-bb-classic.jpg";
 
@@ -25,11 +25,7 @@ export default function Mark({ className = "", size = 48, variant = "mark" }) {
           src={LOGO_SRC}
           alt="Bricks & Built Developers"
           className="block object-contain"
-          style={{
-            height: h,
-            width: "auto",
-            maxWidth: "100%",
-          }}
+          style={{ height: h, width: "auto", maxWidth: "100%" }}
           decoding="async"
         />
       </span>
