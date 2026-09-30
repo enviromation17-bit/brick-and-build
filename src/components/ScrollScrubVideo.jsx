@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Pinned scroll-scrub video + staged text overlays.
- * Scroll drives video currentTime. Falls back to normal play if reduced motion.
+ * Pinned scroll-scrub video + staged text + side rail.
+ * Scroll drives video currentTime (seasons-scroll style).
  */
 export default function ScrollScrubVideo({
   src,
   poster,
   stages = [],
-  heightVh = 280,
-  ariaLabel = "Scroll-driven project progress video",
+  heightVh = 300,
+  ariaLabel = "Scroll-driven progress video",
+  exploreLabel = "Scroll to explore",
 }) {
   const wrapRef = useRef(null);
   const videoRef = useRef(null);
@@ -128,12 +129,43 @@ export default function ScrollScrubVideo({
             preload="auto"
             aria-hidden="true"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-navyDeep via-navy/50 to-navy/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0a1528] via-[#152A54]/55 to-[#152A54]/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a1528]/70 via-transparent to-transparent" />
         </div>
+
+        {/* Side stage rail (desktop) */}
+        {stages.length > 0 ? (
+          <nav
+            className="hidden md:flex absolute right-6 lg:right-10 top-1/2 -translate-y-1/2 z-20 flex-col items-end gap-3"
+            aria-label="Stages"
+          >
+            <div className="absolute right-[5px] top-0 bottom-0 w-px bg-white/20" aria-hidden="true" />
+            {stages.map((s, i) => (
+              <div key={s.title} className="relative flex items-center gap-3 pr-0">
+                <span
+                  className="text-[0.65rem] font-bold tracking-[0.18em] uppercase transition-colors duration-300"
+                  style={{ color: i === active ? "#B8935A" : "rgba(255,255,255,0.4)" }}
+                >
+                  {s.rail || s.kicker || `0${i + 1}`}
+                </span>
+                <span
+                  className="relative z-10 block rounded-full transition-all duration-300"
+                  style={{
+                    width: i === active ? 10 : 6,
+                    height: i === active ? 10 : 6,
+                    background: i === active ? "#B8935A" : "rgba(255,255,255,0.35)",
+                    boxShadow: i === active ? "0 0 0 3px rgba(184,147,90,0.35)" : "none",
+                  }}
+                  aria-hidden="true"
+                />
+              </div>
+            ))}
+          </nav>
+        ) : null}
 
         <div className="relative z-10 w-full max-w-container mx-auto px-5 md:px-8 pb-16 pt-24">
           <p className="text-[0.72rem] font-bold tracking-[0.22em] uppercase text-gold mb-3">
-            Scroll to explore progress
+            {exploreLabel}
           </p>
           {stages.map((s, i) => (
             <div
@@ -141,7 +173,7 @@ export default function ScrollScrubVideo({
               className="transition-all duration-500 ease-out max-w-[34rem]"
               style={{
                 opacity: i === active ? 1 : 0,
-                transform: i === active ? "translateY(0)" : "translateY(12px)",
+                transform: i === active ? "translateY(0)" : "translateY(14px)",
                 position: i === active ? "relative" : "absolute",
                 pointerEvents: i === active ? "auto" : "none",
               }}
@@ -150,14 +182,16 @@ export default function ScrollScrubVideo({
               {s.kicker ? (
                 <p className="text-[0.75rem] font-bold tracking-[0.2em] uppercase text-gold/90">{s.kicker}</p>
               ) : null}
-              <h3 className="mt-2 text-[clamp(1.6rem,4vw,2.75rem)] font-extrabold tracking-tight text-white leading-tight">
+              <h3 className="mt-2 text-[clamp(1.65rem,4.2vw,2.85rem)] font-extrabold tracking-tight text-white leading-[1.12]">
                 {s.title}
               </h3>
-              {s.body ? <p className="mt-3 text-[0.98rem] text-white/85 leading-relaxed max-w-[32ch]">{s.body}</p> : null}
+              {s.body ? (
+                <p className="mt-3 text-[0.98rem] text-white/85 leading-relaxed max-w-[34ch]">{s.body}</p>
+              ) : null}
             </div>
           ))}
 
-          <div className="mt-10 flex gap-2" aria-hidden="true">
+          <div className="mt-10 flex gap-2 md:hidden" aria-hidden="true">
             {stages.map((_, i) => (
               <span
                 key={i}
@@ -170,9 +204,7 @@ export default function ScrollScrubVideo({
             ))}
           </div>
 
-          {!ready ? (
-            <p className="mt-4 text-sm text-white/50">Loading video…</p>
-          ) : null}
+          {!ready ? <p className="mt-4 text-sm text-white/50">Loading video…</p> : null}
         </div>
       </div>
     </div>
